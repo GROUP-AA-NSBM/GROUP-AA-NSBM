@@ -55,7 +55,7 @@ The system is designed to simplify event planning, scheduling, registrations, an
 | Wenuja Liyanamana  | Project Leader     |
 | Sandes Gunathilake | PHP Developer      |
 | Shen Liyanage      | PHP Developer      |
-| Senuri             | Database Developer |
+| Senuri Peiris      | Database Developer |
 | Hiranya            | Frontend Developer |
 | Minon              | Backend Developer  |
 
