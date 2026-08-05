@@ -19,32 +19,32 @@ The system is designed to simplify event planning, scheduling, registrations, an
 
 ### Admin Features
 
-* Login
-* Create, edit, and delete events
-* Manage event categories
-* View event registrations
-* Manage announcements
-* Generate participant lists
+- Login
+- Create, edit, and delete events
+- Manage event categories
+- View event registrations
+- Manage announcements
+- Generate participant lists
 
 ### Student Features
 
-* Register and login
-* Browse upcoming events
-* Search events by category
-* Register for events
-* View personal event schedule
-* View event announcements
+- Register and login
+- Browse upcoming events
+- Search events by category
+- Register for events
+- View personal event schedule
+- View event announcements
 
 ---
 
 ## Technologies
 
-* HTML
-* CSS
-* JavaScript
-* PHP
-* MySQL
-* Git & GitHub
+- HTML
+- CSS
+- JavaScript
+- PHP
+- MySQL
+- Git & GitHub
 
 ---
 
@@ -56,7 +56,7 @@ The system is designed to simplify event planning, scheduling, registrations, an
 | Sandes Gunathilake | PHP Developer      |
 | Shen Liyanage      | PHP Developer      |
 | Senuri Peiris      | Database Developer |
-| Hiranya            | Frontend Developer |
+| Hiranya Amarasinghe| Frontend Developer |
 | Minon              | Backend Developer  |
 
 ---
