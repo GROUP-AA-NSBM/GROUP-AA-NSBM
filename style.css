@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+/* Left Section: Logo & Text */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.logo-text .brand-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Center Section: Links */
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #0066cc;
+}
+
+/* Right Section: Sign In Button */
+.btn-signin {
+  background-color: #cbe3f7;
+  color: #000000;
+  border: 1px solid #1a1a1a;
+  padding: 8px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-signin:hover {
+  background-color: #b5d7f5;
+}
+
+.btn-signin:active {
+  transform: scale(0.98);
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Adjust height as needed */
+  min-height: 450px;
+  background-image: url("heroimg.jpg"); /* Replace with your image file path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 60px;
+}
+
+/* Optional dark overlay if you need text to pop more over bright background areas */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Slight white tint to match design */
+  z-index: 1;
+}
+
+/* Top Left Text */
+.hero-heading {
+  position: relative;
+  z-index: 2;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: -1px;
+}
+
+/* Bottom Right Text */
+.hero-subheading {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #000000;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.hero-subheading span {
+  font-weight: 900;
+}
+
+/* Responsive Scaling for Mobile Screens */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    padding: 20px;
+  }
+
+  .hero-heading {
+    font-size: 2.2rem;
+  }
+
+  .hero-subheading {
+    font-size: 2rem;
+    margin-right: 0;
+  }
+}
