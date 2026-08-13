@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="global.css" />
   </head>
   <body>
     <section class="header">
       <nav>
-        <a href="index2.html"><img src="images/logo.png" width="100px" /></a>
+        <a href="index.php"><img src="images/logo.png" width="100px" /></a>
         <div class="nav-links">
           <ul>
             <li><a href="">HOME</a></li>

@@ -57,7 +57,7 @@ The system is designed to simplify event planning, scheduling, registrations, an
 | Shen Liyanage      | PHP Developer      |
 | Senuri Peiris      | Database Developer |
 | Hiranya Amarasinghe| Frontend Developer |
-| Minon              | Backend Developer  |
+| Minon Meedeniya    | Backend Developer  |
 
 ---
 
