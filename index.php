@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <section class="header">
       <nav>
-        <a href="index.php"><img src="images/logo.png" width="100px" /></a>
+        <a href="index.php"><img src="assets/images/logo.png" width="100px" /></a>
         <div class="nav-links">
           <ul>
             <li><a href="">HOME</a></li>
@@ -44,7 +44,7 @@
 
         <div class = "card-container">
           <div class = "card">
-            <img src ="images/tech.jpg">
+            <img src ="assets/images/tech.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -53,7 +53,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/food.jpg">
+            <img src ="assets/images/food.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -62,7 +62,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/entertainment.jpg">
+            <img src ="assets/images/entertainment.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -88,7 +88,7 @@
 
         <section class = "footer">
           
-          <img src = "images/logo.png">
+          <img src = "assets/images/logo.png">
           <h3>NSBM Green University</h3>
           <div class = "footer-links">
             <ul>
