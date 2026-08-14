@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,7 +13,7 @@
   <body>
     <section class="header">
       <nav>
-        <a href="index1.html"><img src="images/logo.png" width="100px" /></a>
+        <a href="index1.html"><img src="assets/images/logo.png" width="100px" /></a>
         <div class="nav-links">
           <ul>
             <li><a href="">HOME</a></li>
@@ -93,7 +93,7 @@
 
         <div class = "card-container">
           <div class = "card">
-            <img src ="images/tech.jpg">
+            <img src ="assets/images/tech.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -102,7 +102,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/food.jpg">
+            <img src ="assets/images/food.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -111,7 +111,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/entertainment.jpg">
+            <img src ="assets/images/entertainment.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -124,7 +124,7 @@
           <h2>Today's Events</h2>
           <div class = "card-container">
           <div class = "card">
-            <img src ="images/tech.jpg">
+            <img src ="assets/images/tech.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -133,7 +133,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/food.jpg">
+            <img src ="assets/images/food.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -142,7 +142,7 @@
           </div>
 
           <div class = "card">
-            <img src ="images/entertainment.jpg">
+            <img src ="assets/images/entertainment.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -165,7 +165,7 @@
     </div>
     <div class="card-container">
       <div class="card">
-        <img src="images/tech.jpg" alt="Event">
+        <img src="assets/images/tech.jpg" alt="Event">
         <div class="card-content">
           <h3>More Tech Event</h3>
           <p>Additional event details go here...</p>
@@ -173,7 +173,7 @@
         </div>
       </div>
       <div class="card">
-        <img src="images/food.jpg" alt="Event">
+        <img src="assets/images/food.jpg" alt="Event">
         <div class="card-content">
           <h3>More Food Event</h3>
           <p>Additional event details go here...</p>
@@ -181,7 +181,7 @@
         </div>
       </div>
       <div class="card">
-        <img src="images/entertainment.jpg" alt="Event">
+        <img src="assets/images/entertainment.jpg" alt="Event">
         <div class="card-content">
           <h3>More Music Event</h3>
           <p>Additional event details go here...</p>
@@ -209,7 +209,7 @@
         <section class = "footer">
         
           
-          <img src = "images/logo.png">
+          <img src = "assets/images/logo.png">
           <h3>NSBM Green University</h3>
           <div class = "footer-links">
             <ul>
