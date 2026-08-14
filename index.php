@@ -4,21 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <section class="header">
       <nav>
-        <a href="index.php"><img src="assets/images/logo.png" width="100px" /></a>
+        <a href="index1.html"><img src="images/logo.png" width="100px" /></a>
         <div class="nav-links">
           <ul>
             <li><a href="">HOME</a></li>
-            <li><a href="">EVENTS</a></li>
+            <li><a href="index2.html">EVENTS</a></li>
             <li><a href="">CALENDAR</a></li>
             <li><a href="">CONTACT</a></li>
+            <li><button type="button" class="btn btn-outline-success">Sign in</button></li>
           </ul>
+          
         </div>
       </nav>
+      <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active c-item">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+            class="d-block w-100 c-img"
+            alt="slide 1"
+          />
+        </div>
+        <div class="carousel-item c-item">
+          <img
+            src="https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg?semt=ais_test_b&w=740&q=80"
+            class="d-block w-100 c-img"
+            alt="slide 2"
+          />
+        </div>
+        <div class="carousel-item c-item">
+          <img
+            src="https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/33b5/live/78d8d060-21ce-11f0-89a9-cb5ed9bbefd9.jpg"
+            class="d-block w-100 c-img"
+            alt="slide 3"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#hero-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#hero-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
       <div class="text-box">
         <h1>Find your event...</h1>
         <h2>Find your people</h2>
@@ -35,16 +84,16 @@
     </section>
 
     <section class = "events">
-        <div class = "container">
-          <form>
-            <input type = "text" placeholder = "what are you looking for?">
-            <button type = "submit">Search</button>
-          </form>
+     
+        <div class = "events-container">
+          <div class = "upcoming-events-text">
+        <h2>Upcoming events</h2>
+      </div>
           
 
         <div class = "card-container">
           <div class = "card">
-            <img src ="assets/images/tech.jpg">
+            <img src ="images/tech.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -53,7 +102,7 @@
           </div>
 
           <div class = "card">
-            <img src ="assets/images/food.jpg">
+            <img src ="images/food.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -62,7 +111,7 @@
           </div>
 
           <div class = "card">
-            <img src ="assets/images/entertainment.jpg">
+            <img src ="images/entertainment.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
@@ -70,6 +119,77 @@
             </div>
           </div>
         </div>
+
+        <div class = "events-today">
+          <h2>Today's Events</h2>
+          <div class = "card-container">
+          <div class = "card">
+            <img src ="images/tech.jpg">
+            <div class = "card-content">
+              <h3>Event title</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
+              <a href = "" class = "btn">Register</a>
+            </div>
+          </div>
+
+          <div class = "card">
+            <img src ="images/food.jpg">
+            <div class = "card-content">
+              <h3>Event title</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
+              <a href = "" class = "btn">Register</a>
+            </div>
+          </div>
+
+          <div class = "card">
+            <img src ="images/entertainment.jpg">
+            <div class = "card-content">
+              <h3>Event title</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
+              <a href = "" class = "btn">Register</a>
+              </div>
+              </div>
+
+        </div>
+        </div>
+
+        <div class = "more-events-wrapper">
+          <div class = "text-center my-4">
+            <button id = "showMorebtn" class = "btn btn-primary hero-btn">Show More</button>
+          </div>
+        </div>
+
+        <div id = "hiddenEvents" class = "hidden-events-container">
+          <div class="upcoming-events-text">
+      <h2>All Scheduled Events</h2>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <img src="images/tech.jpg" alt="Event">
+        <div class="card-content">
+          <h3>More Tech Event</h3>
+          <p>Additional event details go here...</p>
+          <a href="#" class="btn">Register</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/food.jpg" alt="Event">
+        <div class="card-content">
+          <h3>More Food Event</h3>
+          <p>Additional event details go here...</p>
+          <a href="#" class="btn">Register</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/entertainment.jpg" alt="Event">
+        <div class="card-content">
+          <h3>More Music Event</h3>
+          <p>Additional event details go here...</p>
+          <a href="#" class="btn">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
         </div>
         </section>
 
@@ -87,8 +207,9 @@
         </section>
 
         <section class = "footer">
+        
           
-          <img src = "assets/images/logo.png">
+          <img src = "images/logo.png">
           <h3>NSBM Green University</h3>
           <div class = "footer-links">
             <ul>
@@ -102,5 +223,8 @@
             <p>&copy; 2026 NSBM Green University</p>
           </footer>
         </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+        </script>
   </body>
 </html>
