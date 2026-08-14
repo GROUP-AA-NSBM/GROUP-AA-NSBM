@@ -1,29 +1,39 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .header {
-  min-height: 100vh;
   width: 100%;
-  background-image:
-    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-    url(assets/images/heroimg.jpg);
-  background-position: center;
-  background-size: cover;
   position: relative;
+  background-color: #04091e;
+  max-height: 100vh;
 }
+.c-item {
+  height: 700px;
+}
+.c-img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
 nav {
   display: flex;
-  padding: 2% 6%;
+  padding: 1% 6%;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  position: relative;
+  z-index: 10;
 }
 nav img {
   width: 100px;
 }
 .nav-links {
-  flex: 1; /*occupies all the space in the row*/
+  flex: 1;
   text-align: right;
 }
 .nav-links ul li {
@@ -33,19 +43,12 @@ nav img {
   position: relative;
 }
 .nav-links ul li a {
-  color: #fff;
+  color: #333;
   text-decoration: none;
   font-size: 13px;
+  font-weight: 600;
 }
-.nav-links ul li::after {
-  content: "";
-  width: 0%;
-  height: 2px;
-  background: #7ecf59;
-  display: block;
-  margin: auto;
-  transition: 0.5s;
-}
+
 .nav-links ul li:hover::after {
   width: 100%;
 }
@@ -127,15 +130,18 @@ nav img {
   animation-delay: 1.6s;
 }
 
-.container {
+.events {
+  width: 100%;
+}
+
+.events-container {
   width: 100%;
   min-height: 75vh;
   background: #f0f0f0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5%;
-  padding-right: 5%;
+  padding: 5% 20px;
   box-sizing: border-box;
 }
 form {
@@ -167,6 +173,20 @@ form button {
   cursor: pointer;
   font-size: 15px;
 }
+.upcoming-events-text h2 {
+  padding-top: 30px;
+}
+.events-today {
+  align-items: leftr;
+  width: 100%;
+  display: flex;
+  text-align: left;
+  margin-top: 40px;
+  flex-direction: column;
+}
+.events-today h2 {
+  text-align: center;
+}
 
 .card-container {
   display: flex;
@@ -183,6 +203,10 @@ form button {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 .card img {
   width: 100%;
@@ -210,6 +234,10 @@ form button {
   color: #fff;
 }
 
+.card-content .btn:hover {
+  background-color: #7ecf59;
+  color: #f0f0f0;
+}
 .categories {
   min-height: 30vh;
   background: #edf2e4;
@@ -245,6 +273,24 @@ form button {
   transform: translateY(-2px);
 }
 
+.hidden-events-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s ease;
+  transform: 0.5s ease;
+}
+.hidden-events-container.show {
+  max-height: 1200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+.hidden-events-container.show .card {
+  animation: fadeinup 0.6s ease forwards;
+}
 .footer {
   min-height: 20vh;
   text-align: center;
