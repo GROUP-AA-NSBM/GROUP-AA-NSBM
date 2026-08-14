@@ -1,4 +1,4 @@
-# NSBM EventHub
+# NSBM Event Hub
 
 **Web & Mobile Application Development Assignment**
 **Faculty of Computing – NSBM Green University**
