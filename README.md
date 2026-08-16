@@ -1,23 +1,6 @@
-# NSBM Event Hub
+# NSBM EventHub
 
-**Web & Mobile Application Development Assignment**
-**Faculty of Computing – NSBM Green University**
-
----
-
-## Project Overview
-
-**NSBM EventHub** is a web application developed to help university clubs organize and manage events while allowing students to browse, register, and stay updated on university activities.
-
----
-
-## Project Scope
-
-**Project Topic 1: NSBM EventHub – Event Planning and Scheduling System**
-
-The system is designed to simplify event planning, scheduling, registrations, and event management within NSBM Green University.
-
-### Admin Features
+#### Admin Features
 
 - Login
 - Create, edit, and delete events
@@ -26,7 +9,7 @@ The system is designed to simplify event planning, scheduling, registrations, an
 - Manage announcements
 - Generate participant lists
 
-### Student Features
+#### Student Features
 
 - Register and login
 - Browse upcoming events
@@ -35,32 +18,42 @@ The system is designed to simplify event planning, scheduling, registrations, an
 - View personal event schedule
 - View event announcements
 
----
 
-## Technologies
 
-- HTML
-- CSS
-- JavaScript
-- PHP
-- MySQL
-- Git & GitHub
+## How to Run the Project in MAMP or XAMPP
 
----
+1. Place the project folder inside the web server root:
+   - MAMP: `/Applications/MAMP/htdocs/`
+   - XAMPP: `C:/xampp/htdocs/`
 
-## Team Members
+2. Copy the entire project folder named `GROUP-AA-NSBM` into that `htdocs` folder.
 
-| Name               | Role               |
-| ------------------ | ------------------ |
-| Wenuja Liyanamana  | Project Leader     |
-| Sandes Gunathilake | PHP Developer      |
-| Shen Liyanage      | PHP Developer      |
-| Senuri Peiris      | Database Developer |
-| Hiranya Amarasinghe| Frontend Developer |
-| Minon Meedeniya    | Backend Developer  |
+3. Start the Apache and MySQL servers from MAMP or XAMPP.
 
----
+4. Import the database file `database/eventhub.sql` into phpMyAdmin.
 
-## Repository
+5. Open the project in a browser using the folder name as the URL path.
 
-This repository contains the source code and documentation for the **NSBM EventHub** project developed as part of the **Web & Mobile Application Development** module.
+### Main Pages
+
+- Home page: `http://localhost/GROUP-AA-NSBM/index.php`
+- Student login: `http://localhost/GROUP-AA-NSBM/student/login.php`
+- Student register: `http://localhost/GROUP-AA-NSBM/student/register.php`
+- Student dashboard: `http://localhost/GROUP-AA-NSBM/student/dashboard.php`
+- Admin login: `http://localhost/GROUP-AA-NSBM/admin/login.php`
+- Admin dashboard: `http://localhost/GROUP-AA-NSBM/admin/dashboard.php`
+- Manage events: `http://localhost/GROUP-AA-NSBM/admin/manage-events.php`
+- View registrations: `http://localhost/GROUP-AA-NSBM/admin/registrations.php`
+
+### Opening the Project Files
+
+- Open the folder in your code editor (VS Code, Sublime Text, etc.) by selecting the `GROUP-AA-NSBM` folder inside `htdocs`.
+- You can then open any PHP file directly from the editor, such as:
+  - `index.php`
+  - `auth/login.php`
+  - `admin/dashboard.php`
+  - `student/events.php`
+  - `includes/functions.php`
+- When running locally, the browser does not open the raw file path directly; it opens the project through the local web server URL shown above.
+
+> Example: if your project is in `htdocs/GROUP-AA-NSBM`, then the website is accessed through `http://localhost/GROUP-AA-NSBM/...`.
