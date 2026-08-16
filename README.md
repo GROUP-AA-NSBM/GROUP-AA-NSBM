@@ -1,5 +1,15 @@
 # NSBM EventHub
 
+Home
+Login
+OTP
+Sign Up
+
+Event
+Community
+Profile
+Notification
+
 #### Admin Features
 
 - Login
