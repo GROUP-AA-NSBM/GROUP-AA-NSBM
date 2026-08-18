@@ -93,7 +93,7 @@
 
         <div class = "card-container">
           <div class = "card">
-            <img src ="assets/images/tech.jpg">
+            <img src ="assets/images/food.jpg">
             <div class = "card-content">
               <h3>Event title</h3>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, expedita numquam earum quasi a qui beatae. A ipsa aperiam itaque voluptas labore sint similique possimus hic quae, est, dolore aspernatur.</p>
