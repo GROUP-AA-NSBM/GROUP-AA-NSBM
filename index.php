@@ -17,7 +17,7 @@
         <div class="nav-links">
           <ul>
             <li><a href="">HOME</a></li>
-            <li><a href="index2.html">EVENTS</a></li>
+            <li><a href="">EVENTS</a></li>
             <li><a href="">CALENDAR</a></li>
             <li><a href="">CONTACT</a></li>
             <li><button type="button" class="btn btn-outline-success">Sign in</button></li>

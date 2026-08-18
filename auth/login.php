@@ -21,7 +21,11 @@
         <a href="index.php"><img src="../assets/images/logo.png" width="100px" /></a>
         <div class="nav-links">
           <ul>
+<<<<<<< HEAD
             <li><a href="../index.php">HOME</a></li>
+=======
+            <li><a href="">HOME</a></li>
+>>>>>>> upstream/main
             <li><a href="">EVENTS</a></li>
             <li><a href="">CALENDAR</a></li>
             <li><a href="">CONTACT</a></li>
