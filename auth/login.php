@@ -1,49 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<?php include '../includes/header.php'; ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-    <title>login</title>
-    
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel = "stylesheet" href = "../assets/css/auth.css">
-</head>
-<body>
-    <section class="header">
-      <nav>
-        <a href="index.php"><img src="../assets/images/logo.png" width="100px" /></a>
-        <div class="nav-links">
-          <ul>
-<<<<<<< HEAD
-            <li><a href="../index.php">HOME</a></li>
-=======
-            <li><a href="">HOME</a></li>
->>>>>>> upstream/main
-            <li><a href="">EVENTS</a></li>
-            <li><a href="">CALENDAR</a></li>
-            <li><a href="">CONTACT</a></li>
-            <li><button type="button" class="btn btn-outline-success">Sign in</button></li>
-          </ul>
-          </div>
-          </nav>
 
-          <div class = "gradient-bg">
-          <section class = "form-container">
-            <form name = "login-form" class = "login-form">
-                <h4>Welcome to NSBM eventHUB!</h4><br>
-                <p>Sign in to continue</p>
-                <label>Enter Email: </label>
-                <input type = "email" id = "email" name = "emailaddress" placeholder = "name@nsbm.students.ac.lk"><br><br>
-                <button type="button" class="btn btn-outline-success">Continue with email</button>
-            </form>
-          </section>
-          </div>
-</body>
-</html>
+<div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
+  <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+    <form action="login-process.php" method="POST" class="card-body">
+      
+      <div class="text-center mb-4">
+        <h2 class="text-3xl font-extrabold">Welcome Back</h2>
+        <p class="text-sm text-gray-500 mt-1">Sign in to NSBM Event Hub</p>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text font-semibold">NSBM Email Address</span>
+        </label>
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="student@nsbm.ac.lk" 
+          class="input input-bordered focus:input-primary w-full" 
+          required 
+        />
+      </div>
+
+      <div class="form-control mt-4">
+        <label class="label">
+          <span class="label-text font-semibold">Password</span>
+        </label>
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="••••••••" 
+          class="input input-bordered focus:input-primary w-full" 
+          required 
+        />
+        <label class="label mt-1">
+          <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+        </label>
+      </div>
+
+      <div class="form-control mt-6">
+        <button type="submit" class="btn bg-black hover:bg-gray-800 text-white text-lg border-none w-full">
+          Log In
+        </button>
+      </div>
+
+      <p class="text-center text-sm text-gray-600 mt-4">
+        Don't have an account? 
+        <a href="register.php" class="link linkfont-semibold">Register here</a>
+      </p>
+
+    </form>
+  </div>
+</div>
