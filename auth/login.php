@@ -1,4 +1,5 @@
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
 
 
 <div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
