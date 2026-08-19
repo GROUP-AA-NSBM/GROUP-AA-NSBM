@@ -1,14 +1,14 @@
 # NSBM EventHub
 
-Home
-Login
-OTP
+Home /
+Login /
+OTP /
 Sign Up
 
-Event
-Community
-Profile
-Notification
+Event /
+Community /
+Profile /
+Notification 
 
 #### Admin Features
 
@@ -54,16 +54,3 @@ Notification
 - Admin dashboard: `http://localhost/GROUP-AA-NSBM/admin/dashboard.php`
 - Manage events: `http://localhost/GROUP-AA-NSBM/admin/manage-events.php`
 - View registrations: `http://localhost/GROUP-AA-NSBM/admin/registrations.php`
-
-### Opening the Project Files
-
-- Open the folder in your code editor (VS Code, Sublime Text, etc.) by selecting the `GROUP-AA-NSBM` folder inside `htdocs`.
-- You can then open any PHP file directly from the editor, such as:
-  - `index.php`
-  - `auth/login.php`
-  - `admin/dashboard.php`
-  - `student/events.php`
-  - `includes/functions.php`
-- When running locally, the browser does not open the raw file path directly; it opens the project through the local web server URL shown above.
-
-> Example: if your project is in `htdocs/GROUP-AA-NSBM`, then the website is accessed through `http://localhost/GROUP-AA-NSBM/...`.
