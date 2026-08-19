@@ -1,4 +1,4 @@
-# NSBM EventHub
+# NSBM Event Hub
 
 Home /
 Login /
