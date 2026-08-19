@@ -1,8 +1,6 @@
-<?php include 'header.php'; ?>
-
 <div class="navbar bg-base-100 shadow-sm">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">NSBM Event Hub</a>
+    <a href="../index.php" class="btn btn-ghost text-xl">NSBM Event Hub</a>
   </div>
 
   <div class="flex-none">
