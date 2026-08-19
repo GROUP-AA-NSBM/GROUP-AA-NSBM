@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <title>NSBM Event Hub</title>
+    <title><?php echo $pageTitle ?? 'NSBM Event Hub'; ?></title>
 
 </head>
 <body>
