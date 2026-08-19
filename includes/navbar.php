@@ -4,6 +4,8 @@
   <div class="flex-1">
     <a class="btn btn-ghost text-xl">NSBM Event Hub</a>
   </div>
+
+
   <div class="flex-none">
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
