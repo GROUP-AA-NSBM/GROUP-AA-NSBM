@@ -21,8 +21,7 @@
             <li><a href="">CALENDAR</a></li>
             <li><a href="">CONTACT</a></li>
             <li><button type="button" class="btn btn-outline-success">Sign in</button></li>
-          </ul>
-          
+          </ul>   
         </div>
       </nav>
       <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
