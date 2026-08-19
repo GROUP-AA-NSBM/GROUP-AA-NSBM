@@ -59,7 +59,7 @@
 
       <p class="text-center text-sm text-gray-600 mt-4">
         Have an account? 
-        <a href="register.php" class="link linkfont-semibold">Log In here</a>
+        <a href="login.php" class="link linkfont-semibold">Log In here</a>
       </p>
 
     </form>
