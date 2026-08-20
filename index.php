@@ -1,5 +1,4 @@
 <?php include './includes/header.php'; ?>
-<link rel="stylesheet" href="/assets/css/style.css">
 <?php include './includes/not-loggedin-navbar.php'; ?>
 
 
