@@ -1,16 +1,44 @@
-.upcoming-events {
-  width: 95%;
-  max-width: 1400px;
-  margin: 2.5rem auto;
+body .events-today,
+body .categories {
+    max-width: 1300px;
+    margin: 2.5rem auto 0 auto;
+    padding: 0 1.5rem;
 }
-.upcoming-events .collapse-title {
-  padding: 1.5rem 2rem;
-  font-size: 1.35rem;
-  text-align: center;
+
+body .events-today .p-text,
+body .categories .p-text {
+    text-align: left;
+    margin-bottom: 1.5rem;
 }
-.p-text h3 {
-  text-align: center;
-  color: blueviolet;
+
+body .events-today .p-text h2,
+body .categories .p-text h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+body .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+body .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    width: 100%;
+}
+
+body .cards .card {
+    width: 260px;
+    max-width: 280px;
 }
 .card-container {
   display: flex;
