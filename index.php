@@ -1,5 +1,4 @@
 <?php include './includes/header.php'; ?>
-<link rel="stylesheet" href="/assets/css/style.css">
 <?php include './includes/not-loggedin-navbar.php'; ?>
 
 
@@ -25,7 +24,7 @@
   <div class = "p-text text-center">
     <h3>Today's events</h3>
   </div>
-  <div class = "card-container">
+  <div class = "card-container flex flex-row flex-nowrap gap-6 justify-center overflow-x-auto p-4">
 <div class="card bg-base-100 w-96 shadow-sm">
   <div class="card-body">
     <h2 class="card-title">Card Title</h2>
