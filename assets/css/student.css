@@ -1,0 +1,42 @@
+.profile-name {
+  font-weight: 600;
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 3rem auto;
+}
+.profile-name h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.joined-date h6,
+.st-email h6 {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0.2rem 0;
+}
+.faculty h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #16a34a;
+  margin: 0.2rem 0;
+}
+.profile-events {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-events ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.profile-events li:hover {
+  color: #16a34a;
+}
