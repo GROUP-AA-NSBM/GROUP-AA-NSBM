@@ -12,3 +12,12 @@
   text-align: center;
   color: blueviolet;
 }
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 1.5rem; /* 24px spacing between cards */
+  overflow-x: auto; /* Allows horizontal scrolling if screen is too narrow */
+  padding: 1rem 0;
+}
