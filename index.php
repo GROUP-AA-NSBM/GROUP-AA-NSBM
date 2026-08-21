@@ -5,7 +5,7 @@
 
 <div
   class="hero min-h-screen"
-  style="background-image: url(https://d3c539pel8wzjz.cloudfront.net/wp-content/uploads/2025/12/vice-chancellor-nsbm-1024x683.jpg);"
+  style="background-image: url();"
 >
   <div class="hero-overlay"></div>
   <div class="hero-content text-neutral-content text-center">
@@ -148,6 +148,7 @@
     </div>
   </div>
 
+  
   
 
 
