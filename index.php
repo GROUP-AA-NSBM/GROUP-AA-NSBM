@@ -37,7 +37,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -112,7 +112,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -142,7 +142,7 @@
         <h2 class="card-title">Card Title</h2>
         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -189,7 +189,7 @@
         <h2 class="card-title">AI & Hackathon 2026</h2>
         <p>Explore cutting-edge artificial intelligence and showcase your building skills.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
         <h2 class="card-title">Digital Brand Strategy</h2>
         <p>Master modern brand growth techniques with industry leaders.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -215,7 +215,7 @@
         <h2 class="card-title">Campus Food Carnival</h2>
         <p>Enjoy diverse culinary treats and refreshments prepared by student chefs.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -228,7 +228,7 @@
         <h2 class="card-title">Annual Cultural Night</h2>
         <p>Celebrate music, dance, and creative performances from across faculties.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -242,7 +242,7 @@
         <h2 class="card-title">Web Dev Bootcamp</h2>
         <p>Hands-on workshop for building full-stack web apps using modern frameworks.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -255,7 +255,7 @@
         <h2 class="card-title">Social Media Workshop</h2>
         <p>Learn viral content creation tactics and social growth automation.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -268,7 +268,7 @@
         <h2 class="card-title">Barista & Coffee Fest</h2>
         <p>Experience artisanal coffee brewing sessions and tasting competitions.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
@@ -281,7 +281,7 @@
         <h2 class="card-title">Fine Arts Exhibition</h2>
         <p>Discover student paintings, sculptures, and digital art galleries.</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Register</button>
+          <a href="student/register-event.php" class="btn btn-primary">Register</a>
         </div>
       </div>
     </div>
