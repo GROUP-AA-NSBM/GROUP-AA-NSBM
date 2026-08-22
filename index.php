@@ -8,7 +8,7 @@
   style="background-image: url();"
 >
   <div class="hero-overlay"></div>
-  <div class="hero-content text-neutral-content text-center">
+  <div class="hero-content text-neutral-content text-center reveal-zoom">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">Welcome to the NSBM Event Hub</h1>
       <p class="mb-5">
@@ -22,12 +22,12 @@
 
 
 <section class="events-today">
-  <div class="p-text text-left mb-6">
+  <div class="p-text text-left mb-6 reveal-left">
     <h2 class="text-2xl font-bold">Upcoming Events</h2>
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-100">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-200">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-300">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-400">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-100">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-200">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-300">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -132,7 +132,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm reveal delay-400">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -169,10 +169,10 @@
 
 
 <section class="categories">
-  <div class="p-text text-left mb-6">
+  <div class="p-text text-left mb-6 reveal-right">
     <h2 class="text-2xl font-bold">Explore by Category</h2>
   </div>
-  <div class="button-container flex flex-wrap justify-center gap-4 mb-8">
+  <div class="button-container flex flex-wrap justify-center gap-4 mb-8 reveal delay-100">
     <button class="category-btn btn btn-primary active" data-category="all">All</button>
     <button class="category-btn btn btn-soft btn-primary" data-category="tech">Tech</button>
     <button class="category-btn btn btn-soft btn-primary" data-category="marketing">Marketing</button>
@@ -182,7 +182,7 @@
 
   <div class="cards category-cards flex flex-row flex-wrap justify-center gap-8">
     <!-- Line 1 -->
-    <div class="card bg-base-100 shadow-sm" data-category="tech">
+    <div class="card bg-base-100 shadow-sm reveal delay-100" data-category="tech">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tech Event" />
       </figure>
@@ -195,7 +195,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="marketing">
+    <div class="card bg-base-100 shadow-sm reveal delay-200" data-category="marketing">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Marketing Event" />
       </figure>
@@ -208,7 +208,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="food-and-drink">
+    <div class="card bg-base-100 shadow-sm reveal delay-300" data-category="food-and-drink">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Food Event" />
       </figure>
@@ -221,7 +221,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="arts-and-culture">
+    <div class="card bg-base-100 shadow-sm reveal delay-400" data-category="arts-and-culture">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Arts Event" />
       </figure>
@@ -235,7 +235,7 @@
     </div>
 
     <!-- Line 2 -->
-    <div class="card bg-base-100 shadow-sm" data-category="tech">
+    <div class="card bg-base-100 shadow-sm reveal delay-100" data-category="tech">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tech Event 2" />
       </figure>
@@ -248,7 +248,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="marketing">
+    <div class="card bg-base-100 shadow-sm reveal delay-200" data-category="marketing">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Marketing Event 2" />
       </figure>
@@ -261,7 +261,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="food-and-drink">
+    <div class="card bg-base-100 shadow-sm reveal delay-300" data-category="food-and-drink">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Food Event 2" />
       </figure>
@@ -274,7 +274,7 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm" data-category="arts-and-culture">
+    <div class="card bg-base-100 shadow-sm reveal delay-400" data-category="arts-and-culture">
       <figure>
         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Arts Event 2" />
       </figure>
@@ -291,6 +291,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Category Filtering
   const categoryButtons = document.querySelectorAll('.category-btn');
   const categoryCards = document.querySelectorAll('.category-cards .card');
 
@@ -314,8 +315,29 @@ document.addEventListener('DOMContentLoaded', function() {
           card.style.display = 'none';
         }
       });
+
+      // Re-trigger reveal check for newly visible cards
+      revealElements();
     });
   });
+
+  // Native Scroll Reveal Handler (No libraries / No CDNs)
+  const revealElements = () => {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom');
+    const windowHeight = window.innerHeight;
+    const triggerOffset = 80;
+
+    reveals.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - triggerOffset) {
+        el.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealElements, { passive: true });
+  window.addEventListener('resize', revealElements);
+  revealElements();
 });
 </script>
 
