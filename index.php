@@ -185,58 +185,50 @@
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
     <a href="student/community.php?name=IEEE+Student+Branch" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">IEEE Student Branch</h2>
-        <p>Fostering technological innovation and engineering excellence among students.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">IEEE Student Branch</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Rotaract+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Rotaract Club</h2>
-        <p>Empowering youth through community leadership, service, and professional development.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Rotaract Club</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Marketing+Circle" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Marketing Circle</h2>
-        <p>Connecting creative minds to explore digital brand growth, strategy, and media.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Marketing Circle</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Software+Engineering+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Software Engineering Society</h2>
-        <p>A community dedicated to coding, open-source projects, and technical workshops.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Software Engineering Society</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Arts+%26+Culture+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Arts & Culture Club</h2>
-        <p>Bringing together student talent in music, drama, fine arts, and stage performances.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Arts & Culture Club</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Sports+Council" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Sports Council</h2>
-        <p>Organizing intra-university tournaments, athletics, and fitness initiatives.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Sports Council</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Buddhist+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Buddhist Society</h2>
-        <p>Promoting mindfulness, ethics, and spiritual development across campus.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Buddhist Society</h2>
       </div>
     </a>
 
     <a href="student/community.php?name=Gaming+%26+Esports+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
-      <div class="card-body">
-        <h2 class="card-title">Gaming & Esports Society</h2>
-        <p>Competitive gaming tournaments, game dev meetups, and esports events.</p>
+      <div class="card-body text-center flex items-center justify-center p-6">
+        <h2 class="card-title text-center m-0">Gaming & Esports Society</h2>
       </div>
     </a>
   </div>
