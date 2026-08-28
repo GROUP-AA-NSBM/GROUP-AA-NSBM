@@ -1,24 +1,7 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 <link rel="stylesheet" href="../assets/css/student.css">
-
-<style>
-    .tab-content{
-        display:none;
-        padding-top:2rem;
-        padding-bottom:2rem;
-        min-height:450px;
-    }
-    .tab-content.active{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-    .tab-btn.active{
-        font-weight:bold;
-        border-bottom:2px solid #3b82f6;
-    }
-</style>
+    
 
 <div class = "profile-container">
 <div class="avatar">
@@ -51,7 +34,22 @@
 </div>
 
 <div id = "registered" class = "tab-content active">
-    <div class="card bg-base-100 w-96 shadow-sm">
+    <div class="card bg-base-100 shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Card Title</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+<div class="card bg-base-100 shadow-sm">
   <figure>
     <img
       src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -68,7 +66,20 @@
 </div>
 
 <div id="attended" class="tab-content hidden">
-  <div class="card bg-base-100 w-96 shadow-sm">
+  <div class="card bg-base-100 shadow-sm">
+    <figure>
+      <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Attended Event" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">Attended Event</h2>
+      <p>Details for past events you attended.</p>
+      <div class="card-actions justify-end">
+        <button class="btn btn-secondary">Certificate</button>
+      </div>
+    </div>
+  </div>
+
+   <div class="card bg-base-100 shadow-sm">
     <figure>
       <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Attended Event" />
     </figure>
@@ -83,9 +94,19 @@
 </div>
 
 <div id="following" class="tab-content hidden">
-  <div class="card bg-base-100 w-96 shadow-sm">
+  <div class="card bg-base-100 shadow-sm">
     <div class="card-body">
       <h2 class="card-title">IEEE</h2>
+      <p>Community updates and followed clubs.</p>
+      <div class="card-actions justify-end">
+        <button class="btn btn-outline">Unfollow</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Buddhist Society</h2>
       <p>Community updates and followed clubs.</p>
       <div class="card-actions justify-end">
         <button class="btn btn-outline">Unfollow</button>
