@@ -40,3 +40,169 @@
 .profile-events li:hover {
   color: #16a34a;
 }
+.tab-content .card {
+  width: 100%;
+  max-width: 24rem;
+}
+.tab-content {
+  display: none;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: 450px;
+}
+.tab-content.active {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  padding: 2rem 1rem;
+}
+.tab-content.active.hidden {
+  display: flex !important;
+}
+.tab-btn.active {
+  font-weight: bold;
+  border-bottom: 2px solid #3b82f6;
+}
+.event-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1000px;
+  padding: 0 2rem;
+  margin: 3rem auto;
+}
+.left-content {
+  flex: 1;
+  max-width: 60%;
+}
+.right-content {
+  flex: 1;
+  max-width: 35%;
+}
+.event-title {
+  font-weight: 700;
+  font-size: 40px;
+}
+.date-time {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.date-time img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.location {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.location img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.registration {
+  border: 1px solid #6b7280;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  background-color: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  max-width: 320px;
+}
+.form-register button {
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid #16a34a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.form-register button:hover {
+  background-color: #15803d;
+  border-color: #15803d;
+}
+.registration input {
+  border-radius: 8px;
+  border: 1px solid #6b7280;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  outline: none;
+}
+.form-register {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.form-register label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: -0.25rem;
+}
+.event-img img {
+  width: 350px;
+  height: 350px;
+  border-radius: 8px;
+}
+.community-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.community-name h4 {
+  margin: 0;
+}
+.community-name {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-style: italic;
+  font-weight: 500px;
+  color: #16a34a;
+}
+.follow-button button {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.no-attending {
+  color: #6b7280;
+}
+.radio-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem;
+  margin: 0.25rem;
+}
+.radio-item input[type="radio"] {
+  margin: 0 !important;
+  width: auto !important;
+  cursor: pointer;
+  display: inline-block;
+}
+.radio-item label {
+  display: inline-block !important;
+  width: auto !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
