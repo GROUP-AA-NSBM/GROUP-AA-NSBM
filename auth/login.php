@@ -41,7 +41,7 @@
       </div>
 
       <div class="form-control mt-6">
-        <button type="submit" class="btn bg-black hover:bg-gray-800 text-white text-lg border-none w-full">
+        <button type="submit" class="btn btn-primary text-lg border-none w-full">
           Log In
         </button>
       </div>
