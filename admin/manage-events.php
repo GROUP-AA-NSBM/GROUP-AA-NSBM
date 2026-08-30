@@ -21,9 +21,9 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
       <div>
         <h1 class="text-3xl font-extrabold">Manage Events</h1>
-        <p class="text-gray-500 mt-1">View, update, or remove existing campus events</p>
+        <p class="text-black mt-1">View, update, or remove existing campus events</p>
       </div>
-      <a href="create-event.php" class="btn bg-black hover:bg-gray-800 text-white mt-4 md:mt-0">
+      <a href="create-event.php" class="btn bg-black hover:bg-black border-black hover:border-black text-white transition-none mt-4 md:mt-0">
         + Add New Event
       </a>
     </div>
@@ -45,11 +45,11 @@
             <tr>
               <th>1</th>
               <td class="font-bold">NSBM Tech Fiesta 2026</td>
-              <td><span class="badge badge-primary">Computing & IT</span></td>
+              <td>Computing & IT</td>
               <td>Oct 15, 2026 <br><span class="text-xs text-gray-500">09:00 AM</span></td>
               <td>Auditorium</td>
               <td class="text-center space-x-1">
-                <a href="edit-event.php?id=1" class="btn btn-sm btn-outline btn-info">Edit</a>
+                <a href="edit-event.php?id=1" class="btn btn-sm btn-outline border-black text-black hover:bg-black hover:text-white">Edit</a>
                 <a href="delete-event.php?id=1" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
               </td>
             </tr>
@@ -57,11 +57,11 @@
             <tr>
               <th>2</th>
               <td class="font-bold">Annual Sports Meet</td>
-              <td><span class="badge badge-secondary">Sports & Athletics</span></td>
+              <td>Sports & Athletics</td>
               <td>Nov 02, 2026 <br><span class="text-xs text-gray-500">08:00 AM</span></td>
               <td>Main Ground</td>
               <td class="text-center space-x-1">
-                <a href="edit-event.php?id=2" class="btn btn-sm btn-outline btn-info">Edit</a>
+                <a href="edit-event.php?id=2" class="btn btn-sm btn-outline border-black text-black hover:bg-black hover:text-white">Edit</a>
                 <a href="delete-event.php?id=2" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
               </td>
             </tr>
@@ -69,11 +69,11 @@
             <tr>
               <th>3</th>
               <td class="font-bold">Business Leader Summit</td>
-              <td><span class="badge badge-accent">Business</span></td>
+              <td>Business</td>
               <td>Dec 10, 2026 <br><span class="text-xs text-gray-500">10:30 AM</span></td>
               <td>Hall B</td>
               <td class="text-center space-x-1">
-                <a href="edit-event.php?id=3" class="btn btn-sm btn-outline btn-info">Edit</a>
+                <a href="edit-event.php?id=3" class="btn btn-sm btn-outline border-black text-black hover:bg-black hover:text-white">Edit</a>
                 <a href="delete-event.php?id=3" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
               </td>
             </tr>

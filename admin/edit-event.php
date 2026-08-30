@@ -23,7 +23,7 @@
       <div class="mb-6 flex items-center justify-between">
         <div>
           <h1 class="text-3xl font-extrabold">Edit Event</h1>
-          <p class="text-gray-500 mt-1">Update details for the selected campus event</p>
+          <p class="text-black mt-1">Update details for the selected campus event</p>
         </div>
         <a href="manage-events.php" class="btn btn-outline btn-sm">Cancel</a>
       </div>

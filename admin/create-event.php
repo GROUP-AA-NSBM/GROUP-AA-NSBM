@@ -24,7 +24,7 @@
       <div class="mb-6 flex items-center justify-between">
         <div>
           <h1 class="text-3xl font-extrabold">Create New Event</h1>
-          <p class="text-gray-500 mt-1">Fill in the details to publish a new campus event</p>
+          <p class="text-black mt-1">Fill in the details to publish a new campus event</p>
         </div>
         <a href="manage-events.php" class="btn btn-outline btn-sm">Back to Events</a>
       </div>

@@ -21,8 +21,8 @@
     
     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
       <div>
-        <h1 class="text-3xl font-extrabold">Event Registrations</h1>
-        <p class="text-gray-500 mt-1">View all student sign-ups for campus events</p>
+        <h1 class="text-3xl font-extrabold">Student Registrations</h1>
+        <p class="text-black mt-1">View all student sign-ups for campus events</p>
       </div>
     </div>
 
@@ -43,21 +43,21 @@
               <th>1</th>
               <td class="font-bold">borski Perera</td>
               <td>brah.p@nsbm.ac.lk</td>
-              <td><span class="badge badge-primary">NSBM Tech Fiesta 2026</span></td>
+              <td>NSBM Tech Fiesta 2026</td>
               <td class="text-sm text-gray-500">Aug 29, 2026</td>
             </tr>
             <tr>
               <th>2</th>
               <td class="font-bold">Nelli Fernando</td>
               <td>nili.f@nsbm.ac.lk</td>
-              <td><span class="badge badge-secondary">Annual Sports Meet</span></td>
+              <td>Annual Sports Meet</td>
               <td class="text-sm text-gray-500">Aug 28, 2026</td>
             </tr>
             <tr>
               <th>3</th>
               <td class="font-bold">SaMahan Silva</td>
               <td>sammahan.s@nsbm.ac.lk</td>
-              <td><span class="badge badge-accent">Business Leader Summit</span></td>
+              <td>Business Leader Summit</td>
               <td class="text-sm text-gray-500">Aug 25, 2026</td>
             </tr>
           </tbody>

@@ -24,7 +24,7 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
       <div>
         <h1 class="text-3xl font-extrabold">Welcome, Admin</h1>
-        <p class="text-gray-500 mt-1">Overview of NSBM Event Hub activity</p>
+        <p class="text-black mt-1">Overview of NSBM Event Hub activity</p>
       </div>
       <a href="create-event.php" class="btn bg-black hover:bg-gray-800 text-white mt-4 md:mt-0">
         + Create New Event

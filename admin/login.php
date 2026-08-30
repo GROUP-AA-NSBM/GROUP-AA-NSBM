@@ -7,7 +7,7 @@
       
       <div class="text-center mb-4">
         <h2 class="text-3xl font-extrabold">Admin Portal</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign in to manage NSBM Event Hub</p>
+        <p class="text-sm text-black mt-1">Sign in to manage NSBM Event Hub</p>
       </div>
 
       <div class="form-control">
