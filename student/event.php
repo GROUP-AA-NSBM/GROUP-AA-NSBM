@@ -2,14 +2,15 @@
 <?php include '../includes/navbar.php'; ?>
 <link rel = "stylesheet" href = "../assets/css/student.css">
 
-<main class ="event-container">
+<main class = "event-page">
+<div class ="event-container">
 <div class = "left-content">
     <div class = "event-title">
         <h3>Campus Food Carnival</h3>
     </div>
     <div class = "date-time">
         <img src = "https://static.vecteezy.com/system/resources/previews/004/397/047/non_2x/clock-icon-clock-time-symbol-flat-style-design-web-site-icon-logo-app-ui-illustration-eps10-free-vector.jpg">
-        <h4>13/09/2026 12pm onwards</h4>
+        <h4>13/09/2026 12:00 pm onwards</h4>
     </div>
     <div class = "location">
         <img src ="https://static.vecteezy.com/system/resources/thumbnails/000/552/683/small/location_pin_002.jpg">
@@ -97,6 +98,7 @@
         <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK7QIbUEIvLg7UOBOpVEd-C-NrbQ7jBhu7SHIrpAbL7n771o4FeS4Od_E&s=10" alt = "event">
     </div>
    
+</div>
 </div>
 </main>
 
