@@ -3,34 +3,44 @@
 <?php include './includes/not-loggedin-navbar.php'; ?>
 
 
-<div
-  class="hero min-h-screen"
-  style="background-image: url();"
->
-  <div class="hero-overlay"></div>
-  <div class="hero-content text-neutral-content text-center reveal-zoom">
+<div class="hero min-h-screen relative overflow-hidden">
+  <!-- Sliding Background Track -->
+  <div id="hero-slider-track" class="absolute inset-0 flex w-[600%] h-full transition-transform duration-700 ease-in-out z-0">
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover1.jpg');"></div>
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover2.jpg');"></div>
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover3.jpg');"></div>
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover4.jpg');"></div>
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover5.jpg');"></div>
+    <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover6.jpg');"></div>
+  </div>
+
+  <!-- Hero Overlay -->
+  <div class="hero-overlay bg-black/50 absolute inset-0 z-10"></div>
+
+  <!-- Hero Content -->
+  <div class="hero-content text-neutral-content text-center relative z-20">
     <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold">Welcome to the NSBM Event Hub</h1>
-      <p class="mb-5">
+      <h1 class="mb-5 text-5xl font-bold text-white">Welcome to the NSBM Event Hub</h1>
+      <p class="mb-5 text-white/90">
         A centralised platform where NSBM students can discover,
         explore, and register for upcoming university events. 
       </p>
-      <button class="btn btn">Discover Events</button>
+      <a href="#upcoming-events" id="discover-btn" class="btn btn-primary">Discover Events</a>
     </div>
   </div>
 </div>
 
 
-<section class="events-today">
-  <div class="p-text text-left mb-6 reveal-left">
+<section class="events-today" id="upcoming-events">
+  <div class="p-text text-left mb-6">
     <h2 class="text-2xl font-bold">Upcoming Events</h2>
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <div class="card bg-base-100 shadow-sm reveal delay-100">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -42,10 +52,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-200">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -57,10 +67,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-300">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -72,10 +82,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-400">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -87,10 +97,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-100">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -102,10 +112,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-200">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -117,10 +127,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-300">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -132,10 +142,10 @@
       </div>
     </div>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-400">
+    <div class="card bg-base-100 border border-gray-200">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src=""
           alt="Shoes" />
       </figure>
       <div class="card-body">
@@ -169,175 +179,93 @@
 
 
 <section class="categories">
-  <div class="p-text text-left mb-6 reveal-right">
-    <h2 class="text-2xl font-bold">Explore by Category</h2>
-  </div>
-  <div class="button-container flex flex-wrap justify-center gap-4 mb-8 reveal delay-100">
-    <button class="category-btn btn btn-primary active" data-category="all">All</button>
-    <button class="category-btn btn btn-soft btn-primary" data-category="tech">Tech</button>
-    <button class="category-btn btn btn-soft btn-primary" data-category="marketing">Marketing</button>
-    <button class="category-btn btn btn-soft btn-primary" data-category="food-and-drink">Food and drink</button>
-    <button class="category-btn btn btn-soft btn-primary" data-category="arts-and-culture">Arts and culture</button>
+  <div class="p-text text-left mb-6">
+    <h2 class="text-2xl font-bold">Explore Communities</h2>
   </div>
 
-  <div class="cards category-cards flex flex-row flex-wrap justify-center gap-8">
-    <!-- Line 1 -->
-    <div class="card bg-base-100 shadow-sm reveal delay-100" data-category="tech">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tech Event" />
-      </figure>
+  <div class="cards flex flex-row flex-wrap justify-center gap-8">
+    <a href="student/community.php?name=IEEE+Student+Branch" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">AI & Hackathon 2026</h2>
-        <p>Explore cutting-edge artificial intelligence and showcase your building skills.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">IEEE Student Branch</h2>
+        <p>Fostering technological innovation and engineering excellence among students.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-200" data-category="marketing">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Marketing Event" />
-      </figure>
+    <a href="student/community.php?name=Rotaract+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Digital Brand Strategy</h2>
-        <p>Master modern brand growth techniques with industry leaders.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Rotaract Club</h2>
+        <p>Empowering youth through community leadership, service, and professional development.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-300" data-category="food-and-drink">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Food Event" />
-      </figure>
+    <a href="student/community.php?name=Marketing+Circle" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Campus Food Carnival</h2>
-        <p>Enjoy diverse culinary treats and refreshments prepared by student chefs.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Marketing Circle</h2>
+        <p>Connecting creative minds to explore digital brand growth, strategy, and media.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-400" data-category="arts-and-culture">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Arts Event" />
-      </figure>
+    <a href="student/community.php?name=Software+Engineering+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Annual Cultural Night</h2>
-        <p>Celebrate music, dance, and creative performances from across faculties.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Software Engineering Society</h2>
+        <p>A community dedicated to coding, open-source projects, and technical workshops.</p>
       </div>
-    </div>
+    </a>
 
-    <!-- Line 2 -->
-    <div class="card bg-base-100 shadow-sm reveal delay-100" data-category="tech">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tech Event 2" />
-      </figure>
+    <a href="student/community.php?name=Arts+%26+Culture+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Web Dev Bootcamp</h2>
-        <p>Hands-on workshop for building full-stack web apps using modern frameworks.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Arts & Culture Club</h2>
+        <p>Bringing together student talent in music, drama, fine arts, and stage performances.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-200" data-category="marketing">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Marketing Event 2" />
-      </figure>
+    <a href="student/community.php?name=Sports+Council" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Social Media Workshop</h2>
-        <p>Learn viral content creation tactics and social growth automation.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Sports Council</h2>
+        <p>Organizing intra-university tournaments, athletics, and fitness initiatives.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-300" data-category="food-and-drink">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Food Event 2" />
-      </figure>
+    <a href="student/community.php?name=Buddhist+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Barista & Coffee Fest</h2>
-        <p>Experience artisanal coffee brewing sessions and tasting competitions.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Buddhist Society</h2>
+        <p>Promoting mindfulness, ethics, and spiritual development across campus.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card bg-base-100 shadow-sm reveal delay-400" data-category="arts-and-culture">
-      <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Arts Event 2" />
-      </figure>
+    <a href="student/community.php?name=Gaming+%26+Esports+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
       <div class="card-body">
-        <h2 class="card-title">Fine Arts Exhibition</h2>
-        <p>Discover student paintings, sculptures, and digital art galleries.</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
+        <h2 class="card-title">Gaming & Esports Society</h2>
+        <p>Competitive gaming tournaments, game dev meetups, and esports events.</p>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Category Filtering
-  const categoryButtons = document.querySelectorAll('.category-btn');
-  const categoryCards = document.querySelectorAll('.category-cards .card');
+  // Hero Image Sliding Effect
+  const sliderTrack = document.getElementById('hero-slider-track');
+  const totalSlides = 6;
 
-  categoryButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Update button styling
-      categoryButtons.forEach(b => {
-        b.classList.remove('active');
-        b.classList.add('btn-soft');
-      });
-      this.classList.remove('btn-soft');
-      this.classList.add('active');
+  if (sliderTrack) {
+    let currentSlide = 0;
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      sliderTrack.style.transform = `translateX(-${(currentSlide * 100) / totalSlides}%)`;
+    }, 4000);
+  }
 
-      // Filter cards
-      const selected = this.getAttribute('data-category');
-      categoryCards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (selected === 'all' || cardCat === selected) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+  // Smooth Scroll for Discover Events Button
+  const discoverBtn = document.getElementById('discover-btn');
+  const upcomingSection = document.getElementById('upcoming-events');
 
-      // Re-trigger reveal check for newly visible cards
-      revealElements();
+  if (discoverBtn && upcomingSection) {
+    discoverBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      upcomingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  });
-
-  // Native Scroll Reveal Handler (No libraries / No CDNs)
-  const revealElements = () => {
-    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom');
-    const windowHeight = window.innerHeight;
-    const triggerOffset = 80;
-
-    reveals.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < windowHeight - triggerOffset) {
-        el.classList.add('active');
-      }
-    });
-  };
-
-  window.addEventListener('scroll', revealElements, { passive: true });
-  window.addEventListener('resize', revealElements);
-  revealElements();
+  }
 });
 </script>
 

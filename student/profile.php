@@ -52,7 +52,7 @@
 <div class="card bg-base-100 shadow-sm">
   <figure>
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src=""
       alt="Shoes" />
   </figure>
   <div class="card-body">
@@ -81,7 +81,7 @@
 
    <div class="card bg-base-100 shadow-sm">
     <figure>
-      <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Attended Event" />
+      <img src="" alt="Attended Event" />
     </figure>
     <div class="card-body">
       <h2 class="card-title">Attended Event</h2>
