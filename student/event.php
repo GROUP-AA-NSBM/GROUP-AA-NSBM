@@ -60,9 +60,6 @@
      <div class = "community-name">
         <h4>Hosted by: Marketing circle</h4>
     </div>
-    <div class = "follow-button">
-        <button type = "button">Follow</button>
-    </div>  
 </div>
     <div class = "no-attending">
         <h4>105 attendees</h4>

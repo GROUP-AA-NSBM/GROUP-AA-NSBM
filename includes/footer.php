@@ -10,16 +10,16 @@
   </aside>
   <nav>
     <h6 class="footer-title">Communities</h6>
-    <span class="link no-underline hover:no-underline cursor-default">IEEE Student Branch</span>
-    <span class="link no-underline hover:no-underline cursor-default">Rotaract Club</span>
-    <span class="link no-underline hover:no-underline cursor-default">Marketing Circle</span>
-    <span class="link no-underline hover:no-underline cursor-default">Software Engineering Society</span>
+    <span>IEEE Student Branch</span>
+    <span>Rotaract Club</span>
+    <span>Marketing Circle</span>
+    <span>Software Engineering Society</span>
   </nav>
   <nav>
     <h6 class="footer-title">&nbsp;</h6>
-    <span class="link no-underline hover:no-underline cursor-default">Arts & Culture Club</span>
-    <span class="link no-underline hover:no-underline cursor-default">Sports Council</span>
-    <span class="link no-underline hover:no-underline cursor-default">Buddhist Society</span>
-    <span class="link no-underline hover:no-underline cursor-default">Gaming & Esports Society</span>
+    <span>Arts & Culture Club</span>
+    <span>Sports Council</span>
+    <span>Buddhist Society</span>
+    <span>Gaming & Esports Society</span>
   </nav>
 </footer>
