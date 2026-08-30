@@ -104,6 +104,8 @@ include __DIR__ . '/../includes/navbar.php';
       </div>
     </div>
   </div>
+<div id="attended" class="tab-content hidden" style="padding: 16px;">
+  <p style="color: #6b7280;">No past attended events yet. Events will appear here once marked as attended.</p>
 </div>
 
 <div id="following" class="tab-content hidden">
@@ -113,6 +115,21 @@ include __DIR__ . '/../includes/navbar.php';
       <p>Community updates and followed clubs.</p>
       <div class="card-actions justify-end">
         <button class="btn btn-outline">Unfollow</button>
+<div id="following" class="tab-content hidden" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 0;">
+  <?php 
+  $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC LIMIT 4")->fetchAll();
+  if (empty($communities)): ?>
+    <p style="color: #6b7280;">No clubs or communities followed yet.</p>
+  <?php else: ?>
+    <?php foreach ($communities as $com): ?>
+      <div class="card bg-base-100 shadow-sm" style="width: 240px; border: 1px solid #e5e7eb;">
+        <div class="card-body" style="padding: 16px; text-align: center;">
+          <h2 class="card-title text-sm justify-center" style="margin: 0;"><?php echo htmlspecialchars($com['name']); ?></h2>
+          <p class="text-xs text-gray-500" style="margin-top: 4px;"><?php echo htmlspecialchars($com['faculty'] ?? 'University Wide'); ?></p>
+          <div class="card-actions justify-center" style="margin-top: 12px;">
+            <button class="btn btn-outline btn-xs">Following</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -126,6 +143,8 @@ include __DIR__ . '/../includes/navbar.php';
       </div>
     </div>
   </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
 </div>
 </main>
 
