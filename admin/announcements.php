@@ -1,5 +1,25 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+requireAdmin();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title   = trim($_POST['title'] ?? '');
+    $message = trim($_POST['content'] ?? '');
+
+    if (!empty($title) && !empty($message)) {
+        $stmt = $pdo->prepare('INSERT INTO announcements (title, message) VALUES (?, ?)');
+        $stmt->execute([$title, $message]);
+        header('Location: announcements.php?status=created');
+        exit;
+    }
+}
+
+$announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC")->fetchAll();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <div class="admin-layout">
@@ -28,7 +48,7 @@
       <div class="card" style="height: fit-content;">
         <div class="card-body">
           <h2 class="card-title" style="margin-bottom: 8px;">New Announcement</h2>
-          <form id="announcementForm" action="announcements-process.php" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <form id="announcementForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             
             <div class="form-control">
               <label class="label"><span style="font-weight: 600;">Title</span></label>
@@ -57,22 +77,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td style="font-weight: bold;">Registration open for Tech Fiesta 2026</td>
-                <td style="font-size: 0.875rem; color: #6b7280;">Aug 28, 2026</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td style="font-weight: bold;">Annual Sports Meet practice schedule updated</td>
-                <td style="font-size: 0.875rem; color: #6b7280;">Aug 20, 2026</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
+              <?php if (empty($announcements)): ?>
+                <tr>
+                  <td colspan="4" style="text-align: center; padding: 24px; color: #6b7280;">No announcements posted yet.</td>
+                </tr>
+              <?php else: ?>
+                <?php foreach ($announcements as $index => $ann): ?>
+                  <tr>
+                    <th><?php echo $index + 1; ?></th>
+                    <td style="font-weight: bold;"><?php echo htmlspecialchars($ann['title']); ?></td>
+                    <td style="font-size: 0.875rem; color: #6b7280;"><?php echo date('M d, Y', strtotime($ann['created_at'])); ?></td>
+                    <td style="text-align: center;">
+                      <a href="delete-announcement.php?id=<?php echo $ann['announcement_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>

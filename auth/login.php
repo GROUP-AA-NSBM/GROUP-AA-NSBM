@@ -1,14 +1,65 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+
+$errorMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    if (!empty($email) && !empty($password)) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['logged_in'] = true;
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_name'] = $user['full_name'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['role'] = $user['role'];
+
+            if ($user['role'] === 'admin') {
+                header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
+                exit;
+            }
+
+            $redirectUrl = $_SESSION['redirect_url'] ?? '/GROUP-AA-NSBM/index.php';
+            unset($_SESSION['redirect_url']);
+
+            if (empty($redirectUrl) || str_contains($redirectUrl, 'register-event.php')) {
+                $redirectUrl = '/GROUP-AA-NSBM/index.php';
+            }
+            
+            header("Location: " . $redirectUrl);
+            exit;
+        } else {
+            $errorMessage = 'Invalid email address or password.';
+        }
+    } else {
+        $errorMessage = 'Please enter both email and password.';
+    }
+}
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+?>
 
 <div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
   <div class="card bg-base-100 w-full max-w-md shadow-2xl">
-    <form id="loginForm" action="login-process.php" method="POST" class="card-body">
+    <form id="loginForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
         <h2 class="text-3xl font-extrabold">Welcome Back</h2>
         <p class="text-sm text-gray-500 mt-1">Sign in to NSBM Event Hub</p>
       </div>
+
+      <?php if (!empty($errorMessage)): ?>
+        <div style="background-color: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-align: center; margin-bottom: 12px;">
+          <?php echo htmlspecialchars($errorMessage); ?>
+        </div>
+      <?php endif; ?>
 
       <div class="form-control">
         <label class="label">
@@ -18,7 +69,7 @@
           type="email" 
           id="loginEmail"
           name="email" 
-          placeholder="student@nsbm.ac.lk" 
+          placeholder="student@students.nsbm.ac.lk" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />

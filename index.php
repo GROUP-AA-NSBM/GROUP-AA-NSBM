@@ -1,6 +1,25 @@
-<?php require_once './includes/db.php'; ?>
-<?php include './includes/header.php'; ?>
-<?php include './includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/includes/db.php'; 
+require_once __DIR__ . '/includes/auth.php'; 
+include __DIR__ . '/includes/header.php'; 
+
+if (isLoggedIn()) {
+    include __DIR__ . '/includes/navbar.php';
+} else {
+    include __DIR__ . '/includes/not-loggedin-navbar.php';
+}
+
+$events = $pdo->query("
+    SELECT e.*, c.name AS category_name 
+    FROM events e 
+    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
+    LEFT JOIN categories c ON ec.category_id = c.category_id 
+    WHERE e.status = 'published' 
+    ORDER BY e.start_time ASC
+")->fetchAll();
+
+$communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetchAll();
+?>
 
 
 <div class="hero min-h-screen relative overflow-hidden">
@@ -34,145 +53,34 @@
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
+    <?php if (empty($events)): ?>
+      <p class="text-gray-500 py-8">No upcoming events scheduled right now. Check back soon!</p>
+    <?php else: ?>
+      <?php foreach ($events as $ev): ?>
+        <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
+          <figure style="height: 180px; overflow: hidden; background: #eee;">
+            <img
+              src="<?php echo htmlspecialchars(!empty($ev['banner_image_url']) ? $ev['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'); ?>"
+              alt="<?php echo htmlspecialchars($ev['title']); ?>" 
+              style="width: 100%; height: 100%; object-fit: cover;" />
+          </figure>
+          <div class="card-body">
+            <span class="text-xs font-semibold text-primary"><?php echo htmlspecialchars($ev['category_name'] ?? 'Event'); ?></span>
+            <h2 class="card-title text-lg"><?php echo htmlspecialchars($ev['title']); ?></h2>
+            <p class="text-sm text-gray-600 line-clamp-2"><?php echo htmlspecialchars($ev['description'] ?? ''); ?></p>
+            <p class="text-xs text-gray-500 mt-2">
+              📍 <?php echo htmlspecialchars($ev['venue']); ?> &bull; 🗓️ <?php echo date('M d, Y', strtotime($ev['start_time'])); ?>
+            </p>
+            <div class="card-actions justify-end mt-4">
+              <a href="student/event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200">
-      <figure>
-        <img
-          src=""
-          alt="Shoes" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-          <a href="student/register-event.php" class="btn btn-primary">Register</a>
-        </div>
-      </div>
-    </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
   </div>
 
-  
-  
-
-
-
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <section class="categories">
@@ -181,53 +89,17 @@
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">IEEE Student Branch</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Rotaract Club</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Marketing Circle</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Software Engineering Society</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Arts & Culture Club</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Sports Council</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Buddhist Society</h2>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 border border-gray-200 block text-current">
-      <div class="card-body text-center flex items-center justify-center p-6">
-        <h2 class="card-title text-center m-0">Gaming & Esports Society</h2>
-      </div>
-    </div>
+    <?php if (empty($communities)): ?>
+      <p class="text-gray-500">No communities found.</p>
+    <?php else: ?>
+      <?php foreach ($communities as $com): ?>
+        <div class="card bg-base-100 border border-gray-200 block text-current" style="min-width: 220px;">
+          <div class="card-body text-center flex items-center justify-center p-6">
+            <h2 class="card-title text-center m-0 text-base"><?php echo htmlspecialchars($com['name']); ?></h2>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
   </div>
 </section>
 
