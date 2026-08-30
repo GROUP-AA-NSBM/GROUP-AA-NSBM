@@ -10,16 +10,16 @@
   </aside>
   <nav>
     <h6 class="footer-title">Communities</h6>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=IEEE+Student+Branch" class="link no-underline hover:no-underline">IEEE Student Branch</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Rotaract+Club" class="link no-underline hover:no-underline">Rotaract Club</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Marketing+Circle" class="link no-underline hover:no-underline">Marketing Circle</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Software+Engineering+Society" class="link no-underline hover:no-underline">Software Engineering Society</a>
+    <span class="link no-underline hover:no-underline cursor-default">IEEE Student Branch</span>
+    <span class="link no-underline hover:no-underline cursor-default">Rotaract Club</span>
+    <span class="link no-underline hover:no-underline cursor-default">Marketing Circle</span>
+    <span class="link no-underline hover:no-underline cursor-default">Software Engineering Society</span>
   </nav>
   <nav>
     <h6 class="footer-title">&nbsp;</h6>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Arts+%26+Culture+Club" class="link no-underline hover:no-underline">Arts & Culture Club</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Sports+Council" class="link no-underline hover:no-underline">Sports Council</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Buddhist+Society" class="link no-underline hover:no-underline">Buddhist Society</a>
-    <a href="/GROUP-AA-NSBM/student/community.php?name=Gaming+%26+Esports+Society" class="link no-underline hover:no-underline">Gaming & Esports Society</a>
+    <span class="link no-underline hover:no-underline cursor-default">Arts & Culture Club</span>
+    <span class="link no-underline hover:no-underline cursor-default">Sports Council</span>
+    <span class="link no-underline hover:no-underline cursor-default">Buddhist Society</span>
+    <span class="link no-underline hover:no-underline cursor-default">Gaming & Esports Society</span>
   </nav>
 </footer>
