@@ -1,64 +1,185 @@
-.admin-login-container {
-  min-height: 80vh;
+.admin-layout {
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #f3f4f6;
-  padding: 20px;
 }
 
-.admin-login-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.admin-login-card h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.admin-login-card p {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
+.admin-sidebar {
+  width: 260px;
+  min-width: 260px;
+  background-color: #ffffff;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
+.admin-sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #39B54A;
+  margin-bottom: 24px;
 }
 
-.form-group input {
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 1rem;
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.admin-btn {
+.admin-nav .btn {
   width: 100%;
-  padding: 12px;
-  background-color: #111827;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
+  justify-content: flex-start;
+  text-align: left;
 }
 
-.admin-btn:hover {
-  background-color: #1f2937;
+.admin-main {
+  flex: 1;
+  padding: 36px;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.admin-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.admin-subtitle {
+  color: #000000;
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  padding: 24px;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.stat-card.stat-primary {
+  border-left-color: #39B54A;
+}
+
+.stat-card.stat-secondary {
+  border-left-color: #f43f5e;
+}
+
+.stat-card.stat-accent {
+  border-left-color: #06b6d4;
+}
+
+.stat-card.stat-neutral {
+  border-left-color: #2b3440;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.stat-value {
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+.admin-btn-black {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  transition: none !important;
+}
+
+.admin-btn-black:hover,
+.admin-btn-black:focus,
+.admin-btn-black:active {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.admin-btn-edit {
+  border: 1px solid #000000 !important;
+  color: #000000 !important;
+  background-color: transparent !important;
+  transition: none !important;
+}
+
+.admin-btn-edit:hover,
+.admin-btn-edit:focus,
+.admin-btn-edit:active {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.admin-card-container {
+  overflow: hidden;
+}
+
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-actions-cell {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.admin-form-container {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.admin-login-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-login-box {
+  width: 100%;
+  max-width: 440px;
 }

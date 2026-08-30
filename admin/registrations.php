@@ -1,34 +1,33 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="min-h-screen bg-base-200 flex flex-col md:flex-row">
+<div class="admin-layout">
   
-  <aside class="w-full md:w-64 bg-base-100 shadow-xl p-6">
-    <h2 class="text-2xl font-extrabold text-primary mb-6">Admin Panel</h2>
-    <nav class="space-y-2">
-      <a href="dashboard.php" class="btn btn-ghost w-full justify-start text-left">Dashboard</a>
-      <a href="manage-events.php" class="btn btn-ghost w-full justify-start text-left">Manage Events</a>
-      <a href="create-event.php" class="btn btn-ghost w-full justify-start text-left">Create Event</a>
-      <a href="categories.php" class="btn btn-ghost w-full justify-start text-left">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost w-full justify-start text-left">Announcements</a>
-      <a href="registrations.php" class="btn btn-primary w-full justify-start text-left">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error w-full">Logout</a>
+  <aside class="admin-sidebar">
+    <h2 class="admin-sidebar-title">Admin Panel</h2>
+    <nav class="admin-nav">
+      <a href="dashboard.php" class="btn btn-ghost">Dashboard</a>
+      <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
+      <a href="create-event.php" class="btn btn-ghost">Create Event</a>
+      <a href="categories.php" class="btn btn-ghost">Categories</a>
+      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
+      <a href="registrations.php" class="btn btn-primary">Registrations</a>
+      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
-  <main class="flex-1 p-6 md:p-10">
+  <main class="admin-main">
     
-    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-      <div>
-        <h1 class="text-3xl font-extrabold">Student Registrations</h1>
-        <p class="text-black mt-1">View all student sign-ups for campus events</p>
-      </div>
+    <div style="margin-bottom: 24px;">
+      <h1 class="admin-title">Student Registrations</h1>
+      <p class="admin-subtitle">View all student sign-ups for campus events</p>
     </div>
 
-    <div class="card bg-base-100 shadow-xl overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="table w-full">
-          <thead class="bg-base-200">
+    <div class="card admin-card-container">
+      <div class="admin-table-wrapper">
+        <table class="table">
+          <thead>
             <tr>
               <th>#</th>
               <th>Student Name</th>
@@ -40,24 +39,24 @@
           <tbody>
             <tr>
               <th>1</th>
-              <td class="font-bold">borski Perera</td>
+              <td style="font-weight: bold;">borski Perera</td>
               <td>brah.p@nsbm.ac.lk</td>
               <td>NSBM Tech Fiesta 2026</td>
-              <td class="text-sm text-gray-500">Aug 29, 2026</td>
+              <td style="font-size: 0.875rem; color: #6b7280;">Aug 29, 2026</td>
             </tr>
             <tr>
               <th>2</th>
-              <td class="font-bold">Nelli Fernando</td>
+              <td style="font-weight: bold;">Nelli Fernando</td>
               <td>nili.f@nsbm.ac.lk</td>
               <td>Annual Sports Meet</td>
-              <td class="text-sm text-gray-500">Aug 28, 2026</td>
+              <td style="font-size: 0.875rem; color: #6b7280;">Aug 28, 2026</td>
             </tr>
             <tr>
               <th>3</th>
-              <td class="font-bold">SaMahan Silva</td>
+              <td style="font-weight: bold;">SaMahan Silva</td>
               <td>sammahan.s@nsbm.ac.lk</td>
               <td>Business Leader Summit</td>
-              <td class="text-sm text-gray-500">Aug 25, 2026</td>
+              <td style="font-size: 0.875rem; color: #6b7280;">Aug 25, 2026</td>
             </tr>
           </tbody>
         </table>
