@@ -11,7 +11,6 @@
       <a href="categories.php" class="btn btn-ghost w-full justify-start text-left">Categories</a>
       <a href="announcements.php" class="btn btn-ghost w-full justify-start text-left">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost w-full justify-start text-left">Registrations</a>
-      <hr class="my-4" />
       <a href="../auth/logout.php" class="btn btn-outline btn-error w-full">Logout</a>
     </nav>
   </aside>
