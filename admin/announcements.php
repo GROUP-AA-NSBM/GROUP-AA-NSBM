@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
 <?php 
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
@@ -67,22 +65,6 @@ $announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DE
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td style="font-weight: bold;">Registration open for Tech Fiesta 2026</td>
-                <td style="font-size: 0.875rem; color: #6b7280;">Aug 28, 2026</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td style="font-weight: bold;">Annual Sports Meet practice schedule updated</td>
-                <td style="font-size: 0.875rem; color: #6b7280;">Aug 20, 2026</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
               <?php if (empty($announcements)): ?>
                 <tr>
                   <td colspan="4" style="text-align: center; padding: 24px; color: #6b7280;">No announcements posted yet.</td>

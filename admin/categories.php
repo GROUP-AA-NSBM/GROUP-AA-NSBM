@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
 <?php 
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
@@ -59,34 +57,6 @@ $categories = $pdo->query("SELECT * FROM categories ORDER BY category_id ASC")->
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td style="font-weight: bold;">Computing & IT</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td style="font-weight: bold;">Business & Management</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td style="font-weight: bold;">Sports & Athletics</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th>4</th>
-                <td style="font-weight: bold;">Cultural & Music</td>
-                <td style="text-align: center;">
-                  <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
-                </td>
-              </tr>
               <?php if (empty($categories)): ?>
                 <tr>
                   <td colspan="3" style="text-align: center; padding: 24px; color: #6b7280;">No categories found.</td>
