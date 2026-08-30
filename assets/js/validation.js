@@ -57,14 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Please enter both admin email and password.");
         return;
       }
-
-      if (password !== "123456") {
-        e.preventDefault();
-        alert("Incorrect admin password.");
-        return;
-      }
-    
-
       
       if (!email.toLowerCase().endsWith("@nsbm.ac.lk")) {
         e.preventDefault();
