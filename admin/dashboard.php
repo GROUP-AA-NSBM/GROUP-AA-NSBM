@@ -57,28 +57,6 @@
     </div>
 
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      
-   
-      <div class="card bg-base-100 shadow-md p-6">
-        <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
-        <div class="flex flex-wrap gap-3">
-          <a href="create-event.php" class="btn btn-outline btn-sm">+ Add Event</a>
-          <a href="categories.php" class="btn btn-outline btn-sm">+ Add Category</a>
-          <a href="announcements.php" class="btn btn-outline btn-sm">+ Post Notice</a>
-          <a href="registrations.php" class="btn btn-outline btn-sm">View Attendees</a>
-        </div>
-      </div>
-
-      <div class="card bg-base-100 shadow-md p-6">
-        <h2 class="text-xl font-bold mb-4">System Status</h2>
-        <p class="text-sm text-gray-600">
-          Everything is up and running smoothly. Use the sidebar to navigate through management options.
-        </p>
-      </div>
-
-    </div>
-
   </main>
 </div>
 
