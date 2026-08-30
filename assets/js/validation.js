@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      if (!email.toLowerCase().endsWith("@nsbm.ac.lk")) {
+      if (!email.toLowerCase().endsWith("@students.nsbm.ac.lk") && !email.toLowerCase().endsWith("@nsbm.ac.lk")) {
         e.preventDefault();
-        alert("Please use a valid NSBM email address (@nsbm.ac.lk).");
+        alert("Please use a valid NSBM email address (@students.nsbm.ac.lk).");
       }
     });
   }
@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      if (!email.toLowerCase().endsWith("@nsbm.ac.lk")) {
+      if (!email.toLowerCase().endsWith("@students.nsbm.ac.lk")) {
         e.preventDefault();
-        alert("Registration requires a valid NSBM email address (@nsbm.ac.lk).");
+        alert("Registration requires a valid NSBM student email address (@students.nsbm.ac.lk).");
         return;
       }
 

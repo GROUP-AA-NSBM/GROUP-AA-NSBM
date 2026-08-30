@@ -11,7 +11,7 @@ CREATE TABLE users (
     bio             VARCHAR(500),
     role            ENUM('student', 'admin') NOT NULL DEFAULT 'student',
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT chk_email_domain CHECK (email LIKE '%@nsbm.ac.lk')
+    CONSTRAINT chk_email_domain CHECK (email LIKE '%@students.nsbm.ac.lk' OR email LIKE '%@nsbm.ac.lk')
 );
 
 CREATE TABLE login_tokens (
@@ -109,7 +109,7 @@ CREATE TABLE announcements (
 
 INSERT INTO users (full_name, email, password, faculty, role) VALUES 
 ('System Admin', 'admin@nsbm.ac.lk', '$2y$12$DoE8KINrGxOPLe8auSr48e/MeDPJEUdDD0A6idMDiiMIFy/Q7uppK', 'Administration', 'admin'),
-('John Doe', 'johndoe@nsbm.ac.lk', '$2y$12$f0OEbvQMUkbGZ91WxV4J5OK4dakLiZTub0mHi7D0MLpSO3H5ozAsK', 'Computing', 'student');
+('John Doe', 'johndoe@students.nsbm.ac.lk', '$2y$12$f0OEbvQMUkbGZ91WxV4J5OK4dakLiZTub0mHi7D0MLpSO3H5ozAsK', 'Computing', 'student');
 
 INSERT INTO categories (name, icon) VALUES 
 ('Computing & IT', 'laptop'),

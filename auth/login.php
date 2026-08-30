@@ -27,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $redirectUrl = $_SESSION['redirect_url'] ?? '/GROUP-AA-NSBM/index.php';
             unset($_SESSION['redirect_url']);
+
+            if (empty($redirectUrl) || str_contains($redirectUrl, 'register-event.php')) {
+                $redirectUrl = '/GROUP-AA-NSBM/index.php';
+            }
             
             header("Location: " . $redirectUrl);
             exit;
@@ -65,7 +69,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="email" 
           id="loginEmail"
           name="email" 
-          placeholder="student@nsbm.ac.lk" 
+          placeholder="student@students.nsbm.ac.lk" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />

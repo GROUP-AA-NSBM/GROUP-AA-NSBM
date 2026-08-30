@@ -78,7 +78,7 @@ include '../includes/not-loggedin-navbar.php';
           type="email" 
           id="regEmail"
           name="email" 
-          placeholder="students@nsbm.ac.lk" 
+          placeholder="student@students.nsbm.ac.lk" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
