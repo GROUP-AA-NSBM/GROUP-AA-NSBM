@@ -1,5 +1,15 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+requireAdmin();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+
+$categories = $pdo->query("SELECT * FROM categories ORDER BY category_id ASC")->fetchAll();
+?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <div class="admin-layout">
@@ -77,6 +87,21 @@
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>
+              <?php if (empty($categories)): ?>
+                <tr>
+                  <td colspan="3" style="text-align: center; padding: 24px; color: #6b7280;">No categories found.</td>
+                </tr>
+              <?php else: ?>
+                <?php foreach ($categories as $index => $cat): ?>
+                  <tr>
+                    <th><?php echo $index + 1; ?></th>
+                    <td style="font-weight: bold;"><?php echo htmlspecialchars($cat['name']); ?></td>
+                    <td style="text-align: center;">
+                      <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>

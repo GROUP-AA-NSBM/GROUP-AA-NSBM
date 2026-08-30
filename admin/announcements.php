@@ -1,5 +1,15 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+requireAdmin();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+
+$announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC")->fetchAll();
+?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <div class="admin-layout">
@@ -73,6 +83,22 @@
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>
+              <?php if (empty($announcements)): ?>
+                <tr>
+                  <td colspan="4" style="text-align: center; padding: 24px; color: #6b7280;">No announcements posted yet.</td>
+                </tr>
+              <?php else: ?>
+                <?php foreach ($announcements as $index => $ann): ?>
+                  <tr>
+                    <th><?php echo $index + 1; ?></th>
+                    <td style="font-weight: bold;"><?php echo htmlspecialchars($ann['title']); ?></td>
+                    <td style="font-size: 0.875rem; color: #6b7280;"><?php echo date('M d, Y', strtotime($ann['created_at'])); ?></td>
+                    <td style="text-align: center;">
+                      <a href="delete-announcement.php?id=<?php echo $ann['announcement_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>
