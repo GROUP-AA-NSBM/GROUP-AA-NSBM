@@ -20,7 +20,7 @@
             Profile
           </a>
         </li>
-        <li><a href="/GROUP-AA-NSBM/index.php">Logout</a></li>
+        <li><a href="/GROUP-AA-NSBM/auth/logout.php">Logout</a></li>
       </ul>
     </div>
   </div>
