@@ -21,7 +21,6 @@
     
     <div style="margin-bottom: 24px;">
       <h1 class="admin-title">Announcements</h1>
-      <p class="admin-subtitle">Post updates and news for all registered students</p>
     </div>
 
     <div class="admin-split-layout">

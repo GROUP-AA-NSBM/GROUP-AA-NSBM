@@ -23,9 +23,7 @@
       <div class="admin-header">
         <div>
           <h1 class="admin-title">Edit Event</h1>
-          <p class="admin-subtitle">Update details for the selected campus event</p>
         </div>
-        <a href="manage-events.php" class="btn btn-outline btn-sm">Cancel</a>
       </div>
 
       <div class="card">

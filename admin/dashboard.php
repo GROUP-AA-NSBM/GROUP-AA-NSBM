@@ -22,7 +22,6 @@
     <div class="admin-header">
       <div>
         <h1 class="admin-title">Welcome, Admin</h1>
-        <p class="admin-subtitle">Overview of NSBM Event Hub activity</p>
       </div>
       <a href="create-event.php" class="btn admin-btn-black">
         + Create New Event

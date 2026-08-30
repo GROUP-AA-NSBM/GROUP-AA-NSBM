@@ -8,7 +8,6 @@
       
       <div style="text-align: center; margin-bottom: 8px;">
         <h2 style="font-size: 1.875rem; font-weight: 800; margin: 0;">Admin Portal</h2>
-        <p class="admin-subtitle">Sign in to manage NSBM Event Hub</p>
       </div>
 
       <div class="form-control">

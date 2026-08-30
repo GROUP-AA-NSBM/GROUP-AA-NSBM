@@ -21,7 +21,6 @@
     
     <div style="margin-bottom: 24px;">
       <h1 class="admin-title">Student Registrations</h1>
-      <p class="admin-subtitle">View all student sign-ups for campus events</p>
     </div>
 
     <div class="card admin-card-container">

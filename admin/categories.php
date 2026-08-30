@@ -21,7 +21,6 @@
     
     <div style="margin-bottom: 24px;">
       <h1 class="admin-title">Event Categories</h1>
-      <p class="admin-subtitle">Manage event categories used across the portal</p>
     </div>
 
     <div class="admin-split-layout">

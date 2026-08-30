@@ -26,7 +26,6 @@
           <h1 class="admin-title">Create New Event</h1>
           <p class="admin-subtitle">Fill in the details to publish a new campus event</p>
         </div>
-        <a href="manage-events.php" class="btn btn-outline btn-sm">Back to Events</a>
       </div>
 
       <div class="card">

@@ -22,7 +22,6 @@
     <div class="admin-header">
       <div>
         <h1 class="admin-title">Manage Events</h1>
-        <p class="admin-subtitle">View, update, or remove existing campus events</p>
       </div>
       <a href="create-event.php" class="btn admin-btn-black">
         + Add New Event
