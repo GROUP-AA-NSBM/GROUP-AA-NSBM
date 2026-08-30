@@ -31,7 +31,6 @@
     <div class="card bg-base-100 shadow-xl overflow-hidden">
       <div class="overflow-x-auto">
         <table class="table w-full">
-          <!-- Table Header -->
           <thead class="bg-base-200">
             <tr>
               <th>#</th>

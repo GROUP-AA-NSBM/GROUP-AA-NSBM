@@ -56,46 +56,18 @@
     <div class = "about-event">
         <p>A celebration of food, fun, and friendship! 🍕🌮🍰 Join us for our Campus Food Carnival and enjoy a variety of delicious foods, exciting stalls, fun activities, and great music—all in one vibrant campus experience.</p>
     </div>
-    <div class = "community-header">
-     <div class = "community-name">
+    <div class="community-header">
+      <div class="community-name">
         <h4>Hosted by: Marketing circle</h4>
-    </div>
-</div>
-    <div class = "no-attending">
-        <h4>105 attendees</h4>
-    </div>   
-    <div class = "attendees">
-        <div class="avatar-group -space-x-6">
-  <div class="avatar">
-    <div class="w-12">
-      <img alt="Tailwind-CSS-Avatar-component" src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
+      </div>
     </div>
   </div>
-  <div class="avatar">
-    <div class="w-12">
-      <img alt="Tailwind-CSS-Avatar-component" src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
-    </div>
-  </div>
-  <div class="avatar">
-    <div class="w-12">
-      <img alt="Tailwind-CSS-Avatar-component" src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
-    </div>
-  </div>
-  <div class="avatar avatar-placeholder">
-    <div class="bg-neutral text-neutral-content w-12">
-      <span>+102</span>
-    </div>
-  </div>
-</div>
-    </div>
-</div>
 
-<div class = "right-content">
-    <div class = "event-img">
-        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK7QIbUEIvLg7UOBOpVEd-C-NrbQ7jBhu7SHIrpAbL7n771o4FeS4Od_E&s=10" alt = "event">
+  <div class="right-content">
+    <div class="event-img">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK7QIbUEIvLg7UOBOpVEd-C-NrbQ7jBhu7SHIrpAbL7n771o4FeS4Od_E&s=10" alt="event">
     </div>
-   
-</div>
+  </div>
 </div>
 </main>
 
