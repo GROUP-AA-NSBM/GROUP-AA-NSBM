@@ -78,43 +78,10 @@ include __DIR__ . '/../includes/navbar.php';
   <?php endif; ?>
 </div>
 
-<div id="attended" class="tab-content hidden">
-  <div class="card bg-base-100 shadow-sm">
-    <figure>
-      <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Attended Event" />
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title">Attended Event</h2>
-      <p>Details for past events you attended.</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-secondary">Certificate</button>
-      </div>
-    </div>
-  </div>
-
-   <div class="card bg-base-100 shadow-sm">
-    <figure>
-      <img src="" alt="Attended Event" />
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title">Attended Event</h2>
-      <p>Details for past events you attended.</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-secondary">Certificate</button>
-      </div>
-    </div>
-  </div>
 <div id="attended" class="tab-content hidden" style="padding: 16px;">
   <p style="color: #6b7280;">No past attended events yet. Events will appear here once marked as attended.</p>
 </div>
 
-<div id="following" class="tab-content hidden">
-  <div class="card bg-base-100 shadow-sm">
-    <div class="card-body">
-      <h2 class="card-title">IEEE</h2>
-      <p>Community updates and followed clubs.</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-outline">Unfollow</button>
 <div id="following" class="tab-content hidden" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 0;">
   <?php 
   $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC LIMIT 4")->fetchAll();
@@ -131,18 +98,6 @@ include __DIR__ . '/../includes/navbar.php';
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="card bg-base-100 shadow-sm">
-    <div class="card-body">
-      <h2 class="card-title">Buddhist Society</h2>
-      <p>Community updates and followed clubs.</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-outline">Unfollow</button>
-      </div>
-    </div>
-  </div>
     <?php endforeach; ?>
   <?php endif; ?>
 </div>
