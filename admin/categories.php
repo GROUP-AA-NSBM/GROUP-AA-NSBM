@@ -3,10 +3,21 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['category_name'] ?? '');
+
+    if (!empty($name)) {
+        $stmt = $pdo->prepare('INSERT INTO categories (name) VALUES (?)');
+        $stmt->execute([$name]);
+        header('Location: categories.php?status=created');
+        exit;
+    }
+}
 
 $categories = $pdo->query("SELECT * FROM categories ORDER BY category_id ASC")->fetchAll();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -36,7 +47,7 @@ $categories = $pdo->query("SELECT * FROM categories ORDER BY category_id ASC")->
       <div class="card" style="height: fit-content;">
         <div class="card-body">
           <h2 class="card-title" style="margin-bottom: 8px;">Add New Category</h2>
-          <form id="addCategoryForm" action="categories-process.php" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <form id="addCategoryForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             <div class="form-control">
               <label class="label"><span style="font-weight: 600;">Category Name</span></label>
               <input type="text" name="category_name" placeholder="e.g. Gaming & Esports" class="input input-bordered" style="width: 100%;" required />

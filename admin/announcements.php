@@ -3,10 +3,22 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title   = trim($_POST['title'] ?? '');
+    $message = trim($_POST['content'] ?? '');
+
+    if (!empty($title) && !empty($message)) {
+        $stmt = $pdo->prepare('INSERT INTO announcements (title, message) VALUES (?, ?)');
+        $stmt->execute([$title, $message]);
+        header('Location: announcements.php?status=created');
+        exit;
+    }
+}
 
 $announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC")->fetchAll();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -36,7 +48,7 @@ $announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DE
       <div class="card" style="height: fit-content;">
         <div class="card-body">
           <h2 class="card-title" style="margin-bottom: 8px;">New Announcement</h2>
-          <form id="announcementForm" action="announcements-process.php" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <form id="announcementForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             
             <div class="form-control">
               <label class="label"><span style="font-weight: 600;">Title</span></label>
