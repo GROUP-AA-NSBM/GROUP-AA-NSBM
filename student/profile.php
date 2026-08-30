@@ -2,7 +2,7 @@
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 <link rel="stylesheet" href="../assets/css/student.css">
     
-
+<main class = "profile-page">
 <div class = "profile-container">
 <div class="avatar">
   <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
@@ -114,6 +114,7 @@
     </div>
   </div>
 </div>
+</main>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

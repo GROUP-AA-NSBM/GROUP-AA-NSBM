@@ -1,7 +1,7 @@
-.profile-name {
+.profile-page .profile-name {
   font-weight: 600;
 }
-.profile-container {
+.profile-page .profile-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,48 +9,48 @@
   max-width: 600px;
   margin: 3rem auto;
 }
-.profile-name h3 {
+.profile-page .profile-name h3 {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
 }
-.joined-date h6,
+.profile-page .joined-date h6,
 .st-email h6 {
   font-size: 0.85rem;
   color: #6b7280;
   margin: 0.2rem 0;
 }
-.faculty h6 {
+.profile-page .faculty h6 {
   font-size: 0.9rem;
   font-weight: 600;
   color: #16a34a;
   margin: 0.2rem 0;
 }
-.profile-events {
+.profile-page .profile-events {
   font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.profile-events ul {
+.profile-page .profile-events ul {
   display: flex;
   flex-direction: row;
   gap: 2rem;
 }
-.profile-events li:hover {
+.profile-page .profile-events li:hover {
   color: #16a34a;
 }
-.tab-content .card {
+.profile-page .tab-content .card {
   width: 100%;
   max-width: 24rem;
 }
-.tab-content {
+.profile-page .tab-content {
   display: none;
   padding-top: 2rem;
   padding-bottom: 2rem;
   min-height: 450px;
 }
-.tab-content.active {
+.profile-page .tab-content.active {
   display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
@@ -58,14 +58,14 @@
   gap: 2.5rem;
   padding: 2rem 1rem;
 }
-.tab-content.active.hidden {
+.profile-page .tab-content.active.hidden {
   display: flex !important;
 }
-.tab-btn.active {
+.profile-page .tab-btn.active {
   font-weight: bold;
   border-bottom: 2px solid #3b82f6;
 }
-.event-container {
+.event-page .event-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -74,43 +74,43 @@
   padding: 0 2rem;
   margin: 3rem auto;
 }
-.left-content {
+.event-page .left-content {
   flex: 1;
   max-width: 60%;
 }
-.right-content {
+.event-page .right-content {
   flex: 1;
   max-width: 35%;
 }
-.event-title {
+.event-page .event-title {
   font-weight: 700;
   font-size: 40px;
 }
-.date-time {
+.event-page .date-time {
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.date-time img {
+.event-page .date-time img {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
-.location {
+.event-page .location {
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.location img {
+.event-page .location img {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
-.registration {
+.event-page .registration {
   border: 1px solid #6b7280;
   border-radius: 8px;
   padding: 1.25rem;
@@ -119,7 +119,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   max-width: 320px;
 }
-.form-register button {
+.event-page .form-register button {
   margin-top: 0.5rem;
   width: 100%;
   background-color: #16a34a;
@@ -130,11 +130,11 @@
   border-radius: 6px;
   cursor: pointer;
 }
-.form-register button:hover {
+.event-page .form-register button:hover {
   background-color: #15803d;
   border-color: #15803d;
 }
-.registration input {
+.event-page .registration input {
   border-radius: 8px;
   border: 1px solid #6b7280;
   width: 100%;
@@ -143,39 +143,39 @@
   box-sizing: border-box;
   outline: none;
 }
-.form-register {
+.event-page .form-register {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.form-register label {
+.event-page .form-register label {
   font-size: 0.875rem;
   font-weight: 600;
   color: #374151;
   margin-bottom: -0.25rem;
 }
-.event-img img {
+.event-page .event-img img {
   width: 350px;
   height: 350px;
   border-radius: 8px;
 }
-.community-header {
+.event-page .community-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-top: 1rem;
 }
-.community-name h4 {
+.event-page .community-name h4 {
   margin: 0;
 }
-.community-name {
+.event-page .community-name {
   padding-top: 0;
   padding-bottom: 0;
   font-style: italic;
   font-weight: 500px;
   color: #16a34a;
 }
-.follow-button button {
+.event-page .follow-button button {
   background-color: #3b82f6;
   color: #ffffff;
   font-weight: 600;
@@ -183,26 +183,84 @@
   border-radius: 6px;
   cursor: pointer;
 }
-.no-attending {
+.event-page .no-attending {
   color: #6b7280;
 }
-.radio-item {
+.event-page .radio-item {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   gap: 0.5rem;
   margin: 0.25rem;
 }
-.radio-item input[type="radio"] {
+.event-page .radio-item input[type="radio"] {
   margin: 0 !important;
   width: auto !important;
   cursor: pointer;
   display: inline-block;
 }
-.radio-item label {
+.event-page .radio-item label {
   display: inline-block !important;
   width: auto !important;
   font-weight: 400 !important;
   margin: 0 !important;
   cursor: pointer;
+}
+.community-page {
+  margin: 100px;
+  margin-top: 0 !important;
+}
+.community-page .main-img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.community-page .community-title h3 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  color: #1f2937;
+  margin: 0;
+}
+.community-page .follow-button button {
+  background-color: #3b82f6;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.community-page .follow-button button:hover {
+  background-color: blue;
+}
+.community-page .events-list h3 {
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 25px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.community-page .card {
+  transition: transform 0.3s ease;
+}
+.community-page .card:hover {
+  transform: translateY(-6px);
+}
+.community-page .cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+}
+.community-page .badge {
+  background-color: #bed6ab;
+}
+.community-page .title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
