@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    // Build a base URL when the project is served from a subdirectory like /GROUP-AA-NSBM.
     $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
     $segments = explode('/', trim($scriptName, '/'));
     $baseUrl = '';
@@ -23,7 +22,6 @@
         --pc: #ffffff !important;
       }
       
-      /* Card Boxes: No Shadows, Thin Light Grey Border */
       .card,
       .cards .card,
       .form-container {
@@ -31,7 +29,6 @@
         border: 1px solid #e5e7eb !important;
       }
       
-      /* Target action buttons specifically */
       .btn-primary,
       button.btn-primary,
       a.btn-primary {
@@ -77,7 +74,6 @@
         transition: none !important;
       }
 
-      /* Disable underline on footer links */
       footer a,
       footer a:hover,
       footer .link,

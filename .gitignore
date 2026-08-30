@@ -13,3 +13,6 @@ Thumbs.db
 # Uploaded files
 uploads/*
 !uploads/.gitkeep
+
+# Graphify
+graphify-out/

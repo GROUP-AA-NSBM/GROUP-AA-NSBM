@@ -1,80 +1,79 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="min-h-screen bg-base-200 flex flex-col md:flex-row">
+<div class="admin-layout">
   
-  <aside class="w-full md:w-64 bg-base-100 shadow-xl p-6">
-    <h2 class="text-2xl font-extrabold text-primary mb-6">Admin Panel</h2>
-    <nav class="space-y-2">
-      <a href="dashboard.php" class="btn btn-ghost w-full justify-start text-left">Dashboard</a>
-      <a href="manage-events.php" class="btn btn-ghost w-full justify-start text-left">Manage Events</a>
-      <a href="create-event.php" class="btn btn-ghost w-full justify-start text-left">Create Event</a>
-      <a href="categories.php" class="btn btn-primary w-full justify-start text-left">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost w-full justify-start text-left">Announcements</a>
-      <a href="registrations.php" class="btn btn-ghost w-full justify-start text-left">Registrations</a>
-      <hr class="my-4" />
-      <a href="../auth/logout.php" class="btn btn-outline btn-error w-full">Logout</a>
+  <aside class="admin-sidebar">
+    <h2 class="admin-sidebar-title">Admin Panel</h2>
+    <nav class="admin-nav">
+      <a href="dashboard.php" class="btn btn-ghost">Dashboard</a>
+      <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
+      <a href="create-event.php" class="btn btn-ghost">Create Event</a>
+      <a href="categories.php" class="btn btn-primary">Categories</a>
+      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
+      <a href="registrations.php" class="btn btn-ghost">Registrations</a>
+      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
-  <main class="flex-1 p-6 md:p-10">
+  <main class="admin-main">
     
-    <div class="mb-6">
-      <h1 class="text-3xl font-extrabold">Event Categories</h1>
-      <p class="text-gray-500 mt-1">Manage event categories used across the portal</p>
+    <div style="margin-bottom: 24px;">
+      <h1 class="admin-title">Event Categories</h1>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="admin-split-layout">
       
-      <div class="card bg-base-100 shadow-xl h-fit">
+      <div class="card" style="height: fit-content;">
         <div class="card-body">
-          <h2 class="card-title mb-2">Add New Category</h2>
-          <form id="addCategoryForm" action="categories-process.php" method="POST" class="space-y-4">
+          <h2 class="card-title" style="margin-bottom: 8px;">Add New Category</h2>
+          <form id="addCategoryForm" action="categories-process.php" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             <div class="form-control">
-              <label class="label font-semibold">Category Name</label>
-              <input type="text" name="category_name" placeholder="e.g. Gaming & Esports" class="input input-bordered w-full" required />
+              <label class="label"><span style="font-weight: 600;">Category Name</span></label>
+              <input type="text" name="category_name" placeholder="e.g. Gaming & Esports" class="input input-bordered" style="width: 100%;" required />
             </div>
-            <button type="submit" class="btn btn-primary w-full">Add Category</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Add Category</button>
           </form>
         </div>
       </div>
 
-      <div class="card bg-base-100 shadow-xl lg:col-span-2 overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="table w-full">
-            <thead class="bg-base-200">
+      <div class="card admin-card-container">
+        <div class="admin-table-wrapper">
+          <table class="table">
+            <thead>
               <tr>
                 <th>#</th>
                 <th>Category Name</th>
-                <th class="text-center">Actions</th>
+                <th style="text-align: center;">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th>1</th>
-                <td class="font-bold">Computing & IT</td>
-                <td class="text-center">
+                <td style="font-weight: bold;">Computing & IT</td>
+                <td style="text-align: center;">
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>
               <tr>
                 <th>2</th>
-                <td class="font-bold">Business & Management</td>
-                <td class="text-center">
+                <td style="font-weight: bold;">Business & Management</td>
+                <td style="text-align: center;">
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>
               <tr>
                 <th>3</th>
-                <td class="font-bold">Sports & Athletics</td>
-                <td class="text-center">
+                <td style="font-weight: bold;">Sports & Athletics</td>
+                <td style="text-align: center;">
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>
               <tr>
                 <th>4</th>
-                <td class="font-bold">Cultural & Music</td>
-                <td class="text-center">
+                <td style="font-weight: bold;">Cultural & Music</td>
+                <td style="text-align: center;">
                   <button class="btn btn-sm btn-outline btn-error btn-delete">Delete</button>
                 </td>
               </tr>

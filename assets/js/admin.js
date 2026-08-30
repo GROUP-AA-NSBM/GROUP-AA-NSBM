@@ -1,9 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Admin JS loaded successfully.");
-  // I Leave comments incase if want change anypage.
-  // 1. DELETE CONFIRMATION
-  // Prevents accidental deletions across manage-events, categories, and announcements
+
   const deleteButtons = document.querySelectorAll(".btn-delete");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
@@ -14,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 2. CREATE EVENT FORM VALIDATION
   const createEventForm = document.querySelector("#createEventForm");
   if (createEventForm) {
     createEventForm.addEventListener("submit", function (e) {
@@ -29,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 3. CATEGORY FORM VALIDATION
   const addCategoryForm = document.querySelector("#addCategoryForm");
   if (addCategoryForm) {
     addCategoryForm.addEventListener("submit", function (e) {
@@ -41,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 4. ANNOUNCEMENT FORM VALIDATION
   const announcementForm = document.querySelector("#announcementForm");
   if (announcementForm) {
     announcementForm.addEventListener("submit", function (e) {

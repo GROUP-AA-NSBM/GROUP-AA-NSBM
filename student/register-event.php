@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../includes/db.php'; 
 require_once __DIR__ . '/../includes/auth.php';
 
-// Enforce login check: if logged in -> stays here; if not -> redirected to login page
 requireLogin();
 
 include __DIR__ . '/../includes/header.php'; 

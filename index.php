@@ -4,7 +4,6 @@
 
 
 <div class="hero min-h-screen relative overflow-hidden">
-  <!-- Sliding Background Track -->
   <div id="hero-slider-track" class="absolute inset-0 flex w-[600%] h-full transition-transform duration-700 ease-in-out z-0">
     <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover1.jpg');"></div>
     <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover2.jpg');"></div>
@@ -14,10 +13,8 @@
     <div class="w-1/6 h-full bg-cover bg-center" style="background-image: url('assets/images/cover6.jpg');"></div>
   </div>
 
-  <!-- Hero Overlay -->
   <div class="hero-overlay bg-black/50 absolute inset-0 z-10"></div>
 
-  <!-- Hero Content -->
   <div class="hero-content text-neutral-content text-center relative z-20">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold text-white">Welcome to the NSBM Event Hub</h1>
@@ -184,59 +181,58 @@
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <a href="student/community.php?name=IEEE+Student+Branch" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">IEEE Student Branch</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Rotaract+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Rotaract Club</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Marketing+Circle" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Marketing Circle</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Software+Engineering+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Software Engineering Society</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Arts+%26+Culture+Club" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Arts & Culture Club</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Sports+Council" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Sports Council</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Buddhist+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Buddhist Society</h2>
       </div>
-    </a>
+    </div>
 
-    <a href="student/community.php?name=Gaming+%26+Esports+Society" class="card bg-base-100 border border-gray-200 block text-current no-underline">
+    <div class="card bg-base-100 border border-gray-200 block text-current">
       <div class="card-body text-center flex items-center justify-center p-6">
         <h2 class="card-title text-center m-0">Gaming & Esports Society</h2>
       </div>
-    </a>
+    </div>
   </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Hero Image Sliding Effect
   const sliderTrack = document.getElementById('hero-slider-track');
   const totalSlides = 6;
 
@@ -248,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 4000);
   }
 
-  // Smooth Scroll for Discover Events Button
   const discoverBtn = document.getElementById('discover-btn');
   const upcomingSection = document.getElementById('upcoming-events');
 

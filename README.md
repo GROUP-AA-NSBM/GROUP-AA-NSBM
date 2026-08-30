@@ -5,7 +5,6 @@ Login /
 Sign Up
 
 Event /
-Community /
 Profile /
 Notification 
 

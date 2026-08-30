@@ -1,10 +1,6 @@
 CREATE DATABASE IF NOT EXISTS nsbm_eventhub;
 USE nsbm_eventhub;
 
--- ============================================================
--- USERS
--- Students + the single admin. Email restricted to nsbm.ac.lk
--- ============================================================
 CREATE TABLE users (
     user_id         INT AUTO_INCREMENT PRIMARY KEY,
     full_name       VARCHAR(100) NOT NULL,
@@ -17,11 +13,6 @@ CREATE TABLE users (
     CONSTRAINT chk_email_domain CHECK (email LIKE '%@nsbm.ac.lk')
 );
 
--- ============================================================
--- LOGIN TOKENS
--- Passwordless magic-link / OTP auth. Store a HASH of the
--- token, never the raw value. Short expiry (10-15 min typical).
--- ============================================================
 CREATE TABLE login_tokens (
     token_id    INT AUTO_INCREMENT PRIMARY KEY,
     user_id     INT NOT NULL,
@@ -32,11 +23,6 @@ CREATE TABLE login_tokens (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- ============================================================
--- COMMUNITIES
--- e.g. AIESEC, Hackathon Club. faculty is optional/nullable —
--- not every community belongs to one faculty.
--- ============================================================
 CREATE TABLE communities (
     community_id INT AUTO_INCREMENT PRIMARY KEY,
     name         VARCHAR(100) NOT NULL UNIQUE,
@@ -46,9 +32,6 @@ CREATE TABLE communities (
     created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ============================================================
--- COMMUNITY_FOLLOWERS  (users <-> communities, many-to-many)
--- ============================================================
 CREATE TABLE community_followers (
     user_id      INT NOT NULL,
     community_id INT NOT NULL,
@@ -58,22 +41,12 @@ CREATE TABLE community_followers (
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
 );
 
--- ============================================================
--- CATEGORIES
--- Interest-based (Tech, Business, Arts & Culture, Food & Drinks...)
--- kept separate from faculty so cross-faculty discovery works.
--- ============================================================
 CREATE TABLE categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(50) NOT NULL UNIQUE,
     icon        VARCHAR(50)
 );
 
--- ============================================================
--- EVENTS
--- community_id is nullable -> supports university-wide events
--- with no organizing club (e.g. admin-run orientation day).
--- ============================================================
 CREATE TABLE events (
     event_id               INT AUTO_INCREMENT PRIMARY KEY,
     title                  VARCHAR(150) NOT NULL,
@@ -95,14 +68,8 @@ CREATE TABLE events (
     CONSTRAINT chk_event_times CHECK (end_time > start_time)
 );
 
--- Indexed since the calendar view, "upcoming events", and personal
--- schedule all filter/sort by date constantly.
 CREATE INDEX idx_events_start_time ON events(start_time);
 
--- ============================================================
--- EVENT_CATEGORIES  (events <-> categories, many-to-many)
--- e.g. a hackathon can be tagged both "Tech" and "Career"
--- ============================================================
 CREATE TABLE event_categories (
     event_id    INT NOT NULL,
     category_id INT NOT NULL,
@@ -111,11 +78,6 @@ CREATE TABLE event_categories (
     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE
 );
 
--- ============================================================
--- EVENT_REGISTRATIONS  (users <-> events, many-to-many)
--- Powers "register for events", "view personal schedule",
--- "view registrations" and "generate participant lists".
--- ============================================================
 CREATE TABLE event_registrations (
     registration_id INT AUTO_INCREMENT PRIMARY KEY,
     event_id        INT NOT NULL,
@@ -123,16 +85,11 @@ CREATE TABLE event_registrations (
     status          ENUM('registered', 'waitlisted', 'cancelled', 'attended')
                         NOT NULL DEFAULT 'registered',
     registered_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (event_id, user_id),  -- a user can only register once per event
+    UNIQUE (event_id, user_id),
     FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- ============================================================
--- ANNOUNCEMENTS
--- Tied to a community (so followers get notified) and
--- optionally to one specific event.
--- ============================================================
 CREATE TABLE announcements (
     announcement_id INT AUTO_INCREMENT PRIMARY KEY,
     community_id    INT,

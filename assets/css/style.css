@@ -49,7 +49,6 @@ body .cards .card {
   max-width: 280px;
 }
 
-/* Card Boxes: No Shadows, Thin Light Grey Border */
 .card,
 .cards .card,
 .form-container {
@@ -57,7 +56,6 @@ body .cards .card {
   border: 1px solid #e5e7eb !important;
 }
 
-/* Primary Buttons Color (#39B54A) */
 :root {
   --color-primary: #39B54A;
 }
@@ -112,7 +110,6 @@ a.btn-primary {
   transition: none !important;
 }
 
-/* Disable underline on footer links */
 footer a,
 footer a:hover,
 footer .link,

@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // --- LOGIN FORM VALIDATION --
   const loginForm = document.querySelector("#loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- REGISTER FOrm--
   const registerForm = document.querySelector("#registerForm");
   if (registerForm) {
     registerForm.addEventListener("submit", function (e) {
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-// --- ADMIN LOGIN FORm Part ---
+
   const adminLoginForm = document.querySelector("#adminLoginForm");
   if (adminLoginForm) {
     adminLoginForm.addEventListener("submit", function (e) {

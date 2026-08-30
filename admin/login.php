@@ -1,45 +1,47 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
-  <div class="card bg-base-100 w-full max-w-md shadow-2xl">
-    <form id="adminLoginForm" action="admin-login-process.php" method="POST" class="card-body">
+<div class="admin-login-wrapper">
+  <div class="card admin-login-box">
+    <form id="adminLoginForm" action="admin-login-process.php" method="POST" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
       
-      <div class="text-center mb-4">
-        <h2 class="text-3xl font-extrabold">Admin Portal</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign in to manage NSBM Event Hub</p>
+      <div style="text-align: center; margin-bottom: 8px;">
+        <h2 style="font-size: 1.875rem; font-weight: 800; margin: 0;">Admin Portal</h2>
       </div>
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">Admin Email Address</span>
+          <span style="font-weight: 600;">Admin Email Address</span>
         </label>
         <input 
           type="email" 
           id="adminEmail"
           name="email" 
           placeholder="admin@nsbm.ac.lk" 
-          class="input input-bordered focus:input-primary w-full" 
+          class="input input-bordered focus:input-primary" 
+          style="width: 100%;"
           required 
         />
       </div>
 
-      <div class="form-control mt-4">
+      <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">Password</span>
+          <span style="font-weight: 600;">Password</span>
         </label>
         <input 
           type="password" 
           id="adminPassword"
           name="password" 
           placeholder="••••••••" 
-          class="input input-bordered focus:input-primary w-full" 
+          class="input input-bordered focus:input-primary" 
+          style="width: 100%;"
           required 
         />
       </div>
 
-      <div class="form-control mt-6">
-        <button type="submit" class="btn bg-black hover:bg-gray-800 text-white text-lg border-none w-full">
+      <div style="margin-top: 8px;">
+        <button type="submit" class="btn admin-btn-black" style="width: 100%; font-size: 1.125rem;">
           Log In as Admin
         </button>
       </div>
