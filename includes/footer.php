@@ -1,4 +1,4 @@
-<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+<footer class="footer bg-base-200 text-base-content p-10">
   <aside>
     <img src="https://alumni.nsbm.ac.lk/members/img/1.png" alt="" width="150px">
     <br>
