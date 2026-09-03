@@ -1,5 +1,19 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+requireAdmin();
+
+$events = $pdo->query("
+    SELECT e.*, c.name AS category_name 
+    FROM events e 
+    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
+    LEFT JOIN categories c ON ec.category_id = c.category_id 
+    ORDER BY e.start_time DESC
+")->fetchAll();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <div class="admin-layout">
@@ -28,6 +42,22 @@
       </a>
     </div>
 
+    <?php if (isset($_GET['status'])): ?>
+      <?php if ($_GET['status'] === 'created'): ?>
+        <div style="background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+          Event published successfully!
+        </div>
+      <?php elseif ($_GET['status'] === 'updated'): ?>
+        <div style="background-color: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+          Event updated successfully!
+        </div>
+      <?php elseif ($_GET['status'] === 'deleted'): ?>
+        <div style="background-color: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+          Event deleted successfully!
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+
     <div class="card admin-card-container">
       <div class="admin-table-wrapper">
         <table class="table">
@@ -42,41 +72,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td style="font-weight: bold;">NSBM Tech Fiesta 2026</td>
-              <td>Computing & IT</td>
-              <td>Oct 15, 2026 <br><span style="font-size: 0.75rem; color: #6b7280;">09:00 AM</span></td>
-              <td>Auditorium</td>
-              <td class="admin-actions-cell">
-                <a href="edit-event.php?id=1" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
-                <a href="delete-event.php?id=1" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
-              </td>
-            </tr>
-
-            <tr>
-              <th>2</th>
-              <td style="font-weight: bold;">Annual Sports Meet</td>
-              <td>Sports & Athletics</td>
-              <td>Nov 02, 2026 <br><span style="font-size: 0.75rem; color: #6b7280;">08:00 AM</span></td>
-              <td>Main Ground</td>
-              <td class="admin-actions-cell">
-                <a href="edit-event.php?id=2" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
-                <a href="delete-event.php?id=2" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
-              </td>
-            </tr>
-
-            <tr>
-              <th>3</th>
-              <td style="font-weight: bold;">Business Leader Summit</td>
-              <td>Business</td>
-              <td>Dec 10, 2026 <br><span style="font-size: 0.75rem; color: #6b7280;">10:30 AM</span></td>
-              <td>Hall B</td>
-              <td class="admin-actions-cell">
-                <a href="edit-event.php?id=3" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
-                <a href="delete-event.php?id=3" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
-              </td>
-            </tr>
+            <?php if (empty($events)): ?>
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 24px; color: #6b7280;">No campus events found. Click "+ Add New Event" to publish one!</td>
+              </tr>
+            <?php else: ?>
+              <?php foreach ($events as $index => $ev): ?>
+                <tr>
+                  <th><?php echo $index + 1; ?></th>
+                  <td style="font-weight: bold;"><?php echo htmlspecialchars($ev['title']); ?></td>
+                  <td><?php echo htmlspecialchars($ev['category_name'] ?? 'General'); ?></td>
+                  <td>
+                    <?php echo date('M d, Y', strtotime($ev['start_time'])); ?> <br>
+                    <span style="font-size: 0.75rem; color: #6b7280;"><?php echo date('h:i A', strtotime($ev['start_time'])); ?></span>
+                  </td>
+                  <td><?php echo htmlspecialchars($ev['venue']); ?></td>
+                  <td class="admin-actions-cell">
+                    <a href="edit-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
+                    <a href="delete-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>

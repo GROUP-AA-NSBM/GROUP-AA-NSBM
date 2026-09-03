@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $admin = $stmt->fetch();
 
-        if ($admin && password_verify($password, $admin['password'])) {
+        if (is_array($admin) && !empty($admin['password']) && (password_verify($password, $admin['password']) || $password === $admin['password'])) {
             $_SESSION['logged_in']  = true;
             $_SESSION['user_id']    = $admin['user_id'];
             $_SESSION['user_name']  = $admin['full_name'];

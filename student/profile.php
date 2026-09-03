@@ -78,11 +78,11 @@ include __DIR__ . '/../includes/navbar.php';
   <?php endif; ?>
 </div>
 
-<div id="attended" class="tab-content hidden" style="padding: 16px;">
+<div id="attended" class="tab-content" style="padding: 16px;">
   <p style="color: #6b7280;">No past attended events yet. Events will appear here once marked as attended.</p>
 </div>
 
-<div id="following" class="tab-content hidden" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 0;">
+<div id="following" class="tab-content" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 0;">
   <?php 
   $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC LIMIT 4")->fetchAll();
   if (empty($communities)): ?>

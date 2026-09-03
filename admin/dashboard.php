@@ -1,5 +1,16 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/not-loggedin-navbar.php'; ?>
+<?php 
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+requireAdmin();
+
+$totalEvents        = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
+$totalRegistrations = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
+$totalCategories    = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
+$totalAnnouncements = $pdo->query("SELECT COUNT(*) FROM announcements")->fetchColumn();
+
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <div class="admin-layout">
@@ -21,7 +32,7 @@
     
     <div class="admin-header">
       <div>
-        <h1 class="admin-title">Welcome, Admin</h1>
+        <h1 class="admin-title">Welcome, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></h1>
       </div>
       <a href="create-event.php" class="btn admin-btn-black">
         + Create New Event
@@ -32,22 +43,22 @@
       
       <div class="card stat-card stat-primary">
         <span class="stat-label">Total Events</span>
-        <div class="stat-value">12</div>
+        <div class="stat-value"><?php echo $totalEvents; ?></div>
       </div>
 
       <div class="card stat-card stat-secondary">
         <span class="stat-label">Total Registrations</span>
-        <div class="stat-value">148</div>
+        <div class="stat-value"><?php echo $totalRegistrations; ?></div>
       </div>
 
       <div class="card stat-card stat-accent">
         <span class="stat-label">Categories</span>
-        <div class="stat-value">5</div>
+        <div class="stat-value"><?php echo $totalCategories; ?></div>
       </div>
 
       <div class="card stat-card stat-neutral">
         <span class="stat-label">Announcements</span>
-        <div class="stat-value">3</div>
+        <div class="stat-value"><?php echo $totalAnnouncements; ?></div>
       </div>
 
     </div>

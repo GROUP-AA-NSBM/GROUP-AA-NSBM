@@ -70,7 +70,11 @@ if (isLoggedIn() && !empty($event)) {
 }
 
 include '../includes/header.php'; 
-include '../includes/navbar.php'; 
+if (isLoggedIn()) {
+    include '../includes/navbar.php'; 
+} else {
+    include '../includes/not-loggedin-navbar.php'; 
+}
 ?>
 <link rel = "stylesheet" href = "../assets/css/student.css">
 
@@ -100,7 +104,16 @@ include '../includes/navbar.php';
         <h4><?php echo htmlspecialchars($event['venue'] ?? 'NSBM Green University'); ?></h4>
     </div>
 
-    <?php if (!$isRegistered): ?>
+    <?php if (!isLoggedIn()): ?>
+      <div class="registration" style="padding: 24px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; text-align: center; margin-bottom: 24px;">
+        <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Want to register for this event?</h4>
+        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 16px;">Sign in with your NSBM student email to book your slot.</p>
+        <a href="/GROUP-AA-NSBM/auth/login.php" class="btn btn-primary btn-sm" style="padding: 0 24px;">Log In to Register</a>
+        <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 10px;">
+          Don't have an account? <a href="/GROUP-AA-NSBM/auth/register.php" style="color: #39B54A; text-decoration: underline; font-weight: 600;">Create one here</a>
+        </p>
+      </div>
+    <?php elseif (!$isRegistered): ?>
     <div class = "registration">
         <form class = "form-register" action="" method="POST">
             <input type="hidden" name="event_id" value="<?php echo $event['event_id'] ?? 1; ?>">
