@@ -8,6 +8,7 @@ $eventId = intval($_GET['id'] ?? $_POST['event_id'] ?? 0);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = trim($_POST['title'] ?? '');
     $categoryId  = intval($_POST['category_id'] ?? 0);
+    $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
     $location    = trim($_POST['location'] ?? '');
     $eventDate   = trim($_POST['event_date'] ?? '');
     $eventTime   = trim($_POST['event_time'] ?? '');
@@ -25,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $targetPath = $uploadDir . $fileName;
             if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
                 $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
-                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
-                $stmt->execute([$title, $description, $location, $startTime, $bannerUrl, $eventId]);
+                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
+                $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl, $eventId]);
             }
         } else {
-            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, venue = ?, start_time = ? WHERE event_id = ?');
-            $stmt->execute([$title, $description, $location, $startTime, $eventId]);
+            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
+            $stmt->execute([$title, $description, $communityId, $location, $startTime, $eventId]);
         }
 
         if ($categoryId > 0) {
@@ -60,13 +61,14 @@ if (!$event) {
     exit;
 }
 
-$categories = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
+$categories  = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
+$communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetchAll();
 
 $eventDate = date('Y-m-d', strtotime($event['start_time']));
 $eventTime = date('H:i', strtotime($event['start_time']));
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -81,7 +83,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -119,10 +120,22 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
-              <input type="text" name="location" id="eventLocation" value="<?php echo htmlspecialchars($event['venue']); ?>" class="input input-bordered" style="width: 100%;" required />
+              <label class="label"><span style="font-weight: 600;">Hosting Community / Club</span></label>
+              <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
+                <option value="">None / Independent</option>
+                <?php foreach ($communities as $com): ?>
+                  <option value="<?php echo $com['community_id']; ?>" <?php echo ($com['community_id'] == ($event['community_id'] ?? 0)) ? 'selected' : ''; ?>>
+                    <?php echo htmlspecialchars($com['name']); ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
             </div>
 
+          </div>
+
+          <div class="form-control">
+            <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
+            <input type="text" name="location" id="eventLocation" value="<?php echo htmlspecialchars($event['venue']); ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">

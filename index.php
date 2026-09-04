@@ -14,7 +14,6 @@ $events = $pdo->query("
     FROM events e 
     LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
     LEFT JOIN categories c ON ec.category_id = c.category_id 
-    WHERE e.status = 'published' 
     ORDER BY e.start_time ASC
 ")->fetchAll();
 
@@ -54,7 +53,7 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
     <?php if (empty($events)): ?>
-      <p class="text-gray-500 py-8">No upcoming events scheduled right now. Check back soon!</p>
+      <p class="text-gray-900 font-medium py-8">No upcoming events scheduled right now. Check back soon!</p>
     <?php else: ?>
       <?php foreach ($events as $ev): ?>
         <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
@@ -66,9 +65,9 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
           </figure>
           <div class="card-body">
             <span class="text-xs font-semibold text-primary"><?php echo htmlspecialchars($ev['category_name'] ?? 'Event'); ?></span>
-            <h2 class="card-title text-lg"><?php echo htmlspecialchars($ev['title']); ?></h2>
-            <p class="text-sm text-gray-600 line-clamp-2"><?php echo htmlspecialchars($ev['description'] ?? ''); ?></p>
-            <p class="text-xs text-gray-500 mt-2">
+            <h2 class="card-title text-lg text-black"><?php echo htmlspecialchars($ev['title']); ?></h2>
+            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($ev['description'] ?? ''); ?></p>
+            <p class="text-xs text-gray-900 font-medium mt-2">
               📍 <?php echo htmlspecialchars($ev['venue']); ?> &bull; 🗓️ <?php echo date('M d, Y', strtotime($ev['start_time'])); ?>
             </p>
             <div class="card-actions justify-end mt-4">
@@ -83,14 +82,14 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
 </section>
 
 
-<section class="categories">
+<section class="categories" id="communities">
   <div class="p-text text-left mb-6">
     <h2 class="text-2xl font-bold">Explore Communities</h2>
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
     <?php if (empty($communities)): ?>
-      <p class="text-gray-500">No communities found.</p>
+      <p class="text-gray-900 font-medium">No communities found.</p>
     <?php else: ?>
       <?php foreach ($communities as $com): ?>
         <div class="card bg-base-100 border border-gray-200 block text-current" style="min-width: 220px;">

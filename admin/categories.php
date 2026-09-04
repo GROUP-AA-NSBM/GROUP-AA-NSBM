@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $categories = $pdo->query("SELECT * FROM categories ORDER BY category_id ASC")->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -32,7 +32,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-primary">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -70,7 +69,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
             <tbody>
               <?php if (empty($categories)): ?>
                 <tr>
-                  <td colspan="3" style="text-align: center; padding: 24px; color: #6b7280;">No categories found.</td>
+                  <td colspan="3" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No categories found.</td>
                 </tr>
               <?php else: ?>
                 <?php foreach ($categories as $index => $cat): ?>

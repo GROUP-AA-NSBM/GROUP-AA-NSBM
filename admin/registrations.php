@@ -4,14 +4,14 @@ require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 
 $registrations = $pdo->query("
     SELECT r.*, e.title AS event_title, u.full_name AS user_full_name, u.email AS user_email_acc
     FROM event_registrations r
     JOIN events e ON r.event_id = e.event_id
     LEFT JOIN users u ON r.user_id = u.user_id
-    ORDER BY r.registered_at DESC
+    ORDER BY r.registration_id DESC
 ")->fetchAll();
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
@@ -27,7 +27,6 @@ $registrations = $pdo->query("
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-primary">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -45,30 +44,32 @@ $registrations = $pdo->query("
               <th>#</th>
               <th>Student Name</th>
               <th>Student Email</th>
+              <th>Faculty</th>
               <th>Event Registered</th>
               <th>Student ID / Batch</th>
-              <th>Date Signed Up</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             <?php if (empty($registrations)): ?>
               <tr>
-                <td colspan="6" style="text-align: center; padding: 24px; color: #6b7280;">No student registrations recorded yet.</td>
+                <td colspan="7" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No student registrations recorded yet.</td>
               </tr>
             <?php else: ?>
               <?php foreach ($registrations as $index => $reg): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td style="font-weight: bold;"><?php echo htmlspecialchars(!empty($reg['student_name']) ? $reg['student_name'] : ($reg['user_full_name'] ?? 'Student')); ?></td>
-                  <td><?php echo htmlspecialchars(!empty($reg['student_email']) ? $reg['student_email'] : ($reg['user_email_acc'] ?? '-')); ?></td>
-                  <td><?php echo htmlspecialchars($reg['event_title']); ?></td>
-                  <td>
+                  <td style="font-weight: bold; color: #000000;"><?php echo htmlspecialchars(!empty($reg['student_name']) ? $reg['student_name'] : ($reg['user_full_name'] ?? 'Student')); ?></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars(!empty($reg['student_email']) ? $reg['student_email'] : ($reg['user_email_acc'] ?? '-')); ?></td>
+                  <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($reg['faculty'] ?? '-'); ?></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars($reg['event_title']); ?></td>
+                  <td style="color: #111827;">
                     <?php echo htmlspecialchars($reg['student_id'] ?? '-'); ?>
                     <?php if (!empty($reg['batch'])): ?>
-                      <br><span style="font-size: 0.75rem; color: #6b7280;">Batch: <?php echo htmlspecialchars($reg['batch']); ?></span>
+                      <br><span style="font-size: 0.75rem; color: #111827; font-weight: 600;">Batch: <?php echo htmlspecialchars($reg['batch']); ?></span>
                     <?php endif; ?>
                   </td>
-                  <td style="font-size: 0.875rem; color: #6b7280;"><?php echo date('M d, Y h:i A', strtotime($reg['registered_at'])); ?></td>
+                  <td><span class="badge badge-success"><?php echo htmlspecialchars($reg['status'] ?? 'registered'); ?></span></td>
                 </tr>
               <?php endforeach; ?>
             <?php endif; ?>

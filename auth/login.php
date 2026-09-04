@@ -60,8 +60,8 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
     <form id="loginForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
-        <h2 class="text-3xl font-extrabold">Welcome Back</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign in to NSBM Event Hub</p>
+        <h2 class="text-3xl font-extrabold text-black">Welcome Back</h2>
+        <p class="text-sm text-gray-900 font-medium mt-1">Sign in to NSBM Event Hub</p>
       </div>
 
       <?php if (!empty($errorMessage)): ?>
@@ -107,9 +107,9 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-4">
+      <p class="text-center text-sm text-gray-900 mt-4">
         Don't have an account? 
-        <a href="register.php" class="link linkfont-semibold">Register here</a>
+        <a href="register.php" class="link font-semibold text-primary">Register here</a>
       </p>
 
     </form>

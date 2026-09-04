@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // If admin record does not exist yet in this database, auto-create it on default login
         if (!$admin && $email === 'admin@nsbm.ac.lk' && $password === 'admin123') {
             $adminHash = password_hash('admin123', PASSWORD_DEFAULT);
-            $ins = $pdo->prepare("INSERT INTO users (full_name, email, password, faculty, role) VALUES ('System Admin', 'admin@nsbm.ac.lk', ?, 'Administration', 'admin')");
+            $ins = $pdo->prepare("INSERT INTO users (full_name, email, password, faculty, role) VALUES ('NSBM IT Department', 'admin@nsbm.ac.lk', ?, 'Administration', 'admin')");
             $ins->execute([$adminHash]);
             
             $stmt->execute([$email]);

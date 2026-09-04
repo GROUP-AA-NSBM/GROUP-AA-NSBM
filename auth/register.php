@@ -46,8 +46,8 @@ include '../includes/not-loggedin-navbar.php';
     <form id="registerForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
-        <h2 class="text-3xl font-extrabold">Welcome</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign up to NSBM Event Hub</p>
+        <h2 class="text-3xl font-extrabold text-black">Welcome</h2>
+        <p class="text-sm text-gray-900 font-medium mt-1">Sign up to NSBM Event Hub</p>
       </div>
 
       <?php if (!empty($errorMessage)): ?>
@@ -104,9 +104,9 @@ include '../includes/not-loggedin-navbar.php';
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-4">
+      <p class="text-center text-sm text-gray-900 mt-4">
         Have an account? 
-        <a href="login.php" class="link linkfont-semibold">Log In here</a>
+        <a href="login.php" class="link font-semibold text-primary">Log In here</a>
       </p>
 
     </form>
