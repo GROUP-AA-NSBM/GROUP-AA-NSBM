@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php'; 
 include __DIR__ . '/includes/header.php'; 
 
-if (isLoggedIn()) {
+if (isset($_SESSION['user_id'])) {
     include __DIR__ . '/includes/navbar.php';
 } else {
     include __DIR__ . '/includes/not-loggedin-navbar.php';

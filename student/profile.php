@@ -42,6 +42,9 @@ include __DIR__ . '/../includes/navbar.php';
 <div class = "faculty">
     <h6>Faculty of <?php echo htmlspecialchars(!empty($user['faculty']) ? $user['faculty'] : 'Computing'); ?></h6>
 </div>
+<div style="margin-top: 10px;">
+    <a href="../auth/logout.php" class="btn btn-outline btn-error btn-xs">Log Out</a>
+</div>
 </div>
 </div>
 
