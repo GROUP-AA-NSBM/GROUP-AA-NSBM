@@ -55,23 +55,26 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
     <?php if (empty($events)): ?>
       <p class="text-gray-900 font-medium py-8">No upcoming events scheduled right now. Check back soon!</p>
     <?php else: ?>
-      <?php foreach ($events as $ev): ?>
+      <?php foreach ($events as $event): 
+        $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
+        $categoryName = !empty($event['category_name']) ? $event['category_name'] : 'Event';
+      ?>
         <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
           <figure style="height: 180px; overflow: hidden; background: #eee;">
             <img
-              src="<?php echo htmlspecialchars(!empty($ev['banner_image_url']) ? $ev['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'); ?>"
-              alt="<?php echo htmlspecialchars($ev['title']); ?>" 
+              src="<?php echo htmlspecialchars($banner); ?>"
+              alt="<?php echo htmlspecialchars($event['title']); ?>" 
               style="width: 100%; height: 100%; object-fit: cover;" />
           </figure>
           <div class="card-body">
-            <span class="text-xs font-semibold text-primary"><?php echo htmlspecialchars($ev['category_name'] ?? 'Event'); ?></span>
-            <h2 class="card-title text-lg text-black"><?php echo htmlspecialchars($ev['title']); ?></h2>
-            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($ev['description'] ?? ''); ?></p>
+            <span class="text-xs font-semibold text-primary"><?php echo htmlspecialchars($categoryName); ?></span>
+            <h2 class="card-title text-lg text-black"><?php echo htmlspecialchars($event['title']); ?></h2>
+            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($event['description'] ?? ''); ?></p>
             <p class="text-xs text-gray-900 font-medium mt-2">
-              📍 <?php echo htmlspecialchars($ev['venue']); ?> &bull; 🗓️ <?php echo date('M d, Y', strtotime($ev['start_time'])); ?>
+              <?php echo htmlspecialchars($event['venue']); ?> &bull; <?php echo date('M d, Y', strtotime($event['start_time'])); ?>
             </p>
             <div class="card-actions justify-end mt-4">
-              <a href="student/event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
+              <a href="student/event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
             </div>
           </div>
         </div>
@@ -91,10 +94,10 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
     <?php if (empty($communities)): ?>
       <p class="text-gray-900 font-medium">No communities found.</p>
     <?php else: ?>
-      <?php foreach ($communities as $com): ?>
+      <?php foreach ($communities as $community): ?>
         <div class="card bg-base-100 border border-gray-200 block text-current" style="min-width: 220px;">
           <div class="card-body text-center flex items-center justify-center p-6">
-            <h2 class="card-title text-center m-0 text-base"><?php echo htmlspecialchars($com['name']); ?></h2>
+            <h2 class="card-title text-center m-0 text-base"><?php echo htmlspecialchars($community['name']); ?></h2>
           </div>
         </div>
       <?php endforeach; ?>
@@ -127,6 +130,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-
-
-<?php include './includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

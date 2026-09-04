@@ -1,6 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Admin JS loaded successfully.");
 
 
   const createEventForm = document.querySelector("#createEventForm");

@@ -65,20 +65,22 @@ include __DIR__ . '/../includes/navbar.php';
   <?php if (empty($registeredEvents)): ?>
     <p style="color: #111827; font-weight: 500; padding: 16px;">You have not registered for any campus events yet. Explore upcoming events on the homepage!</p>
   <?php else: ?>
-    <?php foreach ($registeredEvents as $rev): ?>
+    <?php foreach ($registeredEvents as $event): 
+      $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
+    ?>
       <div class="card bg-base-100 shadow-sm" style="width: 280px; border: 1px solid #e5e7eb;">
         <figure style="height: 140px; overflow: hidden;">
           <img
-            src="<?php echo htmlspecialchars(!empty($rev['banner_image_url']) ? $rev['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'); ?>"
-            alt="<?php echo htmlspecialchars($rev['title']); ?>" 
+            src="<?php echo htmlspecialchars($banner); ?>"
+            alt="<?php echo htmlspecialchars($event['title']); ?>" 
             style="width: 100%; height: 100%; object-fit: cover;" />
         </figure>
         <div class="card-body" style="padding: 16px;">
-          <h2 class="card-title text-base text-black"><?php echo htmlspecialchars($rev['title']); ?></h2>
-          <p class="text-xs text-gray-900 font-medium">🗓️ <?php echo date('M d, Y', strtotime($rev['start_time'])); ?></p>
-          <p class="text-xs text-gray-900 font-medium">📍 <?php echo htmlspecialchars($rev['venue']); ?></p>
+          <h2 class="card-title text-base text-black"><?php echo htmlspecialchars($event['title']); ?></h2>
+          <p class="text-xs text-gray-900 font-medium"><?php echo date('M d, Y', strtotime($event['start_time'])); ?></p>
+          <p class="text-xs text-gray-900 font-medium"><?php echo htmlspecialchars($event['venue']); ?></p>
           <div class="card-actions justify-end" style="margin-top: 8px;">
-            <a href="event.php?id=<?php echo $rev['event_id']; ?>" class="btn btn-primary btn-sm">View Details</a>
+            <a href="event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">View Details</a>
           </div>
         </div>
       </div>
@@ -96,11 +98,11 @@ include __DIR__ . '/../includes/navbar.php';
   if (empty($communities)): ?>
     <p style="color: #111827; font-weight: 500;">No clubs or communities followed yet.</p>
   <?php else: ?>
-    <?php foreach ($communities as $com): ?>
+    <?php foreach ($communities as $community): ?>
       <div class="card bg-base-100 shadow-sm" style="width: 240px; border: 1px solid #e5e7eb;">
         <div class="card-body" style="padding: 16px; text-align: center;">
-          <h2 class="card-title text-sm justify-center text-black" style="margin: 0;"><?php echo htmlspecialchars($com['name']); ?></h2>
-          <p class="text-xs text-gray-900 font-medium" style="margin-top: 4px;"><?php echo htmlspecialchars($com['faculty'] ?? 'University Wide'); ?></p>
+          <h2 class="card-title text-sm justify-center text-black" style="margin: 0;"><?php echo htmlspecialchars($community['name']); ?></h2>
+          <p class="text-xs text-gray-900 font-medium" style="margin-top: 4px;"><?php echo htmlspecialchars($community['faculty'] ?? 'University Wide'); ?></p>
           <div class="card-actions justify-center" style="margin-top: 12px;">
             <button class="btn btn-outline btn-xs">Following</button>
           </div>

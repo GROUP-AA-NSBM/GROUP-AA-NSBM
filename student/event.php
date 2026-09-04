@@ -2,7 +2,12 @@
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-$eventId = intval($_GET['id'] ?? $_POST['event_id'] ?? 0);
+$eventId = 0;
+if (isset($_GET['id'])) {
+    $eventId = intval($_GET['id']);
+} elseif (isset($_POST['event_id'])) {
+    $eventId = intval($_POST['event_id']);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     requireLogin();
@@ -69,11 +74,11 @@ if (isLoggedIn() && !empty($event)) {
     }
 }
 
-include '../includes/header.php'; 
+include __DIR__ . '/../includes/header.php'; 
 if (isLoggedIn()) {
-    include '../includes/navbar.php'; 
+    include __DIR__ . '/../includes/navbar.php'; 
 } else {
-    include '../includes/not-loggedin-navbar.php'; 
+    include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 }
 ?>
 <link rel = "stylesheet" href = "../assets/css/student.css">
@@ -87,11 +92,11 @@ if (isLoggedIn()) {
     
     <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
       <div style="background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
-        🎉 Registration successful! See you at the event.
+        Registration successful! See you at the event.
       </div>
     <?php elseif ($isRegistered): ?>
       <div style="background-color: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
-        ✓ You have already registered for this event.
+        You have already registered for this event.
       </div>
     <?php endif; ?>
 
@@ -193,4 +198,4 @@ if (isLoggedIn()) {
 </div>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
