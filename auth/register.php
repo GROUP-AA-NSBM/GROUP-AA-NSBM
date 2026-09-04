@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password'] ?? '');
 
     if (!empty($name) && !empty($email) && !empty($password)) {
-        // Check if email exists
         $checkStmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ? LIMIT 1');
         $checkStmt->execute([$email]);
 

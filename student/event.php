@@ -53,7 +53,6 @@ if ($eventId > 0) {
 }
 
 if (empty($event)) {
-    // Fallback to latest published event
     $event = $pdo->query("
         SELECT e.*, c.name AS category_name, com.name AS community_name 
         FROM events e 
