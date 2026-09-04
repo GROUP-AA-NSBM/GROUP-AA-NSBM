@@ -12,7 +12,7 @@ $events = $pdo->query("
 ")->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -27,7 +27,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -74,17 +73,17 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           <tbody>
             <?php if (empty($events)): ?>
               <tr>
-                <td colspan="6" style="text-align: center; padding: 24px; color: #6b7280;">No campus events found. Click "+ Add New Event" to publish one!</td>
+                <td colspan="6" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No campus events found. Click "+ Add New Event" to publish one!</td>
               </tr>
             <?php else: ?>
               <?php foreach ($events as $index => $ev): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td style="font-weight: bold;"><?php echo htmlspecialchars($ev['title']); ?></td>
-                  <td><?php echo htmlspecialchars($ev['category_name'] ?? 'General'); ?></td>
-                  <td>
+                  <td style="font-weight: bold; color: #000000;"><?php echo htmlspecialchars($ev['title']); ?></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars($ev['category_name'] ?? 'General'); ?></td>
+                  <td style="color: #111827;">
                     <?php echo date('M d, Y', strtotime($ev['start_time'])); ?> <br>
-                    <span style="font-size: 0.75rem; color: #6b7280;"><?php echo date('h:i A', strtotime($ev['start_time'])); ?></span>
+                    <span style="font-size: 0.75rem; color: #111827; font-weight: 600;"><?php echo date('h:i A', strtotime($ev['start_time'])); ?></span>
                   </td>
                   <td><?php echo htmlspecialchars($ev['venue']); ?></td>
                   <td class="admin-actions-cell">

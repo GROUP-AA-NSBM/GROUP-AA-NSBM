@@ -1,16 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Admin JS loaded successfully.");
 
-  const deleteButtons = document.querySelectorAll(".btn-delete");
-  deleteButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      const confirmed = confirm("Are you sure you want to delete this item? This action cannot be undone.");
-      if (!confirmed) {
-        e.preventDefault();
-      }
-    });
-  });
 
   const createEventForm = document.querySelector("#createEventForm");
   if (createEventForm) {

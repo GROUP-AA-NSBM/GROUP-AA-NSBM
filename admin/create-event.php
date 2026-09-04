@@ -8,6 +8,7 @@ $errorMessage = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = trim($_POST['title'] ?? '');
     $categoryId  = intval($_POST['category_id'] ?? 0);
+    $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
     $location    = trim($_POST['location'] ?? '');
     $eventDate   = trim($_POST['event_date'] ?? '');
     $eventTime   = trim($_POST['event_time'] ?? '');
@@ -29,9 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($title) && !empty($location) && !empty($eventDate)) {
-        $adminId = $_SESSION['user_id'] ?? 1;
-        $stmt = $pdo->prepare('INSERT INTO events (title, description, venue, start_time, banner_image_url, status, created_by) VALUES (?, ?, ?, ?, ?, "published", ?)');
-        $stmt->execute([$title, $description, $location, $startTime, $bannerUrl, $adminId]);
+        $stmt = $pdo->prepare('INSERT INTO events (title, description, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl]);
         $eventId = $pdo->lastInsertId();
 
         if ($categoryId > 0) {
@@ -46,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$categories = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
+$categories  = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
+$communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -64,7 +65,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -105,10 +105,20 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
-              <input type="text" name="location" id="eventLocation" placeholder="e.g. Auditorium / Main Ground" class="input input-bordered" style="width: 100%;" required />
+              <label class="label"><span style="font-weight: 600;">Hosting Community / Club</span></label>
+              <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
+                <option value="">None / Independent</option>
+                <?php foreach ($communities as $com): ?>
+                  <option value="<?php echo $com['community_id']; ?>"><?php echo htmlspecialchars($com['name']); ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
 
+          </div>
+
+          <div class="form-control">
+            <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
+            <input type="text" name="location" id="eventLocation" placeholder="e.g. Auditorium / Main Ground" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">

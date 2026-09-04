@@ -17,7 +17,7 @@
 .profile-page .joined-date h6,
 .st-email h6 {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #111827;
   margin: 0.2rem 0;
 }
 .profile-page .faculty h6 {
@@ -164,7 +164,7 @@
 .event-page .form-register label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: #111827;
   margin-bottom: -0.25rem;
 }
 .event-page .community-header {
@@ -184,7 +184,7 @@
   color: #16a34a;
 }
 .event-page .no-attending {
-  color: #6b7280;
+  color: #111827;
 }
 .event-page .radio-item {
   display: flex !important;

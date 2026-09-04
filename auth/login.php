@@ -13,35 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        $isValid = false;
-        if (is_array($user)) {
-            if (!empty($user['password']) && (password_verify($password, $user['password']) || $password === $user['password'])) {
-                $isValid = true;
-            } elseif ($email === 'admin@nsbm.ac.lk' && $password === 'admin123') {
-                $isValid = true;
-            }
-        }
-
-        if ($isValid && is_array($user)) {
-            $_SESSION['logged_in'] = true;
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['user_name'] = $user['full_name'];
+        if ($user && (password_verify($password, $user['password']) || $password === $user['password'])) {
+            $_SESSION['logged_in']  = true;
+            $_SESSION['user_id']    = $user['user_id'];
+            $_SESSION['user_name']  = $user['full_name'];
             $_SESSION['user_email'] = $user['email'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role']       = $user['role'];
 
             if ($user['role'] === 'admin') {
                 header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
                 exit;
             }
 
-            $redirectUrl = $_SESSION['redirect_url'] ?? '/GROUP-AA-NSBM/index.php';
-            unset($_SESSION['redirect_url']);
-
-            if (empty($redirectUrl) || str_contains($redirectUrl, 'register-event.php')) {
-                $redirectUrl = '/GROUP-AA-NSBM/index.php';
-            }
-            
-            header("Location: " . $redirectUrl);
+            header("Location: /GROUP-AA-NSBM/index.php");
             exit;
         } else {
             $errorMessage = 'Invalid email address or password.';
@@ -60,8 +44,8 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
     <form id="loginForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
-        <h2 class="text-3xl font-extrabold">Welcome Back</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign in to NSBM Event Hub</p>
+        <h2 class="text-3xl font-extrabold text-black">Welcome Back</h2>
+        <p class="text-sm text-gray-900 font-medium mt-1">Sign in to NSBM Event Hub</p>
       </div>
 
       <?php if (!empty($errorMessage)): ?>
@@ -107,9 +91,9 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-4">
+      <p class="text-center text-sm text-gray-900 mt-4">
         Don't have an account? 
-        <a href="register.php" class="link linkfont-semibold">Register here</a>
+        <a href="register.php" class="link font-semibold text-primary">Register here</a>
       </p>
 
     </form>

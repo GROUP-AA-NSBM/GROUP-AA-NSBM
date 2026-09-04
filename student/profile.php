@@ -3,16 +3,21 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireLogin();
 
+if (isAdmin()) {
+    header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
+    exit;
+}
+
 $userStmt = $pdo->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
 $userStmt->execute([$_SESSION['user_id']]);
 $user = $userStmt->fetch();
 
 $regEventsStmt = $pdo->prepare("
-    SELECT e.*, r.registered_at, r.status AS reg_status 
+    SELECT e.*, r.status AS reg_status 
     FROM event_registrations r 
     JOIN events e ON r.event_id = e.event_id 
     WHERE r.user_id = ? 
-    ORDER BY r.registered_at DESC
+    ORDER BY r.registration_id DESC
 ");
 $regEventsStmt->execute([$_SESSION['user_id']]);
 $registeredEvents = $regEventsStmt->fetchAll();
@@ -42,6 +47,9 @@ include __DIR__ . '/../includes/navbar.php';
 <div class = "faculty">
     <h6>Faculty of <?php echo htmlspecialchars(!empty($user['faculty']) ? $user['faculty'] : 'Computing'); ?></h6>
 </div>
+<div style="margin-top: 10px;">
+    <a href="../auth/logout.php" class="btn btn-outline btn-error btn-xs">Log Out</a>
+</div>
 </div>
 </div>
 
@@ -55,22 +63,24 @@ include __DIR__ . '/../includes/navbar.php';
 
 <div id = "registered" class = "tab-content active" style="display: flex; flex-wrap: wrap; gap: 16px;">
   <?php if (empty($registeredEvents)): ?>
-    <p style="color: #6b7280; padding: 16px;">You have not registered for any campus events yet. Explore upcoming events on the homepage!</p>
+    <p style="color: #111827; font-weight: 500; padding: 16px;">You have not registered for any campus events yet. Explore upcoming events on the homepage!</p>
   <?php else: ?>
-    <?php foreach ($registeredEvents as $rev): ?>
+    <?php foreach ($registeredEvents as $event): 
+      $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
+    ?>
       <div class="card bg-base-100 shadow-sm" style="width: 280px; border: 1px solid #e5e7eb;">
         <figure style="height: 140px; overflow: hidden;">
           <img
-            src="<?php echo htmlspecialchars(!empty($rev['banner_image_url']) ? $rev['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'); ?>"
-            alt="<?php echo htmlspecialchars($rev['title']); ?>" 
+            src="<?php echo htmlspecialchars($banner); ?>"
+            alt="<?php echo htmlspecialchars($event['title']); ?>" 
             style="width: 100%; height: 100%; object-fit: cover;" />
         </figure>
         <div class="card-body" style="padding: 16px;">
-          <h2 class="card-title text-base"><?php echo htmlspecialchars($rev['title']); ?></h2>
-          <p class="text-xs text-gray-500">🗓️ <?php echo date('M d, Y', strtotime($rev['start_time'])); ?></p>
-          <p class="text-xs text-gray-500">📍 <?php echo htmlspecialchars($rev['venue']); ?></p>
+          <h2 class="card-title text-base text-black"><?php echo htmlspecialchars($event['title']); ?></h2>
+          <p class="text-xs text-gray-900 font-medium"><?php echo date('M d, Y', strtotime($event['start_time'])); ?></p>
+          <p class="text-xs text-gray-900 font-medium"><?php echo htmlspecialchars($event['venue']); ?></p>
           <div class="card-actions justify-end" style="margin-top: 8px;">
-            <a href="event.php?id=<?php echo $rev['event_id']; ?>" class="btn btn-primary btn-sm">View Details</a>
+            <a href="event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">View Details</a>
           </div>
         </div>
       </div>
@@ -79,20 +89,20 @@ include __DIR__ . '/../includes/navbar.php';
 </div>
 
 <div id="attended" class="tab-content" style="padding: 16px;">
-  <p style="color: #6b7280;">No past attended events yet. Events will appear here once marked as attended.</p>
+  <p style="color: #111827; font-weight: 500;">No past attended events yet. Events will appear here once marked as attended.</p>
 </div>
 
 <div id="following" class="tab-content" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 0;">
   <?php 
   $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC LIMIT 4")->fetchAll();
   if (empty($communities)): ?>
-    <p style="color: #6b7280;">No clubs or communities followed yet.</p>
+    <p style="color: #111827; font-weight: 500;">No clubs or communities followed yet.</p>
   <?php else: ?>
-    <?php foreach ($communities as $com): ?>
+    <?php foreach ($communities as $community): ?>
       <div class="card bg-base-100 shadow-sm" style="width: 240px; border: 1px solid #e5e7eb;">
         <div class="card-body" style="padding: 16px; text-align: center;">
-          <h2 class="card-title text-sm justify-center" style="margin: 0;"><?php echo htmlspecialchars($com['name']); ?></h2>
-          <p class="text-xs text-gray-500" style="margin-top: 4px;"><?php echo htmlspecialchars($com['faculty'] ?? 'University Wide'); ?></p>
+          <h2 class="card-title text-sm justify-center text-black" style="margin: 0;"><?php echo htmlspecialchars($community['name']); ?></h2>
+          <p class="text-xs text-gray-900 font-medium" style="margin-top: 4px;"><?php echo htmlspecialchars($community['faculty'] ?? 'University Wide'); ?></p>
           <div class="card-actions justify-center" style="margin-top: 12px;">
             <button class="btn btn-outline btn-xs">Following</button>
           </div>

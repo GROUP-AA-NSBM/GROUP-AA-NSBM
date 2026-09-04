@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC")->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -33,7 +33,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-primary">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 
@@ -79,14 +78,14 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
             <tbody>
               <?php if (empty($announcements)): ?>
                 <tr>
-                  <td colspan="4" style="text-align: center; padding: 24px; color: #6b7280;">No announcements posted yet.</td>
+                  <td colspan="4" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No announcements posted yet.</td>
                 </tr>
               <?php else: ?>
                 <?php foreach ($announcements as $index => $ann): ?>
                   <tr>
                     <th><?php echo $index + 1; ?></th>
-                    <td style="font-weight: bold;"><?php echo htmlspecialchars($ann['title']); ?></td>
-                    <td style="font-size: 0.875rem; color: #6b7280;"><?php echo date('M d, Y', strtotime($ann['created_at'])); ?></td>
+                    <td style="font-weight: bold; color: #000000;"><?php echo htmlspecialchars($ann['title']); ?></td>
+                    <td style="font-size: 0.875rem; color: #111827; font-weight: 600;"><?php echo date('M d, Y', strtotime($ann['created_at'])); ?></td>
                     <td style="text-align: center;">
                       <a href="delete-announcement.php?id=<?php echo $ann['announcement_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
                     </td>

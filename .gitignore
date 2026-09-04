@@ -1,18 +1,5 @@
-# Environment / secrets
-.env
 includes/db.php
-
-# OS
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Uploaded files
 uploads/*
 !uploads/.gitkeep
-
-# Graphify
 graphify-out/

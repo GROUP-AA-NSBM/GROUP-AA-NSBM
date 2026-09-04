@@ -9,7 +9,7 @@ $totalCategories    = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColum
 $totalAnnouncements = $pdo->query("SELECT COUNT(*) FROM announcements")->fetchColumn();
 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -24,7 +24,6 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       <a href="categories.php" class="btn btn-ghost">Categories</a>
       <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
-      <a href="../auth/logout.php" class="btn btn-outline btn-error">Logout</a>
     </nav>
   </aside>
 

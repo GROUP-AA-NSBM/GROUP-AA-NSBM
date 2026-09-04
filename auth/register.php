@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password'] ?? '');
 
     if (!empty($name) && !empty($email) && !empty($password)) {
-        // Check if email exists
         $checkStmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ? LIMIT 1');
         $checkStmt->execute([$email]);
 
@@ -37,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include '../includes/header.php'; 
-include '../includes/not-loggedin-navbar.php'; 
+include __DIR__ . '/../includes/header.php'; 
+include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 
 <div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
@@ -46,8 +45,8 @@ include '../includes/not-loggedin-navbar.php';
     <form id="registerForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
-        <h2 class="text-3xl font-extrabold">Welcome</h2>
-        <p class="text-sm text-gray-500 mt-1">Sign up to NSBM Event Hub</p>
+        <h2 class="text-3xl font-extrabold text-black">Welcome</h2>
+        <p class="text-sm text-gray-900 font-medium mt-1">Sign up to NSBM Event Hub</p>
       </div>
 
       <?php if (!empty($errorMessage)): ?>
@@ -104,9 +103,9 @@ include '../includes/not-loggedin-navbar.php';
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-4">
+      <p class="text-center text-sm text-gray-900 mt-4">
         Have an account? 
-        <a href="login.php" class="link linkfont-semibold">Log In here</a>
+        <a href="login.php" class="link font-semibold text-primary">Log In here</a>
       </p>
 
     </form>
