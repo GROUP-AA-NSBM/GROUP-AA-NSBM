@@ -6,7 +6,6 @@ requireAdmin();
 $totalEvents        = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
 $totalRegistrations = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
 $totalCategories    = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
-$totalAnnouncements = $pdo->query("SELECT COUNT(*) FROM announcements")->fetchColumn();
 
 include __DIR__ . '/../includes/header.php'; 
 include __DIR__ . '/../includes/admin-navbar.php'; 
@@ -22,7 +21,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -55,14 +53,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
         <div class="stat-value"><?php echo $totalCategories; ?></div>
       </div>
 
-      <div class="card stat-card stat-neutral">
-        <span class="stat-label">Announcements</span>
-        <div class="stat-value"><?php echo $totalAnnouncements; ?></div>
-      </div>
-
     </div>
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

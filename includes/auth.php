@@ -4,24 +4,23 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 function isLoggedIn() {
-    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+    return isset($_SESSION['user_id']);
 }
 
 function isAdmin() {
-    return isLoggedIn() && isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 }
 
 function requireLogin() {
-    if (!isLoggedIn()) {
-        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'] ?? '/GROUP-AA-NSBM/index.php';
+    if (!isset($_SESSION['user_id'])) {
         header("Location: /GROUP-AA-NSBM/auth/login.php");
         exit;
     }
 }
 
 function requireAdmin() {
-    if (!isAdmin()) {
-        header("Location: /GROUP-AA-NSBM/admin/login.php");
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+        header("Location: /GROUP-AA-NSBM/auth/login.php");
         exit;
     }
 }

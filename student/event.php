@@ -2,71 +2,56 @@
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-$eventId = 0;
-if (isset($_GET['id'])) {
-    $eventId = intval($_GET['id']);
-} elseif (isset($_POST['event_id'])) {
-    $eventId = intval($_POST['event_id']);
-}
+$eventId = isset($_GET['id']) ? intval($_GET['id']) : 1;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     requireLogin();
 
-    $userId       = $_SESSION['user_id'] ?? 0;
-    $studentName  = trim($_POST['fname'] ?? '');
-    $studentEmail = trim($_POST['emailadd'] ?? '');
-    $faculty      = trim($_POST['faculty'] ?? '');
-    $contactNo    = trim($_POST['contnumber'] ?? '');
-    $studentId    = trim($_POST['stid'] ?? '');
-    $batch        = trim($_POST['batchno'] ?? '');
-    $year         = trim($_POST['year'] ?? '');
+    $userId       = $_SESSION['user_id'];
+    $studentName  = $_POST['fname'];
+    $studentEmail = $_POST['emailadd'];
+    $faculty      = $_POST['faculty'];
+    $contactNo    = $_POST['contnumber'];
+    $studentId    = $_POST['stid'];
+    $batch        = $_POST['batchno'];
+    $year         = $_POST['year'];
 
-    if ($eventId > 0 && $userId > 0) {
-        $checkStmt = $pdo->prepare('SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ? LIMIT 1');
-        $checkStmt->execute([$eventId, $userId]);
-        
-        if ($checkStmt->fetch()) {
-            header('Location: event.php?id=' . $eventId . '&status=already_registered');
-            exit;
-        }
-
-        $insertStmt = $pdo->prepare('INSERT INTO event_registrations (event_id, user_id, student_name, student_email, faculty, contact_number, student_id, batch, academic_year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "registered")');
-        $insertStmt->execute([$eventId, $userId, $studentName, $studentEmail, $faculty, $contactNo, $studentId, $batch, $year]);
-
-        header('Location: event.php?id=' . $eventId . '&status=success');
+    $checkStmt = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
+    $checkStmt->execute([$eventId, $userId]);
+    
+    if ($checkStmt->fetch()) {
+        header("Location: event.php?id=$eventId&status=already_registered");
         exit;
+    }
+
+    $insertStmt = $pdo->prepare("INSERT INTO event_registrations (event_id, user_id, student_name, student_email, faculty, contact_number, student_id, batch, academic_year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'registered')");
+    $insertStmt->execute([$eventId, $userId, $studentName, $studentEmail, $faculty, $contactNo, $studentId, $batch, $year]);
+
+    header("Location: event.php?id=$eventId&status=success");
+    exit;
+}
+
+$stmt = $pdo->prepare("SELECT * FROM events WHERE event_id = ?");
+$stmt->execute([$eventId]);
+$event = $stmt->fetch();
+
+if (!$event) {
+    $event = $pdo->query("SELECT * FROM events ORDER BY start_time ASC LIMIT 1")->fetch();
+}
+
+$communityName = "";
+if (!empty($event['community_id'])) {
+    $comStmt = $pdo->prepare("SELECT name FROM communities WHERE community_id = ?");
+    $comStmt->execute([$event['community_id']]);
+    $com = $comStmt->fetch();
+    if ($com) {
+        $communityName = $com['name'];
     }
 }
 
-if ($eventId > 0) {
-    $stmt = $pdo->prepare("
-        SELECT e.*, c.name AS category_name, com.name AS community_name 
-        FROM events e 
-        LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-        LEFT JOIN categories c ON ec.category_id = c.category_id 
-        LEFT JOIN communities com ON e.community_id = com.community_id 
-        WHERE e.event_id = ? 
-        LIMIT 1
-    ");
-    $stmt->execute([$eventId]);
-    $event = $stmt->fetch();
-}
-
-if (empty($event)) {
-    $event = $pdo->query("
-        SELECT e.*, c.name AS category_name, com.name AS community_name 
-        FROM events e 
-        LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-        LEFT JOIN categories c ON ec.category_id = c.category_id 
-        LEFT JOIN communities com ON e.community_id = com.community_id 
-        ORDER BY e.start_time ASC 
-        LIMIT 1
-    ")->fetch();
-}
-
 $isRegistered = false;
-if (isLoggedIn() && !empty($event)) {
-    $regCheck = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ? LIMIT 1");
+if (isLoggedIn() && $event) {
+    $regCheck = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
     $regCheck->execute([$event['event_id'], $_SESSION['user_id']]);
     if ($regCheck->fetch()) {
         $isRegistered = true;
@@ -90,13 +75,13 @@ if (isLoggedIn()) {
     </div>
     
     <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
-      <div style="background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+      <div style="background-color: #ffffff; color: #16a34a; margin-bottom: 16px; font-weight: 600; font-size: 1rem;">
         Registration successful! See you at the event.
       </div>
     <?php elseif ($isRegistered): ?>
-      <div style="background-color: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+      <p style="color: #0369a1; font-weight: 600; margin-bottom: 16px;">
         You have already registered for this event.
-      </div>
+      </p>
     <?php endif; ?>
 
     <div class = "date-time">
@@ -111,7 +96,7 @@ if (isLoggedIn()) {
     <?php if (!isLoggedIn()): ?>
       <div class="registration" style="padding: 24px; background: #f8fafc; border: 1px solid #d1d5db; border-radius: 12px; text-align: center; margin-bottom: 24px;">
         <h4 style="font-size: 1.125rem; font-weight: 700; color: #000000; margin-bottom: 6px;">Want to register for this event?</h4>
-        <p style="font-size: 0.875rem; color: #111827; margin-bottom: 16px;">Sign in with your NSBM student email to book your slot.</p>
+        <p style="font-size: 0.875rem; color: #111827; margin-bottom: 16px;">Sign in with your email to book your slot.</p>
         <a href="/GROUP-AA-NSBM/auth/login.php" class="btn btn-primary btn-sm" style="padding: 0 24px;">Log In to Register</a>
         <p style="font-size: 0.8rem; color: #111827; margin-top: 10px;">
           Don't have an account? <a href="/GROUP-AA-NSBM/auth/register.php" style="color: #39B54A; text-decoration: underline; font-weight: 600;">Create one here</a>
@@ -166,7 +151,7 @@ if (isLoggedIn()) {
                 </div>
             </div>
             
-            <button type="submit" class="btn btn-success text-white" style="margin-top: 12px;">Register here!</button>
+            <button type="submit" class="btn btn-primary text-white shadow-none" style="margin-top: 12px; box-shadow: none !important;">Register here</button>
         </form>
     </div>
     <?php endif; ?>
@@ -174,19 +159,13 @@ if (isLoggedIn()) {
     <div class = "about-event">
         <p><?php echo nl2br(htmlspecialchars($event['description'] ?? 'Event details coming soon.')); ?></p>
     </div>
+    <?php if (!empty($communityName)): ?>
     <div class="community-header">
       <div class="community-name">
-        <h4>Hosted by: 
-          <?php if (!empty($event['community_name'])): ?>
-            <a href="/GROUP-AA-NSBM/index.php#communities" style="color: #39B54A; text-decoration: underline; font-weight: 700;">
-              <?php echo htmlspecialchars($event['community_name']); ?>
-            </a>
-          <?php else: ?>
-            <span>NSBM Student Association</span>
-          <?php endif; ?>
-        </h4>
+        <h4>Hosted by: <span style="color: #39B54A; font-weight: 700;"><?php echo htmlspecialchars($communityName); ?></span></h4>
       </div>
     </div>
+    <?php endif; ?>
   </div>
 
   <div class="right-content">

@@ -6,7 +6,6 @@ CREATE TABLE users (
     full_name   VARCHAR(100) NOT NULL,
     email       VARCHAR(100) NOT NULL,
     password    VARCHAR(255) NOT NULL,
-    faculty     VARCHAR(100),
     role        VARCHAR(20)  DEFAULT 'student'
 );
 
@@ -29,16 +28,11 @@ CREATE TABLE events (
     event_id         INT AUTO_INCREMENT PRIMARY KEY,
     title            VARCHAR(150) NOT NULL,
     description      TEXT,
+    category_id      INT,
     community_id     INT,
     venue            VARCHAR(100) NOT NULL,
     start_time       DATETIME NOT NULL,
     banner_image_url VARCHAR(255)
-);
-
-
-CREATE TABLE event_categories (
-    event_id    INT NOT NULL,
-    category_id INT NOT NULL
 );
 
 
@@ -54,12 +48,4 @@ CREATE TABLE event_registrations (
     batch           VARCHAR(50),
     academic_year   VARCHAR(20),
     status          VARCHAR(20) DEFAULT 'registered'
-);
-
-
-CREATE TABLE announcements (
-    announcement_id INT AUTO_INCREMENT PRIMARY KEY,
-    title           VARCHAR(150) NOT NULL,
-    message         TEXT NOT NULL,
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

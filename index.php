@@ -9,14 +9,7 @@ if (isset($_SESSION['user_id'])) {
     include __DIR__ . '/includes/not-loggedin-navbar.php';
 }
 
-$events = $pdo->query("
-    SELECT e.*, c.name AS category_name 
-    FROM events e 
-    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-    LEFT JOIN categories c ON ec.category_id = c.category_id 
-    ORDER BY e.start_time ASC
-")->fetchAll();
-
+$events = $pdo->query("SELECT * FROM events ORDER BY start_time ASC")->fetchAll();
 $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetchAll();
 ?>
 
@@ -55,27 +48,25 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
     <?php if (empty($events)): ?>
       <p class="text-gray-900 font-medium py-8">No upcoming events scheduled right now. Check back soon!</p>
     <?php else: ?>
-      <?php foreach ($events as $event): 
-        $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
-        $categoryName = !empty($event['category_name']) ? $event['category_name'] : 'Event';
-      ?>
+      <?php foreach ($events as $event): ?>
         <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
           <figure style="height: 180px; overflow: hidden; background: #eee;">
             <img
-              src="<?php echo htmlspecialchars($banner); ?>"
+              src="<?php echo $event['banner_image_url']; ?>"
               alt="<?php echo htmlspecialchars($event['title']); ?>" 
               style="width: 100%; height: 100%; object-fit: cover;" />
           </figure>
           <div class="card-body">
-            <span class="text-xs font-semibold text-primary"><?php echo htmlspecialchars($categoryName); ?></span>
             <h2 class="card-title text-lg text-black"><?php echo htmlspecialchars($event['title']); ?></h2>
-            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($event['description'] ?? ''); ?></p>
+            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($event['description']); ?></p>
             <p class="text-xs text-gray-900 font-medium mt-2">
-              <?php echo htmlspecialchars($event['venue']); ?> &bull; <?php echo date('M d, Y', strtotime($event['start_time'])); ?>
+              <?php echo htmlspecialchars($event['venue']); ?> | <?php echo date('M d, Y', strtotime($event['start_time'])); ?>
             </p>
-            <div class="card-actions justify-end mt-4">
-              <a href="student/event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
-            </div>
+            <?php if (isLoggedIn()): ?>
+              <div class="card-actions justify-end mt-4">
+                <a href="student/event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       <?php endforeach; ?>

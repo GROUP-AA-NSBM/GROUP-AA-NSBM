@@ -5,12 +5,12 @@ require_once __DIR__ . '/../includes/auth.php';
 $errorMessage = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name     = trim($_POST['Uname'] ?? '');
-    $email    = trim($_POST['email'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $name     = $_POST['Uname'];
+    $email    = $_POST['email'];
+    $password = $_POST['password'];
 
     if (!empty($name) && !empty($email) && !empty($password)) {
-        $checkStmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ? LIMIT 1');
+        $checkStmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ?');
         $checkStmt->execute([$email]);
 
         if ($checkStmt->fetch()) {
@@ -20,10 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insertStmt = $pdo->prepare('INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, "student")');
             $insertStmt->execute([$name, $email, $hashedPassword]);
 
-            $newUserId = $pdo->lastInsertId();
-
-            $_SESSION['logged_in']  = true;
-            $_SESSION['user_id']    = $newUserId;
+            $_SESSION['user_id']    = $pdo->lastInsertId();
             $_SESSION['user_name']  = $name;
             $_SESSION['user_email'] = $email;
             $_SESSION['role']       = 'student';
@@ -40,8 +37,8 @@ include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 
-<div class="min-h-screen bg-base-200 flex items-center justify-center px-4 py-12">
-  <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+<div class="min-h-screen flex items-center justify-center px-4 py-12" style="background-color: #ffffff;">
+  <div class="card bg-base-100 w-full max-w-md shadow-none" style="border: 1px solid #e5e7eb;">
     <form id="registerForm" action="" method="POST" class="card-body">
       
       <div class="text-center mb-4">
@@ -50,9 +47,9 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       </div>
 
       <?php if (!empty($errorMessage)): ?>
-        <div style="background-color: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-align: center; margin-bottom: 12px;">
+        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 12px;">
           <?php echo htmlspecialchars($errorMessage); ?>
-        </div>
+        </p>
       <?php endif; ?>
 
       <div class="form-control">
@@ -71,13 +68,13 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">NSBM Email Address</span>
+          <span class="label-text font-semibold">Email Address</span>
         </label>
         <input 
           type="email" 
           id="regEmail"
           name="email" 
-          placeholder="student@students.nsbm.ac.lk" 
+          placeholder="student@example.com" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
@@ -111,5 +108,3 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
     </form>
   </div>
 </div>
-
-<script src="../assets/js/validation.js"></script>

@@ -6,13 +6,13 @@ requireAdmin();
 $errorMessage = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title       = trim($_POST['title'] ?? '');
-    $categoryId  = intval($_POST['category_id'] ?? 0);
+    $title       = $_POST['title'];
+    $categoryId  = intval($_POST['category_id']);
     $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
-    $location    = trim($_POST['location'] ?? '');
-    $eventDate   = trim($_POST['event_date'] ?? '');
-    $eventTime   = trim($_POST['event_time'] ?? '');
-    $description = trim($_POST['description'] ?? '');
+    $location    = $_POST['location'];
+    $eventDate   = $_POST['event_date'];
+    $eventTime   = $_POST['event_time'];
+    $description = $_POST['description'];
 
     $startTime = $eventDate . ' ' . $eventTime . ':00';
     $bannerUrl = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
@@ -30,14 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($title) && !empty($location) && !empty($eventDate)) {
-        $stmt = $pdo->prepare('INSERT INTO events (title, description, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl]);
-        $eventId = $pdo->lastInsertId();
-
-        if ($categoryId > 0) {
-            $catStmt = $pdo->prepare('INSERT INTO event_categories (event_id, category_id) VALUES (?, ?)');
-            $catStmt->execute([$eventId, $categoryId]);
-        }
+        $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl]);
 
         header('Location: manage-events.php?status=created');
         exit;
@@ -63,7 +57,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
       <a href="create-event.php" class="btn btn-primary">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -79,9 +72,9 @@ include __DIR__ . '/../includes/admin-navbar.php';
       </div>
 
       <?php if (!empty($errorMessage)): ?>
-        <div style="background-color: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+        <p style="color: red; font-weight: bold; margin-bottom: 16px;">
           <?php echo htmlspecialchars($errorMessage); ?>
-        </div>
+        </p>
       <?php endif; ?>
 
       <div class="card">
@@ -154,8 +147,5 @@ include __DIR__ . '/../includes/admin-navbar.php';
         </form>
       </div>
     </div>
-
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

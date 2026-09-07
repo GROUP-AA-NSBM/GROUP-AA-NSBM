@@ -3,16 +3,16 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$eventId = intval($_GET['id'] ?? $_POST['event_id'] ?? 0);
+$eventId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title       = trim($_POST['title'] ?? '');
-    $categoryId  = intval($_POST['category_id'] ?? 0);
+    $title       = $_POST['title'];
+    $categoryId  = intval($_POST['category_id']);
     $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
-    $location    = trim($_POST['location'] ?? '');
-    $eventDate   = trim($_POST['event_date'] ?? '');
-    $eventTime   = trim($_POST['event_time'] ?? '');
-    $description = trim($_POST['description'] ?? '');
+    $location    = $_POST['location'];
+    $eventDate   = $_POST['event_date'];
+    $eventTime   = $_POST['event_time'];
+    $description = $_POST['description'];
 
     $startTime = $eventDate . ' ' . $eventTime . ':00';
 
@@ -26,19 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $targetPath = $uploadDir . $fileName;
             if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
                 $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
-                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
-                $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl, $eventId]);
+                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
+                $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl, $eventId]);
             }
         } else {
-            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
-            $stmt->execute([$title, $description, $communityId, $location, $startTime, $eventId]);
-        }
-
-        if ($categoryId > 0) {
-            $delCat = $pdo->prepare('DELETE FROM event_categories WHERE event_id = ?');
-            $delCat->execute([$eventId]);
-            $insCat = $pdo->prepare('INSERT INTO event_categories (event_id, category_id) VALUES (?, ?)');
-            $insCat->execute([$eventId, $categoryId]);
+            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
+            $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $eventId]);
         }
 
         header('Location: manage-events.php?status=updated');
@@ -46,13 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$stmt = $pdo->prepare("
-    SELECT e.*, ec.category_id 
-    FROM events e 
-    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-    WHERE e.event_id = ? 
-    LIMIT 1
-");
+$stmt = $pdo->prepare("SELECT * FROM events WHERE event_id = ?");
 $stmt->execute([$eventId]);
 $event = $stmt->fetch();
 
@@ -81,7 +68,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-primary">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -173,5 +159,3 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

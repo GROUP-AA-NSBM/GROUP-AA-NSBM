@@ -4,11 +4,10 @@ require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
 $events = $pdo->query("
-    SELECT e.*, c.name AS category_name 
-    FROM events e 
-    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-    LEFT JOIN categories c ON ec.category_id = c.category_id 
-    ORDER BY e.start_time DESC
+    SELECT events.*, categories.name AS category_name 
+    FROM events 
+    LEFT JOIN categories ON events.category_id = categories.category_id 
+    ORDER BY events.start_time DESC
 ")->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
@@ -25,7 +24,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-primary">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -42,19 +40,9 @@ include __DIR__ . '/../includes/admin-navbar.php';
     </div>
 
     <?php if (isset($_GET['status'])): ?>
-      <?php if ($_GET['status'] === 'created'): ?>
-        <div style="background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
-          Event published successfully!
-        </div>
-      <?php elseif ($_GET['status'] === 'updated'): ?>
-        <div style="background-color: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
-          Event updated successfully!
-        </div>
-      <?php elseif ($_GET['status'] === 'deleted'): ?>
-        <div style="background-color: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
-          Event deleted successfully!
-        </div>
-      <?php endif; ?>
+      <p style="color: #16a34a; font-weight: bold; margin-bottom: 16px;">
+        Action completed successfully!
+      </p>
     <?php endif; ?>
 
     <div class="card admin-card-container">
@@ -88,7 +76,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
                   <td><?php echo htmlspecialchars($ev['venue']); ?></td>
                   <td class="admin-actions-cell">
                     <a href="edit-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
-                    <a href="delete-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                    <a href="delete-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
                   </td>
                 </tr>
               <?php endforeach; ?>
@@ -100,5 +88,3 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>
