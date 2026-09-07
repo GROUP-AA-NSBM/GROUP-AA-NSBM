@@ -98,5 +98,3 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
     </form>
   </div>
 </div>
-
-<script src="../assets/js/validation.js"></script>
