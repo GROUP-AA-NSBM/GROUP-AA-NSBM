@@ -75,7 +75,7 @@ if (isLoggedIn()) {
     </div>
     
     <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
-      <div style="background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+      <div style="background-color: #ffffff; color: #16a34a; margin-bottom: 16px; font-weight: 600; font-size: 1rem;">
         Registration successful! See you at the event.
       </div>
     <?php elseif ($isRegistered): ?>

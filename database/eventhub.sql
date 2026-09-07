@@ -54,11 +54,3 @@ CREATE TABLE event_registrations (
     academic_year   VARCHAR(20),
     status          VARCHAR(20) DEFAULT 'registered'
 );
-
-
-CREATE TABLE announcements (
-    announcement_id INT AUTO_INCREMENT PRIMARY KEY,
-    title           VARCHAR(150) NOT NULL,
-    message         TEXT NOT NULL,
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);

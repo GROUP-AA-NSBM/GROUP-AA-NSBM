@@ -24,7 +24,6 @@ $registrations = $pdo->query("
       <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-primary">Registrations</a>
     </nav>
   </aside>

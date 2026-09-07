@@ -25,7 +25,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-primary">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
-      <a href="announcements.php" class="btn btn-ghost">Announcements</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>

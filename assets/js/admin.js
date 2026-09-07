@@ -26,17 +26,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  const announcementForm = document.querySelector("#announcementForm");
-  if (announcementForm) {
-    announcementForm.addEventListener("submit", function (e) {
-      const title = this.querySelector('input[name="title"]').value.trim();
-      const content = this.querySelector('textarea[name="content"]').value.trim();
-
-      if (!title || !content) {
-        e.preventDefault();
-        alert("Please provide both a title and message content for the announcement.");
-      }
-    });
-  }
 });
