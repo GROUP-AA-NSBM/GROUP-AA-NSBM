@@ -55,13 +55,13 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">NSBM Email Address</span>
+          <span class="label-text font-semibold">Email Address</span>
         </label>
         <input 
           type="email" 
           id="loginEmail"
           name="email" 
-          placeholder="student@students.nsbm.ac.lk" 
+          placeholder="student@example.com" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
