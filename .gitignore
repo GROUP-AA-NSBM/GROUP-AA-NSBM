@@ -2,4 +2,3 @@ includes/db.php
 .DS_Store
 uploads/*
 !uploads/.gitkeep
-graphify-out/

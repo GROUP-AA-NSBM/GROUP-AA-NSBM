@@ -1,1 +1,0 @@
-Import the database file `database/eventhub.sql` into phpMyAdmin.

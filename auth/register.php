@@ -60,7 +60,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="text" 
           id="regName"
           name="Uname" 
-          placeholder="Enter your name" 
+          placeholder="type your name here" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
@@ -74,7 +74,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="email" 
           id="regEmail"
           name="email" 
-          placeholder="student@example.com" 
+          placeholder="type your email here" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
@@ -88,7 +88,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="password" 
           id="regPassword"
           name="password" 
-          placeholder="••••••••" 
+          placeholder="type your password here" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />

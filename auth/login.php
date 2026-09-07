@@ -61,7 +61,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="email" 
           id="loginEmail"
           name="email" 
-          placeholder="student@example.com" 
+          placeholder="type your email here" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
@@ -75,13 +75,10 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           type="password" 
           id="loginPassword"
           name="password" 
-          placeholder="••••••••" 
+          placeholder="type your password here" 
           class="input input-bordered focus:input-primary w-full" 
           required 
         />
-        <label class="label mt-1">
-          <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-        </label>
       </div>
 
       <div class="form-control mt-6">
