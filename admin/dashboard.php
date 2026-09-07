@@ -57,5 +57,3 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

@@ -79,9 +79,9 @@ if (isLoggedIn()) {
         Registration successful! See you at the event.
       </div>
     <?php elseif ($isRegistered): ?>
-      <div style="background-color: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+      <p style="color: #0369a1; font-weight: 600; margin-bottom: 16px;">
         You have already registered for this event.
-      </div>
+      </p>
     <?php endif; ?>
 
     <div class = "date-time">

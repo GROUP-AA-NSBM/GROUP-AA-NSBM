@@ -47,9 +47,9 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       </div>
 
       <?php if (!empty($errorMessage)): ?>
-        <div style="background-color: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-align: center; margin-bottom: 12px;">
+        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 12px;">
           <?php echo htmlspecialchars($errorMessage); ?>
-        </div>
+        </p>
       <?php endif; ?>
 
       <div class="form-control">

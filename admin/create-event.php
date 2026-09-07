@@ -30,14 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($title) && !empty($location) && !empty($eventDate)) {
-        $stmt = $pdo->prepare('INSERT INTO events (title, description, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl]);
-        $eventId = $pdo->lastInsertId();
-
-        if ($categoryId > 0) {
-            $catStmt = $pdo->prepare('INSERT INTO event_categories (event_id, category_id) VALUES (?, ?)');
-            $catStmt->execute([$eventId, $categoryId]);
-        }
+        $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl]);
 
         header('Location: manage-events.php?status=created');
         exit;
@@ -78,9 +72,9 @@ include __DIR__ . '/../includes/admin-navbar.php';
       </div>
 
       <?php if (!empty($errorMessage)): ?>
-        <div style="background-color: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-weight: 600;">
+        <p style="color: red; font-weight: bold; margin-bottom: 16px;">
           <?php echo htmlspecialchars($errorMessage); ?>
-        </div>
+        </p>
       <?php endif; ?>
 
       <div class="card">
@@ -153,8 +147,5 @@ include __DIR__ . '/../includes/admin-navbar.php';
         </form>
       </div>
     </div>
-
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

@@ -26,19 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $targetPath = $uploadDir . $fileName;
             if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
                 $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
-                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
-                $stmt->execute([$title, $description, $communityId, $location, $startTime, $bannerUrl, $eventId]);
+                $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
+                $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl, $eventId]);
             }
         } else {
-            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
-            $stmt->execute([$title, $description, $communityId, $location, $startTime, $eventId]);
-        }
-
-        if ($categoryId > 0) {
-            $delCat = $pdo->prepare('DELETE FROM event_categories WHERE event_id = ?');
-            $delCat->execute([$eventId]);
-            $insCat = $pdo->prepare('INSERT INTO event_categories (event_id, category_id) VALUES (?, ?)');
-            $insCat->execute([$eventId, $categoryId]);
+            $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
+            $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $eventId]);
         }
 
         header('Location: manage-events.php?status=updated');
@@ -46,13 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$stmt = $pdo->prepare("
-    SELECT e.*, ec.category_id 
-    FROM events e 
-    LEFT JOIN event_categories ec ON e.event_id = ec.event_id 
-    WHERE e.event_id = ? 
-    LIMIT 1
-");
+$stmt = $pdo->prepare("SELECT * FROM events WHERE event_id = ?");
 $stmt->execute([$eventId]);
 $event = $stmt->fetch();
 
@@ -172,5 +159,3 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>

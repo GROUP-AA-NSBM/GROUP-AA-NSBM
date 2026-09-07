@@ -76,7 +76,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
                     <th><?php echo $index + 1; ?></th>
                     <td style="font-weight: bold;"><?php echo htmlspecialchars($cat['name']); ?></td>
                     <td style="text-align: center;">
-                      <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error btn-delete">Delete</a>
+                      <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -90,5 +90,3 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   </main>
 </div>
-
-<script src="../assets/js/admin.js"></script>
