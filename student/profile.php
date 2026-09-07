@@ -32,8 +32,8 @@ include __DIR__ . '/../includes/navbar.php';
 <main class = "profile-page">
 <div class = "profile-container">
 <div class="avatar">
-  <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-    <img alt="User Avatar" src="<?php echo htmlspecialchars(!empty($user['profile_pic_url']) ? $user['profile_pic_url'] : 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'); ?>" />
+  <div class="w-24 rounded-full">
+    <img alt="User Avatar" src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
   </div>
 </div>
 <div class = "profile-info">
