@@ -2,6 +2,16 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 #upcoming-events {
   scroll-margin-top: 2rem;
 }

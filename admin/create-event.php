@@ -6,13 +6,13 @@ requireAdmin();
 $errorMessage = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title       = trim($_POST['title'] ?? '');
-    $categoryId  = intval($_POST['category_id'] ?? 0);
+    $title       = $_POST['title'];
+    $categoryId  = intval($_POST['category_id']);
     $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
-    $location    = trim($_POST['location'] ?? '');
-    $eventDate   = trim($_POST['event_date'] ?? '');
-    $eventTime   = trim($_POST['event_time'] ?? '');
-    $description = trim($_POST['description'] ?? '');
+    $location    = $_POST['location'];
+    $eventDate   = $_POST['event_date'];
+    $eventTime   = $_POST['event_time'];
+    $description = $_POST['description'];
 
     $startTime = $eventDate . ' ' . $eventTime . ':00';
     $bannerUrl = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';

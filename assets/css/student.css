@@ -142,10 +142,12 @@
   border: 1px solid #16a34a;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: none !important;
 }
 .event-page .form-register button:hover {
   background-color: #15803d;
   border-color: #15803d;
+  box-shadow: none !important;
 }
 .event-page .registration input {
   border-radius: 8px;

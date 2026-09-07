@@ -6,7 +6,6 @@ CREATE TABLE users (
     full_name   VARCHAR(100) NOT NULL,
     email       VARCHAR(100) NOT NULL,
     password    VARCHAR(255) NOT NULL,
-    faculty     VARCHAR(100),
     role        VARCHAR(20)  DEFAULT 'student'
 );
 
