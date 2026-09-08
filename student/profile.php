@@ -63,7 +63,7 @@ include __DIR__ . '/../includes/navbar.php';
     <?php foreach ($my_events as $event): 
       $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
     ?>
-      <div class="card bg-base-100 shadow-sm" style="width: 280px; border: 1px solid #e5e7eb;">
+      <div class="card bg-base-100" style="width: 280px; border: 1px solid #e5e7eb;">
         <figure style="height: 140px; overflow: hidden;">
           <img
             src="<?php echo htmlspecialchars($banner); ?>"

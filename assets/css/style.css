@@ -53,10 +53,18 @@ body .cards .card {
     max-width: 280px;
 }
 
+*,
+.card,
+.cards .card,
+.navbar,
+.btn,
+.form-container {
+    box-shadow: none !important;
+}
+
 .card,
 .cards .card,
 .form-container {
-    box-shadow: none !important;
     border: 1px solid #e5e7eb !important;
 }
 
