@@ -66,8 +66,36 @@ body .cards .card {
   border: 1px solid #e5e7eb !important;
 }
 
+input:focus,
+input:focus-visible,
+textarea:focus,
+select:focus,
+.input:focus,
+.input:focus-within,
+form:focus,
+.card:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #d1d5db !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
 :root {
   --color-primary: #39B54A;
+  --animation-btn: 0s;
+  --btn-focus-scale: 1;
+}
+
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:focus:active,
+.btn:active:hover,
+.btn:active:focus {
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .btn-primary,
@@ -96,11 +124,17 @@ a.btn-primary {
   transition: none !important;
 }
 
-.btn-ghost {
+.btn-ghost,
+.btn-ghost:hover,
+.btn-ghost:focus,
+.btn-ghost:active {
   background-color: transparent !important;
   border-color: transparent !important;
   color: inherit !important;
   box-shadow: none !important;
+  animation: none !important;
+  transform: none !important;
+  outline: none !important;
 }
 
 .btn-soft.btn-primary {

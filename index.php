@@ -46,7 +46,7 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
     <?php if (empty($events)): ?>
-      <p class="text-gray-900 font-medium py-8">No upcoming events scheduled right now. Check back soon!</p>
+      <p class="text-gray-900 font-medium py-8">No upcoming events scheduled right now.</p>
     <?php else: ?>
       <?php foreach ($events as $event): ?>
         <div class="card bg-base-100 border border-gray-200" style="width: 320px;">

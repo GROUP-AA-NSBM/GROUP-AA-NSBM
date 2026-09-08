@@ -62,7 +62,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           id="loginEmail"
           name="email" 
           placeholder="type your email here" 
-          class="input input-bordered focus:input-primary w-full" 
+          class="input input-bordered w-full" 
           required 
         />
       </div>
@@ -76,7 +76,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
           id="loginPassword"
           name="password" 
           placeholder="type your password here" 
-          class="input input-bordered focus:input-primary w-full" 
+          class="input input-bordered w-full" 
           required 
         />
       </div>

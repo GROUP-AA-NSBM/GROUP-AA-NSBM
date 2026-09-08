@@ -5,7 +5,6 @@
 
   <div class="flex-none flex items-center gap-2" style="padding-right: 16px;">
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-      <a href="/GROUP-AA-NSBM/admin/dashboard.php" class="btn btn-outline btn-primary btn-sm">Admin Dashboard</a>
       <a href="/GROUP-AA-NSBM/auth/logout.php" class="btn btn-ghost btn-sm text-error">Logout</a>
     <?php else: ?>
       <a href="/GROUP-AA-NSBM/student/profile.php" class="btn btn-ghost btn-circle avatar" title="Profile">
