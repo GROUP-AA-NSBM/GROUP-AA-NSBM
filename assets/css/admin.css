@@ -1,9 +1,11 @@
-.admin-layout {
+/* admin panel */
+.admin-page {
   min-height: 100vh;
   display: flex;
   background-color: #ffffff;
 }
 
+/* sidebar */
 .admin-sidebar {
   width: 260px;
   min-width: 260px;
@@ -21,6 +23,7 @@
   margin-bottom: 24px;
 }
 
+/* navigation links */
 .admin-nav {
   display: flex;
   flex-direction: column;
@@ -42,30 +45,30 @@
   color: #000000 !important;
 }
 
-.admin-layout label,
-.admin-layout label span,
-.admin-layout span,
+.admin-page label,
+.admin-page label span,
+.admin-page span,
 .admin-title,
 .admin-subtitle,
 .stat-label,
 .stat-value,
-.admin-table-wrapper table th,
-.admin-table-wrapper table td {
+.table-box table th,
+.table-box table td {
   color: #000000 !important;
 }
 
-.admin-layout input,
-.admin-layout select,
-.admin-layout textarea {
+.admin-page input,
+.admin-page select,
+.admin-page textarea {
   color: #000000 !important;
 }
 
-.admin-layout input::placeholder,
-.admin-layout textarea::placeholder {
+.admin-page input::placeholder,
+.admin-page textarea::placeholder {
   color: #1f2937 !important;
 }
 
-.admin-layout input[type="file"] {
+.admin-page input[type="file"] {
   color: #000000 !important;
 }
 
@@ -76,8 +79,9 @@
 
 .admin-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 28px;
 }
 
@@ -102,7 +106,7 @@
   margin-bottom: 32px;
 }
 
-.admin-layout .card,
+.admin-page .card,
 .stat-card {
   background-color: #ffffff !important;
 }
@@ -152,9 +156,7 @@
   transition: none !important;
 }
 
-.admin-btn-black:hover,
-.admin-btn-black:focus,
-.admin-btn-black:active {
+.admin-btn-black:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #000000 !important;
@@ -167,19 +169,17 @@
   transition: none !important;
 }
 
-.admin-btn-edit:hover,
-.admin-btn-edit:focus,
-.admin-btn-edit:active {
+.admin-btn-edit:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #000000 !important;
 }
 
-.admin-card-container {
+.admin-card-box {
   overflow: hidden;
 }
 
-.admin-table-wrapper {
+.table-box {
   overflow-x: auto;
 }
 
@@ -190,7 +190,7 @@
   gap: 6px;
 }
 
-.admin-form-container {
+.admin-form-box {
   max-width: 768px;
   margin: 0 auto;
 }
@@ -201,7 +201,7 @@
   gap: 16px;
 }
 
-.admin-split-layout {
+.admin-two-col {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 24px;
@@ -213,7 +213,7 @@
   padding-top: 16px;
 }
 
-.admin-login-wrapper {
+.admin-login-area {
   min-height: 80vh;
   display: flex;
   align-items: center;

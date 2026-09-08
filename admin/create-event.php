@@ -3,40 +3,40 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$errorMessage = '';
+$error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = $_POST['title'];
-    $categoryId  = intval($_POST['category_id']);
-    $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
+    $cat_id      = intval($_POST['category_id']);
+    $com_id      = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
     $location    = $_POST['location'];
-    $eventDate   = $_POST['event_date'];
-    $eventTime   = $_POST['event_time'];
+    $date        = $_POST['event_date'];
+    $time        = $_POST['event_time'];
     $description = $_POST['description'];
 
-    $startTime = $eventDate . ' ' . $eventTime . ':00';
-    $bannerUrl = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
+    $start_time = $date . ' ' . $time . ':00';
+    $image      = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
 
     if (!empty($_FILES['banner']['name'])) {
-        $uploadDir = __DIR__ . '/../uploads/events/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+        $target_dir = __DIR__ . '/../uploads/events/';
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
         }
-        $fileName = time() . '_' . basename($_FILES['banner']['name']);
-        $targetPath = $uploadDir . $fileName;
-        if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
-            $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
+        $filename    = time() . '_' . basename($_FILES['banner']['name']);
+        $target_file = $target_dir . $filename;
+        if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
+            $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
         }
     }
 
-    if (!empty($title) && !empty($location) && !empty($eventDate)) {
+    if (!empty($title) && !empty($location) && !empty($date)) {
         $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl]);
+        $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image]);
 
         header('Location: manage-events.php?status=created');
         exit;
     } else {
-        $errorMessage = 'Please fill in all required fields.';
+        $error = 'Please fill in all required fields.';
     }
 }
 
@@ -48,7 +48,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -63,7 +63,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   <main class="admin-main">
     
-    <div class="admin-form-container">
+    <div class="admin-form-box">
   
       <div class="admin-header">
         <div>
@@ -71,9 +71,9 @@ include __DIR__ . '/../includes/admin-navbar.php';
         </div>
       </div>
 
-      <?php if (!empty($errorMessage)): ?>
-        <p style="color: red; font-weight: bold; margin-bottom: 16px;">
-          <?php echo htmlspecialchars($errorMessage); ?>
+      <?php if (!empty($error)): ?>
+        <p style="color: red; margin-bottom: 16px;">
+          <b><?php echo htmlspecialchars($error); ?></b>
         </p>
       <?php endif; ?>
 
@@ -81,14 +81,14 @@ include __DIR__ . '/../includes/admin-navbar.php';
         <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
    
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Event Title</span></label>
-            <input type="text" name="title" id="eventTitle" placeholder="e.g. NSBM Tech Fiesta 2026" class="input input-bordered" style="width: 100%;" required />
+            <label class="label"><b>Event Title</b></label>
+            <input type="text" name="title" id="eventTitle" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Category</span></label>
+              <label class="label"><b>Category</b></label>
               <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
                 <option value="" disabled selected>Select a category</option>
                 <?php foreach ($categories as $cat): ?>
@@ -98,7 +98,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Hosting Community / Club</span></label>
+              <label class="label"><b>Hosting Community / Club</b></label>
               <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
                 <option value="">None / Independent</option>
                 <?php foreach ($communities as $com): ?>
@@ -110,36 +110,36 @@ include __DIR__ . '/../includes/admin-navbar.php';
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
-            <input type="text" name="location" id="eventLocation" placeholder="e.g. Auditorium / Main Ground" class="input input-bordered" style="width: 100%;" required />
+            <label class="label"><b>Venue / Location</b></label>
+            <input type="text" name="location" id="eventLocation" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Event Date</span></label>
+              <label class="label"><b>Event Date</b></label>
               <input type="date" name="event_date" id="eventDate" class="input input-bordered" style="width: 100%;" required />
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Start Time</span></label>
+              <label class="label"><b>Start Time</b></label>
               <input type="time" name="event_time" id="eventTime" class="input input-bordered" style="width: 100%;" required />
             </div>
 
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Description</span></label>
-            <textarea name="description" id="eventDescription" rows="4" placeholder="Provide event details, schedule, agenda, or guidelines..." class="textarea textarea-bordered" style="width: 100%;" required></textarea>
+            <label class="label"><b>Description</b></label>
+            <textarea name="description" id="eventDescription" rows="4" class="textarea textarea-bordered" style="width: 100%;" required></textarea>
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Event Banner / Poster</span></label>
+            <label class="label"><b>Event Banner / Poster</b></label>
             <input type="file" name="banner" id="eventBanner" accept="image/*" class="file-input file-input-bordered" style="width: 100%;" />
           </div>
 
           <div style="padding-top: 16px;">
-            <button type="submit" class="btn admin-btn-black" style="width: 100%; font-size: 1.125rem;">
+            <button type="submit" class="btn admin-btn-black" style="width: 96%; height: 46px; min-height: 46px; font-size: 1.05rem; padding: 11px 24px;">
               Publish Event
             </button>
           </div>

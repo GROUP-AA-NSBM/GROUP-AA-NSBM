@@ -2,24 +2,29 @@
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-$errorMessage = '';
+$error = '';
 
+// handle registration form submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name     = $_POST['Uname'];
-    $email    = $_POST['email'];
-    $password = $_POST['password'];
+    $name  = $_POST['Uname'];
+    $email = $_POST['email'];
+    $pass  = $_POST['password'];
 
-    if (!empty($name) && !empty($email) && !empty($password)) {
-        $checkStmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ?');
-        $checkStmt->execute([$email]);
+    // validation
+    if (!empty($name) && !empty($email) && !empty($pass)) {
+        // check if user already exists
+        $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email = ?');
+        $stmt->execute([$email]);
 
-        if ($checkStmt->fetch()) {
-            $errorMessage = 'This email is already registered. Please log in.';
+        if ($stmt->fetch()) {
+            $error = 'This email is already registered. Please log in.';
         } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $insertStmt = $pdo->prepare('INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, "student")');
-            $insertStmt->execute([$name, $email, $hashedPassword]);
+            // hash password and insert
+            $hash = password_hash($pass, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare('INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, "student")');
+            $stmt->execute([$name, $email, $hash]);
 
+            // auto login session
             $_SESSION['user_id']    = $pdo->lastInsertId();
             $_SESSION['user_name']  = $name;
             $_SESSION['user_email'] = $email;
@@ -29,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
     } else {
-        $errorMessage = 'Please fill in all required fields.';
+        $error = 'Please fill in all required fields.';
     }
 }
 
@@ -37,73 +42,77 @@ include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 
+<!-- Register Form -->
 <div class="min-h-screen flex items-center justify-center px-4 py-12" style="background-color: #ffffff;">
   <div class="card bg-base-100 w-full max-w-md shadow-none" style="border: 1px solid #e5e7eb;">
     <form id="registerForm" action="" method="POST" class="card-body">
       
-      <div class="text-center mb-4">
+      <center>
         <h2 class="text-3xl font-extrabold text-black">Welcome</h2>
-        <p class="text-sm text-gray-900 font-medium mt-1">Sign up to NSBM Event Hub</p>
-      </div>
+        <p class="text-sm font-medium mt-1" style="color: #19589D;">Sign up to NSBM Event Hub</p>
+      </center>
+      <br>
 
-      <?php if (!empty($errorMessage)): ?>
-        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 12px;">
-          <?php echo htmlspecialchars($errorMessage); ?>
-        </p>
+      <?php if (!empty($error)): ?>
+        <center>
+          <p style="color: red; margin-bottom: 12px;"><b><?php echo htmlspecialchars($error); ?></b></p>
+        </center>
       <?php endif; ?>
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">Name</span>
+          <b>Name</b>
         </label>
         <input 
           type="text" 
           id="regName"
           name="Uname" 
-          placeholder="Enter your name" 
-          class="input input-bordered focus:input-primary w-full" 
+          placeholder="type your name here" 
+          class="input input-bordered w-full" 
           required 
         />
       </div>
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">Email Address</span>
+          <b>Email Address</b>
         </label>
         <input 
           type="email" 
           id="regEmail"
           name="email" 
-          placeholder="student@example.com" 
-          class="input input-bordered focus:input-primary w-full" 
+          placeholder="type your email here" 
+          class="input input-bordered w-full" 
           required 
         />
       </div>
 
       <div class="form-control mt-4">
         <label class="label">
-          <span class="label-text font-semibold">Password</span>
+          <b>Password</b>
         </label>
         <input 
           type="password" 
           id="regPassword"
           name="password" 
-          placeholder="••••••••" 
-          class="input input-bordered focus:input-primary w-full" 
+          placeholder="type your password here" 
+          class="input input-bordered w-full" 
           required 
         />
       </div>
 
       <div class="form-control mt-6">
-        <button type="submit" class="btn btn-primary text-lg border-none w-full">
+        <button type="submit" class="btn btn-primary text-lg border-none" style="width: 97%; height: 47px; min-height: 47px; padding: 11px 22px;">
           Sign Up
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-900 mt-4">
-        Have an account? 
-        <a href="login.php" class="link font-semibold text-primary">Log In here</a>
-      </p>
+      <center>
+        <p class="text-sm text-gray-900" style="margin-top: 16px;">
+          Have an account? 
+          <a href="login.php" class="link font-semibold text-primary">Log In here</a>
+        </p>
+      </center>
 
     </form>
   </div>

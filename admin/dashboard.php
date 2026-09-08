@@ -3,16 +3,16 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$totalEvents        = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
-$totalRegistrations = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
-$totalCategories    = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
+$event_count = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
+$reg_count   = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
+$cat_count   = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
 
 include __DIR__ . '/../includes/header.php'; 
 include __DIR__ . '/../includes/admin-navbar.php'; 
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -31,7 +31,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <div>
         <h1 class="admin-title">Welcome, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></h1>
       </div>
-      <a href="create-event.php" class="btn admin-btn-black">
+      <a href="create-event.php" class="btn admin-btn-black" style="padding: 10px 22px; height: 42px; min-height: 42px;">
         + Create New Event
       </a>
     </div>
@@ -40,17 +40,17 @@ include __DIR__ . '/../includes/admin-navbar.php';
       
       <div class="card stat-card stat-primary">
         <span class="stat-label">Total Events</span>
-        <div class="stat-value"><?php echo $totalEvents; ?></div>
+        <div class="stat-value"><?php echo $event_count; ?></div>
       </div>
 
       <div class="card stat-card stat-secondary">
         <span class="stat-label">Total Registrations</span>
-        <div class="stat-value"><?php echo $totalRegistrations; ?></div>
+        <div class="stat-value"><?php echo $reg_count; ?></div>
       </div>
 
       <div class="card stat-card stat-accent">
         <span class="stat-label">Categories</span>
-        <div class="stat-value"><?php echo $totalCategories; ?></div>
+        <div class="stat-value"><?php echo $cat_count; ?></div>
       </div>
 
     </div>

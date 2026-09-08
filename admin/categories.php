@@ -21,7 +21,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -40,47 +40,41 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <h1 class="admin-title">Event Categories</h1>
     </div>
 
-    <div class="admin-split-layout">
+    <div class="admin-two-col">
       
       <div class="card" style="height: fit-content;">
         <div class="card-body">
           <h2 class="card-title" style="margin-bottom: 8px;">Add New Category</h2>
           <form id="addCategoryForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Category Name</span></label>
-              <input type="text" name="category_name" placeholder="e.g. Gaming & Esports" class="input input-bordered" style="width: 100%;" required />
+              <label><b>Category Name</b></label>
+              <input type="text" name="category_name" class="input input-bordered" style="width: 100%;" required />
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Add Category</button>
+            <button type="submit" class="btn btn-primary" style="width: 95%; height: 41px; min-height: 41px; padding: 8px 20px;">Add Category</button>
           </form>
         </div>
       </div>
 
-      <div class="card admin-card-container">
-        <div class="admin-table-wrapper">
+      <div class="card admin-card-box">
+        <div class="table-box">
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
+                <th>no:</th>
                 <th>Category Name</th>
-                <th style="text-align: center;">Actions</th>
+                <th align="center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <?php if (empty($categories)): ?>
+              <?php foreach ($categories as $index => $row): ?>
                 <tr>
-                  <td colspan="3" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No categories found.</td>
+                  <th><?php echo $index + 1; ?></th>
+                  <td><b><?php echo htmlspecialchars($row['name']); ?></b></td>
+                  <td align="center">
+                    <a href="delete-category.php?id=<?php echo $row['category_id']; ?>" class="btn btn-sm btn-outline btn-error" style="height: 27px; min-height: 27px; padding: 2px 11px; font-size: 12px;" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                  </td>
                 </tr>
-              <?php else: ?>
-                <?php foreach ($categories as $index => $cat): ?>
-                  <tr>
-                    <th><?php echo $index + 1; ?></th>
-                    <td style="font-weight: bold;"><?php echo htmlspecialchars($cat['name']); ?></td>
-                    <td style="text-align: center;">
-                      <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
-                    </td>
-                  </tr>
-                <?php endforeach; ?>
-              <?php endif; ?>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>
