@@ -1,5 +1,5 @@
 /* profile page */
-.profile-container {
+.profile-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,7 @@
 }
 
 /* event page */
-.event-container {
+.event-box {
     display: flex;
     justify-content: space-between;
     max-width: 1000px;

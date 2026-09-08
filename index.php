@@ -45,32 +45,28 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <?php if (empty($events)): ?>
-      <center><p style="padding: 32px 0;"><b>No upcoming events scheduled right now.</b></p></center>
-    <?php else: ?>
-      <?php foreach ($events as $event): ?>
-        <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
-          <figure style="height: 180px; overflow: hidden; background: #eee;">
-            <img
-              src="<?php echo $event['banner_image_url']; ?>"
-              alt="<?php echo htmlspecialchars($event['title']); ?>" 
-              style="width: 100%; height: 100%; object-fit: cover;" />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title text-lg text-black"><b><?php echo htmlspecialchars($event['title']); ?></b></h2>
-            <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($event['description']); ?></p>
-            <p class="text-xs text-gray-900 font-medium mt-2">
-              <?php echo htmlspecialchars($event['venue']); ?> | <?php echo date('M d, Y', strtotime($event['start_time'])); ?>
-            </p>
-            <?php if (isLoggedIn()): ?>
-              <div class="card-actions justify-end mt-4">
-                <a href="student/event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm">Register</a>
-              </div>
-            <?php endif; ?>
-          </div>
+    <?php foreach ($events as $event): ?>
+      <div class="card bg-base-100 border border-gray-200" style="width: 320px;">
+        <figure style="height: 180px; overflow: hidden; background: #eee;">
+          <img
+            src="<?php echo $event['banner_image_url']; ?>"
+            alt="<?php echo htmlspecialchars($event['title']); ?>" 
+            style="width: 100%; height: 100%; object-fit: cover;" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title text-lg text-black"><b><?php echo htmlspecialchars($event['title']); ?></b></h2>
+          <p class="text-sm text-gray-900 line-clamp-2"><?php echo htmlspecialchars($event['description']); ?></p>
+          <p class="text-xs font-medium mt-2" style="color: #19589D;">
+            <?php echo htmlspecialchars($event['venue']); ?> | <?php echo date('M d, Y', strtotime($event['start_time'])); ?>
+          </p>
+          <?php if (isLoggedIn()): ?>
+            <div class="card-actions justify-end mt-4">
+              <a href="student/event.php?id=<?php echo $event['event_id']; ?>" class="btn btn-primary btn-sm" style="height: 33px; min-height: 33px; padding: 5px 17px; font-size: 13px;">Register</a>
+            </div>
+          <?php endif; ?>
         </div>
-      <?php endforeach; ?>
-    <?php endif; ?>
+      </div>
+    <?php endforeach; ?>
   </div>
 
 </section>
@@ -78,21 +74,17 @@ $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetch
 
 <section class="categories" id="communities">
   <div class="p-text text-left mb-6">
-    <h2 class="text-2xl font-bold">Explore Communities</h2>
+    <h2 class="text-2xl font-bold" style="color: #19589D;">Explore Communities</h2>
   </div>
 
   <div class="cards flex flex-row flex-wrap justify-center gap-8">
-    <?php if (empty($communities)): ?>
-      <center><p><b>No communities found.</b></p></center>
-    <?php else: ?>
-      <?php foreach ($communities as $community): ?>
-        <div class="card bg-base-100 border border-gray-200 block text-current" style="min-width: 220px;">
-          <div class="card-body" style="padding: 24px;">
-            <center><h2 class="card-title text-base"><b><?php echo htmlspecialchars($community['name']); ?></b></h2></center>
-          </div>
+    <?php foreach ($communities as $community): ?>
+      <div class="card bg-base-100 border border-gray-200 block text-current" style="min-width: 220px;">
+        <div class="card-body" style="padding: 24px;">
+          <center><h2 class="card-title text-base"><b><?php echo htmlspecialchars($community['name']); ?></b></h2></center>
         </div>
-      <?php endforeach; ?>
-    <?php endif; ?>
+      </div>
+    <?php endforeach; ?>
   </div>
 </section>
 

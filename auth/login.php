@@ -51,7 +51,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       
       <center>
         <h2 class="text-3xl font-extrabold text-black">Welcome Back</h2>
-        <p class="text-sm text-gray-900 font-medium mt-1">Sign in to NSBM Event Hub</p>
+        <p class="text-sm font-medium mt-1" style="color: #19589D;">Sign in to NSBM Event Hub</p>
       </center>
       <br>
 
@@ -90,7 +90,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       </div>
 
       <div class="form-control mt-6">
-        <button type="submit" class="btn btn-primary text-lg border-none w-full">
+        <button type="submit" class="btn btn-primary text-lg border-none" style="width: 95%; height: 44px; min-height: 44px; padding: 9px 23px;">
           Log In
         </button>
       </div>

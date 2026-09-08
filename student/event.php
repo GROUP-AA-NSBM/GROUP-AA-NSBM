@@ -74,7 +74,7 @@ if (isLoggedIn()) {
 <link rel = "stylesheet" href = "../assets/css/student.css">
 
 <main class = "event-page">
-<div class ="event-container">
+<div class ="event-box">
 <div class = "left-content">
     <div class = "event-title">
         <h3><?php echo htmlspecialchars($event['title'] ?? 'Campus Event'); ?></h3>
@@ -96,7 +96,7 @@ if (isLoggedIn()) {
     </div>
     <div class = "location">
         <img src ="https://static.vecteezy.com/system/resources/thumbnails/000/552/683/small/location_pin_002.jpg">
-        <h4><?php echo htmlspecialchars($event['venue'] ?? 'NSBM Green University'); ?></h4>
+        <h4 style="color: #19589D;"><?php echo htmlspecialchars($event['venue'] ?? 'NSBM Green University'); ?></h4>
     </div>
 
     <?php if (!isLoggedIn()): ?>
@@ -159,7 +159,7 @@ if (isLoggedIn()) {
                 </div>
             </div>
             
-            <button type="submit" class="btn btn-primary text-white shadow-none" style="margin-top: 12px; box-shadow: none !important;">Register here</button>
+            <button type="submit" class="btn btn-primary text-white shadow-none" style="margin-top: 12px; box-shadow: none !important; width: 94%; height: 42px; min-height: 42px; padding: 9px 21px;">Register here</button>
         </form>
     </div>
     <?php endif; ?>

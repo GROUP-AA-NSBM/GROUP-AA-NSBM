@@ -12,7 +12,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -31,7 +31,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <div>
         <h1 class="admin-title">Welcome, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></h1>
       </div>
-      <a href="create-event.php" class="btn admin-btn-black">
+      <a href="create-event.php" class="btn admin-btn-black" style="padding: 10px 22px; height: 42px; min-height: 42px;">
         + Create New Event
       </a>
     </div>

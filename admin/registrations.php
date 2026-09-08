@@ -15,7 +15,7 @@ $registrations = $pdo->query("
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -34,12 +34,12 @@ $registrations = $pdo->query("
       <h1 class="admin-title">Student Registrations</h1>
     </div>
 
-    <div class="card admin-card-container">
-      <div class="admin-table-wrapper">
+    <div class="card admin-card-box">
+      <div class="table-box">
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
+              <th>no:</th>
               <th>Student Name</th>
               <th>Student Email</th>
               <th>Faculty</th>
@@ -49,28 +49,22 @@ $registrations = $pdo->query("
             </tr>
           </thead>
           <tbody>
-            <?php if (empty($registrations)): ?>
+            <?php foreach ($registrations as $index => $row): ?>
               <tr>
-                <td colspan="7" align="center" style="padding: 24px;"><b>No student registrations recorded yet.</b></td>
+                <th><?php echo $index + 1; ?></th>
+                <td><b><?php echo htmlspecialchars($row['student_name']); ?></b></td>
+                <td style="color: #111827;"><?php echo htmlspecialchars($row['student_email']); ?></td>
+                <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($row['faculty']); ?></td>
+                <td style="color: #111827;"><?php echo htmlspecialchars($row['event_title']); ?></td>
+                <td style="color: #111827;">
+                  <?php echo htmlspecialchars($row['student_id']); ?>
+                  <?php if (!empty($row['batch'])): ?>
+                    <br><span style="font-size: 0.75rem; color: #111827; font-weight: 600;">Batch: <?php echo htmlspecialchars($row['batch']); ?></span>
+                  <?php endif; ?>
+                </td>
+                <td><span class="badge badge-success"><?php echo htmlspecialchars($row['status']); ?></span></td>
               </tr>
-            <?php else: ?>
-              <?php foreach ($registrations as $index => $row): ?>
-                <tr>
-                  <th><?php echo $index + 1; ?></th>
-                  <td><b><?php echo htmlspecialchars($row['student_name']); ?></b></td>
-                  <td style="color: #111827;"><?php echo htmlspecialchars($row['student_email']); ?></td>
-                  <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($row['faculty']); ?></td>
-                  <td style="color: #111827;"><?php echo htmlspecialchars($row['event_title']); ?></td>
-                  <td style="color: #111827;">
-                    <?php echo htmlspecialchars($row['student_id']); ?>
-                    <?php if (!empty($row['batch'])): ?>
-                      <br><span style="font-size: 0.75rem; color: #111827; font-weight: 600;">Batch: <?php echo htmlspecialchars($row['batch']); ?></span>
-                    <?php endif; ?>
-                  </td>
-                  <td><span class="badge badge-success"><?php echo htmlspecialchars($row['status']); ?></span></td>
-                </tr>
-              <?php endforeach; ?>
-            <?php endif; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>

@@ -59,7 +59,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -74,7 +74,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   <main class="admin-main">
     
-    <div class="admin-form-container">
+    <div class="admin-form-box">
       <div class="admin-header">
         <div>
           <h1 class="admin-title">Edit Event</h1>
@@ -149,8 +149,8 @@ include __DIR__ . '/../includes/admin-navbar.php';
           </div>
 
           <div class="admin-form-actions">
-            <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
-            <a href="manage-events.php" class="btn btn-ghost">Cancel</a>
+            <button type="submit" class="btn btn-primary" style="flex: 1; height: 43px; min-height: 43px; padding: 10px 22px;">Save Changes</button>
+            <a href="manage-events.php" class="btn btn-ghost" style="height: 39px; min-height: 39px; padding: 7px 18px;">Cancel</a>
           </div>
 
         </form>

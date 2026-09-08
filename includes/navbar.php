@@ -5,7 +5,7 @@
 
   <div class="flex-none flex items-center gap-2" style="padding-right: 16px;">
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-      <a href="/GROUP-AA-NSBM/auth/logout.php" class="btn btn-ghost btn-sm text-error">Logout</a>
+      <a href="/GROUP-AA-NSBM/auth/logout.php" class="btn btn-ghost btn-sm text-error" style="height: 29px; min-height: 29px; padding: 3px 12px; font-size: 13px;">Logout</a>
     <?php else: ?>
       <a href="/GROUP-AA-NSBM/student/profile.php" class="btn btn-ghost btn-circle avatar" title="Profile">
         <div class="w-10 rounded-full">

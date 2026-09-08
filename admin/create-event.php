@@ -48,7 +48,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 ?>
 <link rel="stylesheet" href="../assets/css/admin.css">
 
-<div class="admin-layout">
+<div class="admin-page">
   
   <aside class="admin-sidebar">
     <h2 class="admin-sidebar-title">Admin Panel</h2>
@@ -63,7 +63,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
   <main class="admin-main">
     
-    <div class="admin-form-container">
+    <div class="admin-form-box">
   
       <div class="admin-header">
         <div>
@@ -82,7 +82,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
    
           <div class="form-control">
             <label class="label"><b>Event Title</b></label>
-            <input type="text" name="title" id="eventTitle" placeholder="e.g. NSBM Tech Fiesta 2026" class="input input-bordered" style="width: 100%;" required />
+            <input type="text" name="title" id="eventTitle" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
@@ -111,7 +111,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
           <div class="form-control">
             <label class="label"><b>Venue / Location</b></label>
-            <input type="text" name="location" id="eventLocation" placeholder="e.g. Auditorium / Main Ground" class="input input-bordered" style="width: 100%;" required />
+            <input type="text" name="location" id="eventLocation" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
@@ -130,7 +130,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
           <div class="form-control">
             <label class="label"><b>Description</b></label>
-            <textarea name="description" id="eventDescription" rows="4" placeholder="Provide event details, schedule, agenda, or guidelines..." class="textarea textarea-bordered" style="width: 100%;" required></textarea>
+            <textarea name="description" id="eventDescription" rows="4" class="textarea textarea-bordered" style="width: 100%;" required></textarea>
           </div>
 
           <div class="form-control">
@@ -139,7 +139,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
           </div>
 
           <div style="padding-top: 16px;">
-            <button type="submit" class="btn admin-btn-black" style="width: 100%; font-size: 1.125rem;">
+            <button type="submit" class="btn admin-btn-black" style="width: 96%; height: 46px; min-height: 46px; font-size: 1.05rem; padding: 11px 24px;">
               Publish Event
             </button>
           </div>

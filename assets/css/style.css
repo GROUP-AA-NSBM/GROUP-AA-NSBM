@@ -58,13 +58,13 @@ body .cards .card {
 .cards .card,
 .navbar,
 .btn,
-.form-container {
+.form-box {
     box-shadow: none !important;
 }
 
 .card,
 .cards .card,
-.form-container {
+.form-box {
     border: 1px solid #e5e7eb !important;
 }
 
@@ -119,7 +119,7 @@ footer a:hover {
     text-decoration: none !important;
 }
 
-.card-container {
+.cards-box {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
