@@ -30,6 +30,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-primary">Categories</a>
+      <a href="communities.php" class="btn btn-ghost">Communities</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -40,7 +41,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <h1 class="admin-title">Event Categories</h1>
     </div>
 
-    <div class="admin-two-col">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
       
       <div class="card" style="height: fit-content;">
         <div class="card-body">
