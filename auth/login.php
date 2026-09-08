@@ -2,23 +2,29 @@
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-$errorMessage = '';
+$error = '';
 
+// check if form is submited
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $pass = $_POST['password'];
 
-    if (!empty($email) && !empty($password)) {
+    // check if fields are empty
+    if (!empty($email) && !empty($pass)) {
+        // find user in database
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        if ($user && (password_verify($password, $user['password']) || $password === $user['password'])) {
+        // check pasword
+        if ($user && (password_verify($pass, $user['password']) || $pass === $user['password'])) {
+            // set session variables
             $_SESSION['user_id']    = $user['user_id'];
             $_SESSION['user_name']  = $user['full_name'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['role']       = $user['role'];
 
+            // redirect based on role
             if ($user['role'] === 'admin') {
                 header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
                 exit;
@@ -27,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
             }
         } else {
-            $errorMessage = 'Invalid email address or password.';
+            $error = 'Invalid email address or password.';
         }
     } else {
-        $errorMessage = 'Please enter both email and password.';
+        $error = 'Please enter both email and password.';
     }
 }
 
@@ -38,6 +44,7 @@ include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/not-loggedin-navbar.php'; 
 ?>
 
+<!-- Login Form -->
 <div class="min-h-screen flex items-center justify-center px-4 py-12" style="background-color: #ffffff;">
   <div class="card bg-base-100 w-full max-w-md shadow-none" style="border: 1px solid #e5e7eb;">
     <form id="loginForm" action="" method="POST" class="card-body">
@@ -48,9 +55,9 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
       </center>
       <br>
 
-      <?php if (!empty($errorMessage)): ?>
+      <?php if (!empty($error)): ?>
         <center>
-          <p style="color: red; margin-bottom: 12px;"><b><?php echo htmlspecialchars($errorMessage); ?></b></p>
+          <p style="color: red; margin-bottom: 12px;"><b><?php echo htmlspecialchars($error); ?></b></p>
         </center>
       <?php endif; ?>
 

@@ -2,59 +2,65 @@
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-$eventId = isset($_GET['id']) ? intval($_GET['id']) : 1;
+// get event id from url
+$event_id = isset($_GET['id']) ? intval($_GET['id']) : 1;
 
+// register for event
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     requireLogin();
 
-    $userId       = $_SESSION['user_id'];
-    $studentName  = $_POST['fname'];
-    $studentEmail = $_POST['emailadd'];
-    $faculty      = $_POST['faculty'];
-    $contactNo    = $_POST['contnumber'];
-    $studentId    = $_POST['stid'];
-    $batch        = $_POST['batchno'];
-    $year         = $_POST['year'];
+    // form values
+    $user_id   = $_SESSION['user_id'];
+    $name      = $_POST['fname'];
+    $email     = $_POST['emailadd'];
+    $faculty   = $_POST['faculty'];
+    $phone     = $_POST['contnumber'];
+    $st_id     = $_POST['stid'];
+    $batch     = $_POST['batchno'];
+    $year      = $_POST['year'];
 
-    $checkStmt = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
-    $checkStmt->execute([$eventId, $userId]);
+    // check if already registered
+    $stmt = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
+    $stmt->execute([$event_id, $user_id]);
     
-    if ($checkStmt->fetch()) {
-        header("Location: event.php?id=$eventId&status=already_registered");
+    if ($stmt->fetch()) {
+        header("Location: event.php?id=$event_id&status=already_registered");
         exit;
     }
 
-    $insertStmt = $pdo->prepare("INSERT INTO event_registrations (event_id, user_id, student_name, student_email, faculty, contact_number, student_id, batch, academic_year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'registered')");
-    $insertStmt->execute([$eventId, $userId, $studentName, $studentEmail, $faculty, $contactNo, $studentId, $batch, $year]);
+    // insert registration
+    $query = $pdo->prepare("INSERT INTO event_registrations (event_id, user_id, student_name, student_email, faculty, contact_number, student_id, batch, academic_year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'registered')");
+    $query->execute([$event_id, $user_id, $name, $email, $faculty, $phone, $st_id, $batch, $year]);
 
-    header("Location: event.php?id=$eventId&status=success");
+    header("Location: event.php?id=$event_id&status=success");
     exit;
 }
 
+// load event data
 $stmt = $pdo->prepare("SELECT * FROM events WHERE event_id = ?");
-$stmt->execute([$eventId]);
+$stmt->execute([$event_id]);
 $event = $stmt->fetch();
 
 if (!$event) {
     $event = $pdo->query("SELECT * FROM events ORDER BY start_time ASC LIMIT 1")->fetch();
 }
 
-$communityName = "";
+$com_name = "";
 if (!empty($event['community_id'])) {
-    $comStmt = $pdo->prepare("SELECT name FROM communities WHERE community_id = ?");
-    $comStmt->execute([$event['community_id']]);
-    $com = $comStmt->fetch();
+    $stmt = $pdo->prepare("SELECT name FROM communities WHERE community_id = ?");
+    $stmt->execute([$event['community_id']]);
+    $com = $stmt->fetch();
     if ($com) {
-        $communityName = $com['name'];
+        $com_name = $com['name'];
     }
 }
 
-$isRegistered = false;
+$already_registered = false;
 if (isLoggedIn() && $event) {
-    $regCheck = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
-    $regCheck->execute([$event['event_id'], $_SESSION['user_id']]);
-    if ($regCheck->fetch()) {
-        $isRegistered = true;
+    $stmt = $pdo->prepare("SELECT registration_id FROM event_registrations WHERE event_id = ? AND user_id = ?");
+    $stmt->execute([$event['event_id'], $_SESSION['user_id']]);
+    if ($stmt->fetch()) {
+        $already_registered = true;
     }
 }
 
@@ -78,7 +84,7 @@ if (isLoggedIn()) {
       <div style="background-color: #ffffff; color: #16a34a; margin-bottom: 16px; font-weight: 600; font-size: 1rem;">
         Registration successful! See you at the event.
       </div>
-    <?php elseif ($isRegistered): ?>
+    <?php elseif ($already_registered): ?>
       <p style="color: #0369a1; font-weight: 600; margin-bottom: 16px;">
         You have already registered for this event.
       </p>
@@ -104,7 +110,7 @@ if (isLoggedIn()) {
           </p>
         </center>
       </div>
-    <?php elseif (!$isRegistered): ?>
+    <?php elseif (!$already_registered): ?>
     <div class = "registration">
         <form class = "form-register" action="" method="POST">
             <input type="hidden" name="event_id" value="<?php echo $event['event_id'] ?? 1; ?>">

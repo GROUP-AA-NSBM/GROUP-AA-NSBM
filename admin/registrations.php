@@ -54,20 +54,20 @@ $registrations = $pdo->query("
                 <td colspan="7" align="center" style="padding: 24px;"><b>No student registrations recorded yet.</b></td>
               </tr>
             <?php else: ?>
-              <?php foreach ($registrations as $index => $reg): ?>
+              <?php foreach ($registrations as $index => $row): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td><b><?php echo htmlspecialchars($reg['student_name']); ?></b></td>
-                  <td style="color: #111827;"><?php echo htmlspecialchars($reg['student_email']); ?></td>
-                  <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($reg['faculty']); ?></td>
-                  <td style="color: #111827;"><?php echo htmlspecialchars($reg['event_title']); ?></td>
+                  <td><b><?php echo htmlspecialchars($row['student_name']); ?></b></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars($row['student_email']); ?></td>
+                  <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($row['faculty']); ?></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars($row['event_title']); ?></td>
                   <td style="color: #111827;">
-                    <?php echo htmlspecialchars($reg['student_id']); ?>
-                    <?php if (!empty($reg['batch'])): ?>
-                      <br><span style="font-size: 0.75rem; color: #111827; font-weight: 600;">Batch: <?php echo htmlspecialchars($reg['batch']); ?></span>
+                    <?php echo htmlspecialchars($row['student_id']); ?>
+                    <?php if (!empty($row['batch'])): ?>
+                      <br><span style="font-size: 0.75rem; color: #111827; font-weight: 600;">Batch: <?php echo htmlspecialchars($row['batch']); ?></span>
                     <?php endif; ?>
                   </td>
-                  <td><span class="badge badge-success"><?php echo htmlspecialchars($reg['status']); ?></span></td>
+                  <td><span class="badge badge-success"><?php echo htmlspecialchars($row['status']); ?></span></td>
                 </tr>
               <?php endforeach; ?>
             <?php endif; ?>

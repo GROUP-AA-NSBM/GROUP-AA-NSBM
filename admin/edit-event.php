@@ -3,35 +3,35 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$eventId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = $_POST['title'];
-    $categoryId  = intval($_POST['category_id']);
-    $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
+    $cat_id      = intval($_POST['category_id']);
+    $com_id      = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
     $location    = $_POST['location'];
-    $eventDate   = $_POST['event_date'];
-    $eventTime   = $_POST['event_time'];
+    $date        = $_POST['event_date'];
+    $time        = $_POST['event_time'];
     $description = $_POST['description'];
 
-    $startTime = $eventDate . ' ' . $eventTime . ':00';
+    $start_time = $date . ' ' . $time . ':00';
 
-    if ($eventId > 0 && !empty($title) && !empty($location) && !empty($eventDate)) {
+    if ($id > 0 && !empty($title) && !empty($location) && !empty($date)) {
         if (!empty($_FILES['banner']['name'])) {
-            $uploadDir = __DIR__ . '/../uploads/events/';
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
+            $target_dir = __DIR__ . '/../uploads/events/';
+            if (!is_dir($target_dir)) {
+                mkdir($target_dir, 0777, true);
             }
-            $fileName = time() . '_' . basename($_FILES['banner']['name']);
-            $targetPath = $uploadDir . $fileName;
-            if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
-                $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
+            $filename    = time() . '_' . basename($_FILES['banner']['name']);
+            $target_file = $target_dir . $filename;
+            if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
+                $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
                 $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
-                $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl, $eventId]);
+                $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image, $id]);
             }
         } else {
             $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ? WHERE event_id = ?');
-            $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $eventId]);
+            $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $id]);
         }
 
         header('Location: manage-events.php?status=updated');
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $stmt = $pdo->prepare("SELECT * FROM events WHERE event_id = ?");
-$stmt->execute([$eventId]);
+$stmt->execute([$id]);
 $event = $stmt->fetch();
 
 if (!$event) {
@@ -51,8 +51,8 @@ if (!$event) {
 $categories  = $pdo->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
 $communities = $pdo->query("SELECT * FROM communities ORDER BY name ASC")->fetchAll();
 
-$eventDate = date('Y-m-d', strtotime($event['start_time']));
-$eventTime = date('H:i', strtotime($event['start_time']));
+$date = date('Y-m-d', strtotime($event['start_time']));
+$time = date('H:i', strtotime($event['start_time']));
 
 include __DIR__ . '/../includes/header.php'; 
 include __DIR__ . '/../includes/admin-navbar.php'; 
@@ -128,12 +128,12 @@ include __DIR__ . '/../includes/admin-navbar.php';
             
             <div class="form-control">
               <label class="label"><b>Event Date</b></label>
-              <input type="date" name="event_date" id="eventDate" value="<?php echo $eventDate; ?>" class="input input-bordered" style="width: 100%;" required />
+              <input type="date" name="event_date" id="eventDate" value="<?php echo $date; ?>" class="input input-bordered" style="width: 100%;" required />
             </div>
 
             <div class="form-control">
               <label class="label"><b>Start Time</b></label>
-              <input type="time" name="event_time" id="eventTime" value="<?php echo $eventTime; ?>" class="input input-bordered" style="width: 100%;" required />
+              <input type="time" name="event_time" id="eventTime" value="<?php echo $time; ?>" class="input input-bordered" style="width: 100%;" required />
             </div>
 
           </div>

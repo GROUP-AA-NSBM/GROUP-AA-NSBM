@@ -71,12 +71,12 @@ include __DIR__ . '/../includes/admin-navbar.php';
                   <td colspan="3" align="center" style="padding: 24px;"><b>No categories found.</b></td>
                 </tr>
               <?php else: ?>
-                <?php foreach ($categories as $index => $cat): ?>
+                <?php foreach ($categories as $index => $row): ?>
                   <tr>
                     <th><?php echo $index + 1; ?></th>
-                    <td><b><?php echo htmlspecialchars($cat['name']); ?></b></td>
+                    <td><b><?php echo htmlspecialchars($row['name']); ?></b></td>
                     <td align="center">
-                      <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                      <a href="delete-category.php?id=<?php echo $row['category_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

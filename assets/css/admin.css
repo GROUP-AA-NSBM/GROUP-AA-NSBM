@@ -1,9 +1,11 @@
+/* admin panel layout */
 .admin-layout {
   min-height: 100vh;
   display: flex;
   background-color: #ffffff;
 }
 
+/* sidebar */
 .admin-sidebar {
   width: 260px;
   min-width: 260px;
@@ -21,6 +23,7 @@
   margin-bottom: 24px;
 }
 
+/* navigation links */
 .admin-nav {
   display: flex;
   flex-direction: column;
@@ -153,9 +156,7 @@
   transition: none !important;
 }
 
-.admin-btn-black:hover,
-.admin-btn-black:focus,
-.admin-btn-black:active {
+.admin-btn-black:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #000000 !important;
@@ -168,9 +169,7 @@
   transition: none !important;
 }
 
-.admin-btn-edit:hover,
-.admin-btn-edit:focus,
-.admin-btn-edit:active {
+.admin-btn-edit:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #000000 !important;

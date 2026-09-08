@@ -1,8 +1,10 @@
 <?php 
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
+// check admin login
 requireAdmin();
 
+// fetch all events with category
 $events = $pdo->query("
     SELECT events.*, categories.name AS category_name 
     FROM events 
@@ -64,19 +66,19 @@ include __DIR__ . '/../includes/admin-navbar.php';
                 <td colspan="6" align="center" style="padding: 24px;"><b>No campus events found. Click "+ Add New Event" to publish one!</b></td>
               </tr>
             <?php else: ?>
-              <?php foreach ($events as $index => $ev): ?>
+              <?php foreach ($events as $index => $row): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td><b><?php echo htmlspecialchars($ev['title']); ?></b></td>
-                  <td style="color: #111827;"><?php echo htmlspecialchars($ev['category_name'] ?? 'General'); ?></td>
+                  <td><b><?php echo htmlspecialchars($row['title']); ?></b></td>
+                  <td style="color: #111827;"><?php echo htmlspecialchars($row['category_name'] ?? 'General'); ?></td>
                   <td style="color: #111827;">
-                    <?php echo date('M d, Y', strtotime($ev['start_time'])); ?> <br>
-                    <span style="font-size: 0.75rem; color: #111827; font-weight: 600;"><?php echo date('h:i A', strtotime($ev['start_time'])); ?></span>
+                    <?php echo date('M d, Y', strtotime($row['start_time'])); ?> <br>
+                    <span style="font-size: 0.75rem; color: #111827; font-weight: 600;"><?php echo date('h:i A', strtotime($row['start_time'])); ?></span>
                   </td>
-                  <td><?php echo htmlspecialchars($ev['venue']); ?></td>
+                  <td><?php echo htmlspecialchars($row['venue']); ?></td>
                   <td class="admin-actions-cell">
-                    <a href="edit-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
-                    <a href="delete-event.php?id=<?php echo $ev['event_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+                    <a href="edit-event.php?id=<?php echo $row['event_id']; ?>" class="btn btn-sm btn-outline admin-btn-edit">Edit</a>
+                    <a href="delete-event.php?id=<?php echo $row['event_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
                   </td>
                 </tr>
               <?php endforeach; ?>

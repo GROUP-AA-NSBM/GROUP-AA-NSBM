@@ -3,9 +3,9 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$totalEvents        = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
-$totalRegistrations = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
-$totalCategories    = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
+$event_count = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn();
+$reg_count   = $pdo->query("SELECT COUNT(*) FROM event_registrations")->fetchColumn();
+$cat_count   = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
 
 include __DIR__ . '/../includes/header.php'; 
 include __DIR__ . '/../includes/admin-navbar.php'; 
@@ -40,17 +40,17 @@ include __DIR__ . '/../includes/admin-navbar.php';
       
       <div class="card stat-card stat-primary">
         <span class="stat-label">Total Events</span>
-        <div class="stat-value"><?php echo $totalEvents; ?></div>
+        <div class="stat-value"><?php echo $event_count; ?></div>
       </div>
 
       <div class="card stat-card stat-secondary">
         <span class="stat-label">Total Registrations</span>
-        <div class="stat-value"><?php echo $totalRegistrations; ?></div>
+        <div class="stat-value"><?php echo $reg_count; ?></div>
       </div>
 
       <div class="card stat-card stat-accent">
         <span class="stat-label">Categories</span>
-        <div class="stat-value"><?php echo $totalCategories; ?></div>
+        <div class="stat-value"><?php echo $cat_count; ?></div>
       </div>
 
     </div>

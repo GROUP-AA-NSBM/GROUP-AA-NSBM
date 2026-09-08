@@ -3,40 +3,40 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
 requireAdmin();
 
-$errorMessage = '';
+$error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = $_POST['title'];
-    $categoryId  = intval($_POST['category_id']);
-    $communityId = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
+    $cat_id      = intval($_POST['category_id']);
+    $com_id      = !empty($_POST['community_id']) ? intval($_POST['community_id']) : null;
     $location    = $_POST['location'];
-    $eventDate   = $_POST['event_date'];
-    $eventTime   = $_POST['event_time'];
+    $date        = $_POST['event_date'];
+    $time        = $_POST['event_time'];
     $description = $_POST['description'];
 
-    $startTime = $eventDate . ' ' . $eventTime . ':00';
-    $bannerUrl = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
+    $start_time = $date . ' ' . $time . ':00';
+    $image      = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
 
     if (!empty($_FILES['banner']['name'])) {
-        $uploadDir = __DIR__ . '/../uploads/events/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+        $target_dir = __DIR__ . '/../uploads/events/';
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
         }
-        $fileName = time() . '_' . basename($_FILES['banner']['name']);
-        $targetPath = $uploadDir . $fileName;
-        if (move_uploaded_file($_FILES['banner']['tmp_name'], $targetPath)) {
-            $bannerUrl = '/GROUP-AA-NSBM/uploads/events/' . $fileName;
+        $filename    = time() . '_' . basename($_FILES['banner']['name']);
+        $target_file = $target_dir . $filename;
+        if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
+            $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
         }
     }
 
-    if (!empty($title) && !empty($location) && !empty($eventDate)) {
+    if (!empty($title) && !empty($location) && !empty($date)) {
         $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$title, $description, $categoryId, $communityId, $location, $startTime, $bannerUrl]);
+        $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image]);
 
         header('Location: manage-events.php?status=created');
         exit;
     } else {
-        $errorMessage = 'Please fill in all required fields.';
+        $error = 'Please fill in all required fields.';
     }
 }
 
@@ -71,9 +71,9 @@ include __DIR__ . '/../includes/admin-navbar.php';
         </div>
       </div>
 
-      <?php if (!empty($errorMessage)): ?>
+      <?php if (!empty($error)): ?>
         <p style="color: red; margin-bottom: 16px;">
-          <b><?php echo htmlspecialchars($errorMessage); ?></b>
+          <b><?php echo htmlspecialchars($error); ?></b>
         </p>
       <?php endif; ?>
 

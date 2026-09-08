@@ -1,172 +1,122 @@
-html {
-  scroll-behavior: smooth;
-}
+/* genaral layout */
+html { scroll-behavior: smooth; }
 
 body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
-  margin-top: auto;
+    margin-top: auto;
 }
 
 #upcoming-events {
-  scroll-margin-top: 2rem;
+    scroll-margin-top: 2rem;
 }
 
+/* events & category sections */
 body .events-today,
 body .categories {
-  max-width: 1300px;
-  margin: 2.5rem auto 0 auto;
-  padding: 0 1.5rem;
+    max-width: 1300px;
+    margin: 2.5rem auto 0 auto;
+    padding: 0 1.5rem;
 }
 
 body .events-today .p-text,
 body .categories .p-text {
-  text-align: left;
-  margin-bottom: 1.5rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
 }
 
 body .events-today .p-text h2,
 body .categories .p-text h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-body .button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
+/* event cards */
 body .cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 2rem;
-  padding: 1.5rem 0;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    width: 100%;
+    /* border: 1px solid red; */
 }
 
 body .cards .card {
-  width: 260px;
-  max-width: 280px;
+    width: 260px;
+    max-width: 280px;
 }
 
 .card,
 .cards .card,
 .form-container {
-  box-shadow: none !important;
-  border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
 }
 
+/* inputs */
 input:focus,
-input:focus-visible,
-textarea:focus,
-select:focus,
-.input:focus,
-.input:focus-within,
-form:focus,
-.card:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border-color: #d1d5db !important;
-  -webkit-tap-highlight-color: transparent;
+textarea:focus {
+    outline: none;
 }
 
 :root {
-  --color-primary: #39B54A;
-  --animation-btn: 0s;
-  --btn-focus-scale: 1;
+    --color-primary: #39B54A;
+    --animation-btn: 0s;
+    --btn-focus-scale: 1;
 }
 
-.btn,
-.btn:hover,
-.btn:focus,
-.btn:active,
-.btn:focus:active,
-.btn:active:hover,
-.btn:active:focus {
-  animation: none !important;
-  transform: none !important;
-  transition: none !important;
+/* buttons */
+.btn-primary {
+    background-color: #39B54A !important;
+    border-color: #39B54A !important;
+    color: #ffffff !important;
 }
 
-.btn-primary,
-button.btn-primary,
-a.btn-primary {
-  background-color: #39B54A !important;
-  border-color: #39B54A !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
-  outline: none !important;
-  filter: none !important;
-  transform: none !important;
-  transition: none !important;
+.btn-primary:hover {
+    background-color: #39B54A !important;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: #39B54A !important;
-  border-color: #39B54A !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
-  outline: none !important;
-  filter: none !important;
-  transform: none !important;
-  transition: none !important;
+.btn-ghost {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: inherit !important;
 }
 
-.btn-ghost,
-.btn-ghost:hover,
-.btn-ghost:focus,
-.btn-ghost:active {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  color: inherit !important;
-  box-shadow: none !important;
-  animation: none !important;
-  transform: none !important;
-  outline: none !important;
+.btn-ghost:hover {
+    background-color: transparent !important;
 }
 
 .btn-soft.btn-primary {
-  background-color: rgba(57, 181, 74, 0.15) !important;
-  border-color: transparent !important;
-  color: #39B54A !important;
-  box-shadow: none !important;
-  transition: none !important;
+    background-color: rgba(57, 181, 74, 0.15) !important;
+    border-color: transparent !important;
+    color: #39B54A !important;
 }
 
 .btn-soft.btn-primary.active,
 .category-btn.active {
-  background-color: #39B54A !important;
-  border-color: #39B54A !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
-  transition: none !important;
+    background-color: #39B54A !important;
+    border-color: #39B54A !important;
+    color: #ffffff !important;
 }
 
 footer a,
-footer a:hover,
-footer .link,
-footer .link:hover {
-  text-decoration: none !important;
+footer a:hover {
+    text-decoration: none !important;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
 }

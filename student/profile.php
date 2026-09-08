@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
+// check if logged in
 requireLogin();
 
 if (isAdmin()) {
@@ -8,21 +9,23 @@ if (isAdmin()) {
     exit;
 }
 
-$userId = $_SESSION['user_id'];
+// get user profile details
+$user_id = $_SESSION['user_id'];
 
-$userStmt = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
-$userStmt->execute([$userId]);
-$user = $userStmt->fetch();
+$stmt = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
 
-$regEventsStmt = $pdo->prepare("
+// get registred events for this student
+$query = $pdo->prepare("
     SELECT events.* 
     FROM event_registrations 
     JOIN events ON event_registrations.event_id = events.event_id 
     WHERE event_registrations.user_id = ? 
     ORDER BY event_registrations.registration_id DESC
 ");
-$regEventsStmt->execute([$userId]);
-$registeredEvents = $regEventsStmt->fetchAll();
+$query->execute([$user_id]);
+$my_events = $query->fetchAll();
 
 include __DIR__ . '/../includes/header.php'; 
 include __DIR__ . '/../includes/navbar.php'; 
@@ -54,10 +57,10 @@ include __DIR__ . '/../includes/navbar.php';
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto 40px auto; padding: 0 16px;">
-  <?php if (empty($registeredEvents)): ?>
+  <?php if (empty($my_events)): ?>
     <center><p style="padding: 16px;"><b>You have not registered for any campus events yet.</b></p></center>
   <?php else: ?>
-    <?php foreach ($registeredEvents as $event): 
+    <?php foreach ($my_events as $event): 
       $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';
     ?>
       <div class="card bg-base-100 shadow-sm" style="width: 280px; border: 1px solid #e5e7eb;">
