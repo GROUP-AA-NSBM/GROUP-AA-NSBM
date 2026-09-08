@@ -55,7 +55,7 @@ include __DIR__ . '/../includes/navbar.php';
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto 40px auto; padding: 0 16px;">
   <?php if (empty($registeredEvents)): ?>
-    <p style="color: #111827; font-weight: 500; padding: 16px;">You have not registered for any campus events yet.</p>
+    <center><p style="padding: 16px;"><b>You have not registered for any campus events yet.</b></p></center>
   <?php else: ?>
     <?php foreach ($registeredEvents as $event): 
       $banner = !empty($event['banner_image_url']) ? $event['banner_image_url'] : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800';

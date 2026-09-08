@@ -51,13 +51,13 @@ $registrations = $pdo->query("
           <tbody>
             <?php if (empty($registrations)): ?>
               <tr>
-                <td colspan="7" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No student registrations recorded yet.</td>
+                <td colspan="7" align="center" style="padding: 24px;"><b>No student registrations recorded yet.</b></td>
               </tr>
             <?php else: ?>
               <?php foreach ($registrations as $index => $reg): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td style="font-weight: bold; color: #000000;"><?php echo htmlspecialchars($reg['student_name']); ?></td>
+                  <td><b><?php echo htmlspecialchars($reg['student_name']); ?></b></td>
                   <td style="color: #111827;"><?php echo htmlspecialchars($reg['student_email']); ?></td>
                   <td style="color: #111827; font-weight: 500;"><?php echo htmlspecialchars($reg['faculty']); ?></td>
                   <td style="color: #111827;"><?php echo htmlspecialchars($reg['event_title']); ?></td>

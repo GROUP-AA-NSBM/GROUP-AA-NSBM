@@ -55,19 +55,19 @@ include __DIR__ . '/../includes/admin-navbar.php';
               <th>Category</th>
               <th>Date & Time</th>
               <th>Location</th>
-              <th style="text-align: center;">Actions</th>
+              <th align="center">Actions</th>
             </tr>
           </thead>
           <tbody>
             <?php if (empty($events)): ?>
               <tr>
-                <td colspan="6" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No campus events found. Click "+ Add New Event" to publish one!</td>
+                <td colspan="6" align="center" style="padding: 24px;"><b>No campus events found. Click "+ Add New Event" to publish one!</b></td>
               </tr>
             <?php else: ?>
               <?php foreach ($events as $index => $ev): ?>
                 <tr>
                   <th><?php echo $index + 1; ?></th>
-                  <td style="font-weight: bold; color: #000000;"><?php echo htmlspecialchars($ev['title']); ?></td>
+                  <td><b><?php echo htmlspecialchars($ev['title']); ?></b></td>
                   <td style="color: #111827;"><?php echo htmlspecialchars($ev['category_name'] ?? 'General'); ?></td>
                   <td style="color: #111827;">
                     <?php echo date('M d, Y', strtotime($ev['start_time'])); ?> <br>

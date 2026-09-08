@@ -47,7 +47,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
           <h2 class="card-title" style="margin-bottom: 8px;">Add New Category</h2>
           <form id="addCategoryForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Category Name</span></label>
+              <label><b>Category Name</b></label>
               <input type="text" name="category_name" placeholder="e.g. Gaming & Esports" class="input input-bordered" style="width: 100%;" required />
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%;">Add Category</button>
@@ -62,20 +62,20 @@ include __DIR__ . '/../includes/admin-navbar.php';
               <tr>
                 <th>#</th>
                 <th>Category Name</th>
-                <th style="text-align: center;">Actions</th>
+                <th align="center">Actions</th>
               </tr>
             </thead>
             <tbody>
               <?php if (empty($categories)): ?>
                 <tr>
-                  <td colspan="3" style="text-align: center; padding: 24px; color: #111827; font-weight: 500;">No categories found.</td>
+                  <td colspan="3" align="center" style="padding: 24px;"><b>No categories found.</b></td>
                 </tr>
               <?php else: ?>
                 <?php foreach ($categories as $index => $cat): ?>
                   <tr>
                     <th><?php echo $index + 1; ?></th>
-                    <td style="font-weight: bold;"><?php echo htmlspecialchars($cat['name']); ?></td>
-                    <td style="text-align: center;">
+                    <td><b><?php echo htmlspecialchars($cat['name']); ?></b></td>
+                    <td align="center">
                       <a href="delete-category.php?id=<?php echo $cat['category_id']; ?>" class="btn btn-sm btn-outline btn-error" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                     </td>
                   </tr>

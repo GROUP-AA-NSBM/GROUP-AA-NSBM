@@ -72,8 +72,8 @@ include __DIR__ . '/../includes/admin-navbar.php';
       </div>
 
       <?php if (!empty($errorMessage)): ?>
-        <p style="color: red; font-weight: bold; margin-bottom: 16px;">
-          <?php echo htmlspecialchars($errorMessage); ?>
+        <p style="color: red; margin-bottom: 16px;">
+          <b><?php echo htmlspecialchars($errorMessage); ?></b>
         </p>
       <?php endif; ?>
 
@@ -81,14 +81,14 @@ include __DIR__ . '/../includes/admin-navbar.php';
         <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
    
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Event Title</span></label>
+            <label class="label"><b>Event Title</b></label>
             <input type="text" name="title" id="eventTitle" placeholder="e.g. NSBM Tech Fiesta 2026" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Category</span></label>
+              <label class="label"><b>Category</b></label>
               <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
                 <option value="" disabled selected>Select a category</option>
                 <?php foreach ($categories as $cat): ?>
@@ -98,7 +98,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Hosting Community / Club</span></label>
+              <label class="label"><b>Hosting Community / Club</b></label>
               <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
                 <option value="">None / Independent</option>
                 <?php foreach ($communities as $com): ?>
@@ -110,31 +110,31 @@ include __DIR__ . '/../includes/admin-navbar.php';
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
+            <label class="label"><b>Venue / Location</b></label>
             <input type="text" name="location" id="eventLocation" placeholder="e.g. Auditorium / Main Ground" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Event Date</span></label>
+              <label class="label"><b>Event Date</b></label>
               <input type="date" name="event_date" id="eventDate" class="input input-bordered" style="width: 100%;" required />
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Start Time</span></label>
+              <label class="label"><b>Start Time</b></label>
               <input type="time" name="event_time" id="eventTime" class="input input-bordered" style="width: 100%;" required />
             </div>
 
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Description</span></label>
+            <label class="label"><b>Description</b></label>
             <textarea name="description" id="eventDescription" rows="4" placeholder="Provide event details, schedule, agenda, or guidelines..." class="textarea textarea-bordered" style="width: 100%;" required></textarea>
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Event Banner / Poster</span></label>
+            <label class="label"><b>Event Banner / Poster</b></label>
             <input type="file" name="banner" id="eventBanner" accept="image/*" class="file-input file-input-bordered" style="width: 100%;" />
           </div>
 

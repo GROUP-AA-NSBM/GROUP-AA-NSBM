@@ -87,14 +87,14 @@ include __DIR__ . '/../includes/admin-navbar.php';
           <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Event Title</span></label>
+            <label class="label"><b>Event Title</b></label>
             <input type="text" name="title" id="eventTitle" value="<?php echo htmlspecialchars($event['title']); ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Category</span></label>
+              <label class="label"><b>Category</b></label>
               <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
                 <option value="" disabled>Select a category</option>
                 <?php foreach ($categories as $cat): ?>
@@ -106,7 +106,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Hosting Community / Club</span></label>
+              <label class="label"><b>Hosting Community / Club</b></label>
               <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
                 <option value="">None / Independent</option>
                 <?php foreach ($communities as $com): ?>
@@ -120,31 +120,31 @@ include __DIR__ . '/../includes/admin-navbar.php';
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Venue / Location</span></label>
+            <label class="label"><b>Venue / Location</b></label>
             <input type="text" name="location" id="eventLocation" value="<?php echo htmlspecialchars($event['venue']); ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="admin-form-grid">
             
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Event Date</span></label>
+              <label class="label"><b>Event Date</b></label>
               <input type="date" name="event_date" id="eventDate" value="<?php echo $eventDate; ?>" class="input input-bordered" style="width: 100%;" required />
             </div>
 
             <div class="form-control">
-              <label class="label"><span style="font-weight: 600;">Start Time</span></label>
+              <label class="label"><b>Start Time</b></label>
               <input type="time" name="event_time" id="eventTime" value="<?php echo $eventTime; ?>" class="input input-bordered" style="width: 100%;" required />
             </div>
 
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Description</span></label>
+            <label class="label"><b>Description</b></label>
             <textarea name="description" id="eventDescription" rows="4" class="textarea textarea-bordered" style="width: 100%;" required><?php echo htmlspecialchars($event['description']); ?></textarea>
           </div>
 
           <div class="form-control">
-            <label class="label"><span style="font-weight: 600;">Update Banner (Optional)</span></label>
+            <label class="label"><b>Update Banner (Optional)</b></label>
             <input type="file" name="banner" id="eventBanner" accept="image/*" class="file-input file-input-bordered" style="width: 100%;" />
           </div>
 

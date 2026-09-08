@@ -42,20 +42,21 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
   <div class="card bg-base-100 w-full max-w-md shadow-none" style="border: 1px solid #e5e7eb;">
     <form id="loginForm" action="" method="POST" class="card-body">
       
-      <div class="text-center mb-4">
+      <center>
         <h2 class="text-3xl font-extrabold text-black">Welcome Back</h2>
         <p class="text-sm text-gray-900 font-medium mt-1">Sign in to NSBM Event Hub</p>
-      </div>
+      </center>
+      <br>
 
       <?php if (!empty($errorMessage)): ?>
-        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 12px;">
-          <?php echo htmlspecialchars($errorMessage); ?>
-        </p>
+        <center>
+          <p style="color: red; margin-bottom: 12px;"><b><?php echo htmlspecialchars($errorMessage); ?></b></p>
+        </center>
       <?php endif; ?>
 
       <div class="form-control">
         <label class="label">
-          <span class="label-text font-semibold">Email Address</span>
+          <b>Email Address</b>
         </label>
         <input 
           type="email" 
@@ -69,7 +70,7 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
 
       <div class="form-control mt-4">
         <label class="label">
-          <span class="label-text font-semibold">Password</span>
+          <b>Password</b>
         </label>
         <input 
           type="password" 
@@ -87,10 +88,12 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
         </button>
       </div>
 
-      <p class="text-center text-sm text-gray-900 mt-4">
-        Don't have an account? 
-        <a href="register.php" class="link font-semibold text-primary">Register here</a>
-      </p>
+      <center>
+        <p class="text-sm text-gray-900" style="margin-top: 16px;">
+          Don't have an account? 
+          <a href="register.php" class="link font-semibold text-primary">Register here</a>
+        </p>
+      </center>
 
     </form>
   </div>
