@@ -26,12 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $target_file = $target_dir . $filename;
         if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
             $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
+            $image = BASE_URL . '/uploads/events/' . $filename;
         }
     }
 
     if (!empty($title) && !empty($location) && !empty($date)) {
-        $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image]);
+        $created_by = $_SESSION['user_id'] ?? 1;
+        $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image, $created_by]);
 
         header('Location: manage-events.php?status=created');
         exit;
@@ -57,6 +59,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-ghost">Manage Events</a>
       <a href="create-event.php" class="btn btn-primary">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
+      <a href="communities.php" class="btn btn-ghost">Communities</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -78,35 +81,31 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <?php endif; ?>
 
       <div class="card">
-        <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 12px; padding: 20px;">
    
           <div class="form-control">
             <label class="label"><b>Event Title</b></label>
             <input type="text" name="title" id="eventTitle" class="input input-bordered" style="width: 100%;" required />
           </div>
 
-          <div class="admin-form-grid">
-            
-            <div class="form-control">
-              <label class="label"><b>Category</b></label>
-              <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
-                <option value="" disabled selected>Select a category</option>
-                <?php foreach ($categories as $cat): ?>
-                  <option value="<?php echo $cat['category_id']; ?>"><?php echo htmlspecialchars($cat['name']); ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
+          <div class="form-control">
+            <label class="label"><b>Category</b></label>
+            <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
+              <option value="" disabled selected>Select a category</option>
+              <?php foreach ($categories as $cat): ?>
+                <option value="<?php echo $cat['category_id']; ?>"><?php echo htmlspecialchars($cat['name']); ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
 
-            <div class="form-control">
-              <label class="label"><b>Hosting Community / Club</b></label>
-              <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
-                <option value="">None / Independent</option>
-                <?php foreach ($communities as $com): ?>
-                  <option value="<?php echo $com['community_id']; ?>"><?php echo htmlspecialchars($com['name']); ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-
+          <div class="form-control">
+            <label class="label"><b>Hosting Community / Club</b></label>
+            <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
+              <option value="">None / Independent</option>
+              <?php foreach ($communities as $com): ?>
+                <option value="<?php echo $com['community_id']; ?>"><?php echo htmlspecialchars($com['name']); ?></option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <div class="form-control">
@@ -114,18 +113,14 @@ include __DIR__ . '/../includes/admin-navbar.php';
             <input type="text" name="location" id="eventLocation" class="input input-bordered" style="width: 100%;" required />
           </div>
 
-          <div class="admin-form-grid">
-            
-            <div class="form-control">
-              <label class="label"><b>Event Date</b></label>
-              <input type="date" name="event_date" id="eventDate" class="input input-bordered" style="width: 100%;" required />
-            </div>
+          <div class="form-control">
+            <label class="label"><b>Event Date</b></label>
+            <input type="date" name="event_date" id="eventDate" class="input input-bordered" style="width: 100%;" required />
+          </div>
 
-            <div class="form-control">
-              <label class="label"><b>Start Time</b></label>
-              <input type="time" name="event_time" id="eventTime" class="input input-bordered" style="width: 100%;" required />
-            </div>
-
+          <div class="form-control">
+            <label class="label"><b>Start Time</b></label>
+            <input type="time" name="event_time" id="eventTime" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="form-control">

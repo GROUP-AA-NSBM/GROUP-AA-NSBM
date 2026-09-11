@@ -6,6 +6,7 @@ requireLogin();
 
 if (isAdmin()) {
     header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
+    header("Location: " . BASE_URL . "/admin/dashboard.php");
     exit;
 }
 
@@ -52,7 +53,7 @@ include __DIR__ . '/../includes/navbar.php';
 </div>
 </div>
 
-<div class = "profile-events" style="margin-bottom: 24px;">
+<div class="profile-events" style="text-align: center; margin-bottom: 24px;">
     <h4 style="font-size: 1.25rem; font-weight: 700; color: #19589D;">Registered Events</h4>
 </div>
 

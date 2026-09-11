@@ -105,8 +105,10 @@ if (isLoggedIn()) {
           <h4 style="font-size: 1.125rem; font-weight: 700; color: #000000; margin-bottom: 6px;">Want to register for this event?</h4>
           <p style="font-size: 0.875rem; color: #111827; margin-bottom: 16px;">Sign in with your email to book your slot.</p>
           <a href="/GROUP-AA-NSBM/auth/login.php" class="btn btn-primary btn-sm" style="padding: 0 24px;">Log In to Register</a>
+          <a href="<?php echo BASE_URL; ?>/auth/login.php" class="btn btn-primary btn-sm" style="padding: 0 24px;">Log In to Register</a>
           <p style="font-size: 0.8rem; color: #111827; margin-top: 10px;">
             Don't have an account? <a href="/GROUP-AA-NSBM/auth/register.php" style="color: #39B54A; text-decoration: underline; font-weight: 600;">Create one here</a>
+            Don't have an account? <a href="<?php echo BASE_URL; ?>/auth/register.php" style="color: #39B54A; text-decoration: underline; font-weight: 600;">Create one here</a>
           </p>
         </center>
       </div>

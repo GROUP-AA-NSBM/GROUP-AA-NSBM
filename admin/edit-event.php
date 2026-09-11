@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $target_file = $target_dir . $filename;
             if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
                 $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
+                $image = BASE_URL . '/uploads/events/' . $filename;
                 $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
                 $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image, $id]);
             }
@@ -68,6 +69,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <a href="manage-events.php" class="btn btn-primary">Manage Events</a>
       <a href="create-event.php" class="btn btn-ghost">Create Event</a>
       <a href="categories.php" class="btn btn-ghost">Categories</a>
+      <a href="communities.php" class="btn btn-ghost">Communities</a>
       <a href="registrations.php" class="btn btn-ghost">Registrations</a>
     </nav>
   </aside>
@@ -82,7 +84,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       </div>
 
       <div class="card">
-        <form id="editEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="editEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 12px; padding: 20px;">
           
           <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
 
@@ -91,32 +93,28 @@ include __DIR__ . '/../includes/admin-navbar.php';
             <input type="text" name="title" id="eventTitle" value="<?php echo htmlspecialchars($event['title']); ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
-          <div class="admin-form-grid">
-            
-            <div class="form-control">
-              <label class="label"><b>Category</b></label>
-              <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
-                <option value="" disabled>Select a category</option>
-                <?php foreach ($categories as $cat): ?>
-                  <option value="<?php echo $cat['category_id']; ?>" <?php echo ($cat['category_id'] == ($event['category_id'] ?? 0)) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($cat['name']); ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
+          <div class="form-control">
+            <label class="label"><b>Category</b></label>
+            <select name="category_id" id="eventCategory" class="select select-bordered" style="width: 100%;" required>
+              <option value="" disabled>Select a category</option>
+              <?php foreach ($categories as $cat): ?>
+                <option value="<?php echo $cat['category_id']; ?>" <?php echo ($cat['category_id'] == ($event['category_id'] ?? 0)) ? 'selected' : ''; ?>>
+                  <?php echo htmlspecialchars($cat['name']); ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
 
-            <div class="form-control">
-              <label class="label"><b>Hosting Community / Club</b></label>
-              <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
-                <option value="">None / Independent</option>
-                <?php foreach ($communities as $com): ?>
-                  <option value="<?php echo $com['community_id']; ?>" <?php echo ($com['community_id'] == ($event['community_id'] ?? 0)) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($com['name']); ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-
+          <div class="form-control">
+            <label class="label"><b>Hosting Community / Club</b></label>
+            <select name="community_id" id="eventCommunity" class="select select-bordered" style="width: 100%;">
+              <option value="">None / Independent</option>
+              <?php foreach ($communities as $com): ?>
+                <option value="<?php echo $com['community_id']; ?>" <?php echo ($com['community_id'] == ($event['community_id'] ?? 0)) ? 'selected' : ''; ?>>
+                  <?php echo htmlspecialchars($com['name']); ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <div class="form-control">
@@ -124,18 +122,14 @@ include __DIR__ . '/../includes/admin-navbar.php';
             <input type="text" name="location" id="eventLocation" value="<?php echo htmlspecialchars($event['venue']); ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
-          <div class="admin-form-grid">
-            
-            <div class="form-control">
-              <label class="label"><b>Event Date</b></label>
-              <input type="date" name="event_date" id="eventDate" value="<?php echo $date; ?>" class="input input-bordered" style="width: 100%;" required />
-            </div>
+          <div class="form-control">
+            <label class="label"><b>Event Date</b></label>
+            <input type="date" name="event_date" id="eventDate" value="<?php echo $date; ?>" class="input input-bordered" style="width: 100%;" required />
+          </div>
 
-            <div class="form-control">
-              <label class="label"><b>Start Time</b></label>
-              <input type="time" name="event_time" id="eventTime" value="<?php echo $time; ?>" class="input input-bordered" style="width: 100%;" required />
-            </div>
-
+          <div class="form-control">
+            <label class="label"><b>Start Time</b></label>
+            <input type="time" name="event_time" id="eventTime" value="<?php echo $time; ?>" class="input input-bordered" style="width: 100%;" required />
           </div>
 
           <div class="form-control">

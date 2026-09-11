@@ -27,9 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // redirect based on role
             if ($user['role'] === 'admin') {
                 header("Location: /GROUP-AA-NSBM/admin/dashboard.php");
+                header("Location: " . BASE_URL . "/admin/dashboard.php");
                 exit;
             } else {
                 header("Location: /GROUP-AA-NSBM/index.php");
+                header("Location: " . BASE_URL . "/index.php");
                 exit;
             }
         } else {
@@ -46,8 +48,8 @@ include __DIR__ . '/../includes/not-loggedin-navbar.php';
 
 <!-- Login Form -->
 <div class="min-h-screen flex items-center justify-center px-4 py-12" style="background-color: #ffffff;">
-  <div class="card bg-base-100 w-full max-w-md shadow-none" style="border: 1px solid #e5e7eb;">
-    <form id="loginForm" action="" method="POST" class="card-body">
+  <div class="card bg-base-100 w-full shadow-none" style="max-width: 380px; border: 1px solid #e5e7eb;">
+    <form id="loginForm" action="" method="POST" class="card-body" style="padding: 24px; display: flex; flex-direction: column; gap: 10px;">
       
       <center>
         <h2 class="text-3xl font-extrabold text-black">Welcome Back</h2>
