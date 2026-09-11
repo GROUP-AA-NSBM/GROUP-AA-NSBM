@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $target_file = $target_dir . $filename;
         if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
             $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
+            $image = BASE_URL . '/uploads/events/' . $filename;
         }
     }
 
@@ -80,7 +81,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       <?php endif; ?>
 
       <div class="card">
-        <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="createEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 12px; padding: 20px;">
    
           <div class="form-control">
             <label class="label"><b>Event Title</b></label>

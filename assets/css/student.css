@@ -61,21 +61,23 @@
 .registration {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
+    padding: 16px;
     background: #f9fafb;
-    margin: 20px 0;
+    margin: 16px 0;
+    max-width: 360px;
 }
 
 .form-register {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .form-register input {
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    font-size: 14px;
     width: 100%;
     outline: none;
 }

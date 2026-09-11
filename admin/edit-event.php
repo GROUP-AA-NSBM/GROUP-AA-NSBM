@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $target_file = $target_dir . $filename;
             if (move_uploaded_file($_FILES['banner']['tmp_name'], $target_file)) {
                 $image = '/GROUP-AA-NSBM/uploads/events/' . $filename;
+                $image = BASE_URL . '/uploads/events/' . $filename;
                 $stmt = $pdo->prepare('UPDATE events SET title = ?, description = ?, category_id = ?, community_id = ?, venue = ?, start_time = ?, banner_image_url = ? WHERE event_id = ?');
                 $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image, $id]);
             }
@@ -83,7 +84,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
       </div>
 
       <div class="card">
-        <form id="editEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="editEventForm" action="" method="POST" enctype="multipart/form-data" class="card-body" style="display: flex; flex-direction: column; gap: 12px; padding: 20px;">
           
           <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
 

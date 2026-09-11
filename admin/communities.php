@@ -45,10 +45,10 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
     <div style="display: flex; flex-direction: column; gap: 24px;">
       
-      <div class="card" style="height: fit-content;">
-        <div class="card-body">
+      <div class="card" style="height: fit-content; max-width: 480px;">
+        <div class="card-body" style="padding: 20px;">
           <h2 class="card-title" style="margin-bottom: 8px;">Add New Community</h2>
-          <form id="addCommunityForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <form id="addCommunityForm" action="" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
             <div class="form-control">
               <label><b>Community / Club Name</b></label>
               <input type="text" name="community_name" class="input input-bordered" style="width: 100%;" required />
@@ -70,7 +70,7 @@ include __DIR__ . '/../includes/admin-navbar.php';
               <textarea name="description" rows="3" class="textarea textarea-bordered" style="width: 100%;"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 95%; height: 41px; min-height: 41px; padding: 8px 20px;">Add Community</button>
+            <button type="submit" class="btn btn-primary" style="width: 170px; height: 39px; min-height: 39px; padding: 7px 18px;">Add Community</button>
           </form>
         </div>
       </div>

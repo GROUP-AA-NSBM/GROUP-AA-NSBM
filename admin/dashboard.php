@@ -59,5 +59,11 @@ include __DIR__ . '/../includes/admin-navbar.php';
 
     </div>
 
+    <div style="margin-top: 24px;">
+      <a href="create-event.php" class="btn admin-btn-black" style="padding: 10px 22px; height: 42px; min-height: 42px;">
+        + Create New Event
+      </a>
+    </div>
+
   </main>
 </div>
