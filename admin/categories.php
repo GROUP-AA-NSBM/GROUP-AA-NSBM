@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($name)) {
         $stmt = $pdo->prepare('INSERT INTO categories (name) VALUES (?)');
         $stmt->execute([$name]);
-        header('Location: categories.php?status=created');
+        header('Location: categories.php');
         exit;
     }
 }

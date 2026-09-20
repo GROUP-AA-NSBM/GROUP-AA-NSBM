@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($name)) {
         $stmt = $pdo->prepare('INSERT INTO communities (name, faculty, description) VALUES (?, ?, ?)');
         $stmt->execute([$name, $faculty, $description]);
-        header('Location: communities.php?status=created');
+        header('Location: communities.php');
         exit;
     }
 }

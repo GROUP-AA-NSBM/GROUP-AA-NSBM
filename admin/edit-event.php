@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $id]);
         }
 
-        header('Location: manage-events.php?status=updated');
+        header('Location: manage-events.php');
         exit;
     }
 }

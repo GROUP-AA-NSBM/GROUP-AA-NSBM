@@ -12,6 +12,6 @@ if (isset($_GET['id'])) {
     }
 }
 
-header('Location: categories.php?status=deleted');
+header('Location: categories.php');
 exit;
 ?>

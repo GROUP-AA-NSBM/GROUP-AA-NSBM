@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         $stmt = $pdo->prepare('DELETE FROM events WHERE event_id = ?');
         $stmt->execute([$eventId]);
     }
-    header("Location: manage-events.php?status=deleted");
+    header("Location: manage-events.php");
     exit();
 } else {
     header("Location: manage-events.php");
