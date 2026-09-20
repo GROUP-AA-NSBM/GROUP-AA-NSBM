@@ -41,13 +41,6 @@ include __DIR__ . '/../includes/admin-navbar.php';
         + Add New Event
       </a>
     </div>
-
-    <?php if (isset($_GET['status'])): ?>
-      <p style="color: #16a34a; font-weight: bold; margin-bottom: 16px;">
-        Action completed successfully!
-      </p>
-    <?php endif; ?>
-
     <div class="card admin-card-box">
       <div class="table-box">
         <table class="table">

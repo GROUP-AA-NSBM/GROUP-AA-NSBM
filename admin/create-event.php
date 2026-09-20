@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare('INSERT INTO events (title, description, category_id, community_id, venue, start_time, banner_image_url, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->execute([$title, $description, $cat_id, $com_id, $location, $start_time, $image, $created_by]);
 
-        header('Location: manage-events.php?status=created');
+        header('Location: manage-events.php');
         exit;
     } else {
         $error = 'Please fill in all required fields.';

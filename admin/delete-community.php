@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     }
 }
 
-header('Location: communities.php?status=deleted');
+header('Location: communities.php');
 exit;
 ?>
 
