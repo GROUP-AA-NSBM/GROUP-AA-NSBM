@@ -1,6 +1,3 @@
--- NSBM Event Hub Database Schema
--- Ready for DirectAdmin / cPanel / phpMyAdmin import
-
 CREATE TABLE IF NOT EXISTS users (
     user_id     INT AUTO_INCREMENT PRIMARY KEY,
     full_name   VARCHAR(100) NOT NULL,
@@ -47,12 +44,11 @@ CREATE TABLE IF NOT EXISTS event_registrations (
     status          VARCHAR(20) DEFAULT 'registered'
 );
 
--- Default Admin User (Email: admin@nsbm.ac.lk / Password: admin123)
 INSERT INTO users (full_name, email, password, role) 
 VALUES ('NSBM IT Department', 'admin@nsbm.ac.lk', 'admin123', 'admin')
 ON DUPLICATE KEY UPDATE user_id = user_id;
 
--- Sample Categories
+
 INSERT INTO categories (name) VALUES 
 ('Technology & Computing'),
 ('Business & Leadership'),
@@ -60,7 +56,7 @@ INSERT INTO categories (name) VALUES
 ('Arts & Culture')
 ON DUPLICATE KEY UPDATE category_id = category_id;
 
--- Sample Communities
+
 INSERT INTO communities (name, faculty, description) VALUES 
 ('FOSS Community', 'Faculty of Computing', 'Free and Open Source Software Community of NSBM'),
 ('Rotaract Club of NSBM', 'General', 'Community youth and leadership service club'),
